@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack",
-    "watch": "watch 'yarn run dev'",
+    "watch": "webpack --watch --progress",
     "test": "jest"
   },
   "keywords": [
@@ -45,7 +45,6 @@
     "sass": "^1.25.0",
     "style-loader": "^1.1.3",
     "vis-network": "^7.2.0",
-    "watch": "^1.0.2",
     "webext-redux": "^2.1.6"
   }
 }
