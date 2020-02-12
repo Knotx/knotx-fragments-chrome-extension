@@ -22,17 +22,17 @@ import App from './devtools/App';
 import '../sass/style.scss';
 import {
   PANEL_NAME,
-  KNOTX_DEVTOOL_CONNECTION,
-  GET_CURRENT_TAB_INFO,
+  chromeConnections,
+  chromeActions,
 } from './helpers/constants';
 
 const store = new Store();
 chrome.devtools.panels.create(PANEL_NAME, null, 'index.html');
 
 
-const port = chrome.runtime.connect({ name: KNOTX_DEVTOOL_CONNECTION });
+const port = chrome.runtime.connect({ name: chromeConnections.KNOTX_DEVTOOL_CONNECTION });
 
-port.postMessage(GET_CURRENT_TAB_INFO);
+port.postMessage(chromeActions.GET_CURRENT_TAB_INFO);
 port.onMessage.addListener(({ id }) => {
   store.ready().then(() => {
     ReactDOM.render(

@@ -22,8 +22,8 @@ import {
   status,
   succesMsgs,
   errorMsgs,
-  KNOTX_DEVTOOL_CONNECTION,
-  GET_CURRENT_TAB_INFO,
+  chromeConnections,
+  chromeActions,
 } from '../helpers/constants';
 
 wrapStore(store);
@@ -71,10 +71,10 @@ chrome.runtime.onMessage.addListener(
 
 
 chrome.runtime.onConnect.addListener((port) => {
-  if (port.name !== KNOTX_DEVTOOL_CONNECTION) return;
+  if (port.name !== chromeConnections.KNOTX_DEVTOOL_CONNECTION) return;
 
   port.onMessage.addListener((requestType) => {
-    if (requestType === GET_CURRENT_TAB_INFO) {
+    if (requestType === chromeActions.GET_CURRENT_TAB_INFO) {
       chrome.tabs.query({
         active: true,
       },

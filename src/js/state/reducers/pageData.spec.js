@@ -22,67 +22,67 @@ describe('pageData reducer', () => {
     expect(state).toEqual(initState);
   });
 
+  describe('SET_PAGE_DATA', () => {
+    test('Handles SET_PAGE_DATA action with initial state', () => {
+      const expectedData = {
+        [currentPageData.id]: {
+          url: currentPageData.url,
+          fragments: currentPageData.fragments,
+        },
+      };
 
-  // SET_PAGE_DATA
-  test('Handles SET_PAGE_DATA event with initial state', () => {
-    const expectedData = {
-      [currentPageData.id]: {
-        url: currentPageData.url,
-        fragments: currentPageData.fragments,
-      },
-    };
+      const state = pageDataReducer(undefined, { type: SET_PAGE_DATA, pageData: currentPageData });
+      expect(state).toEqual(expectedData);
+    });
 
-    const state = pageDataReducer(undefined, { type: SET_PAGE_DATA, pageData: currentPageData });
-    expect(state).toEqual(expectedData);
+    test('Handles SET_PAGE_DATA action with some data already existing in state', () => {
+      const initialState = {
+        [currentPageData.id]: {
+          url: currentPageData.url,
+          fragments: currentPageData.fragments,
+        },
+      };
+
+      const expectedData = {
+        [currentPageData.id]: {
+          url: currentPageData.url,
+          fragments: currentPageData.fragments,
+        },
+        [nextPageData.id]: {
+          url: nextPageData.url,
+          fragments: nextPageData.fragments,
+        },
+      };
+
+      const state = pageDataReducer(initialState, { type: SET_PAGE_DATA, pageData: nextPageData });
+      expect(state).toEqual(expectedData);
+    });
   });
 
-  test('Handles SET_PAGE_DATA event with some data already exitsed in state', () => {
-    const initialState = {
-      [currentPageData.id]: {
-        url: currentPageData.url,
-        fragments: currentPageData.fragments,
-      },
-    };
+  describe('REMOVE_PAGE_DATA', () => {
+    test('Handles REMOVE_PAGE_DATA action with initial state', () => {
+      const state = pageDataReducer(undefined, { type: REMOVE_PAGE_DATA, pageData: { id: currentPageData.id } });
+      expect(state).toEqual(initState);
+    });
 
-    const expectedData = {
-      [currentPageData.id]: {
-        url: currentPageData.url,
-        fragments: currentPageData.fragments,
-      },
-      [nextPageData.id]: {
-        url: nextPageData.url,
-        fragments: nextPageData.fragments,
-      },
-    };
+    test('Handles REMOVE_PAGE_DATA action with some data already existing in state', () => {
+      const initialState = {
+        [currentPageData.id]: {
+          url: currentPageData.url,
+          fragments: currentPageData.fragments,
+        },
+      };
 
-    const state = pageDataReducer(initialState, { type: SET_PAGE_DATA, pageData: nextPageData });
-    expect(state).toEqual(expectedData);
-  });
+      const expectedData = {
+        [nextPageData.id]: {
+          url: nextPageData.url,
+          fragments: nextPageData.fragments,
+        },
+      };
 
-
-  // REMOVE_PAGE_DATA
-  test('Handles REMOVE_PAGE_DATA event with initial state', () => {
-    const state = pageDataReducer(undefined, { type: REMOVE_PAGE_DATA, pageData: { id: currentPageData.id } });
-    expect(state).toEqual(initState);
-  });
-
-  test('Handles REMOVE_PAGE_DATA event with some data already exitsed in state', () => {
-    const initialState = {
-      [currentPageData.id]: {
-        url: currentPageData.url,
-        fragments: currentPageData.fragments,
-      },
-    };
-
-    const expectedData = {
-      [nextPageData.id]: {
-        url: nextPageData.url,
-        fragments: nextPageData.fragments,
-      },
-    };
-
-    const state = pageDataReducer(initialState, { type: SET_PAGE_DATA, pageData: nextPageData });
-    pageDataReducer(state, { type: REMOVE_PAGE_DATA, pageData: { id: currentPageData.id } });
-    expect(state).toEqual(expectedData);
+      const state = pageDataReducer(initialState, { type: SET_PAGE_DATA, pageData: nextPageData });
+      pageDataReducer(state, { type: REMOVE_PAGE_DATA, pageData: { id: currentPageData.id } });
+      expect(state).toEqual(expectedData);
+    });
   });
 });

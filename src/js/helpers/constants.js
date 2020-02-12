@@ -22,11 +22,14 @@ export const status = {
 };
 
 // CONNECTIONS
-export const KNOTX_DEVTOOL_CONNECTION = 'KNOTX_DEVTOOL_CONNECTION';
+export const chromeConnections = {
+  KNOTX_DEVTOOL_CONNECTION: 'KNOTX_DEVTOOL_CONNECTION',
+};
 
 // CONNECTION ACTIONS
-export const GET_CURRENT_TAB_INFO = 'GET_CURRENT_TAB_INFO';
-
+export const chromeActions = {
+  GET_CURRENT_TAB_INFO: 'GET_CURRENT_TAB_INFO',
+};
 
 // MESSAGES
 /* eslint-disable max-len */
