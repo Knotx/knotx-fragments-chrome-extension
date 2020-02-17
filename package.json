@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Extends the Developer Tools, adding a sidebar that displays the Knotx Fragments data associated with the selected DOM element.",
   "private": true,
+  "browserslist": [
+    "last 1 chrome version"
+  ],
   "scripts": {
     "dev": "webpack",
     "watch": "watch 'yarn run dev'",
