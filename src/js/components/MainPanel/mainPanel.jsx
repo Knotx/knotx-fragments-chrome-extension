@@ -32,7 +32,6 @@ const MainPanel = ({ tabId }) => {
       <h1>
         { renderedGraphId }
       </h1>
-      {console.log(graphData)}
       <GraphComponent
         graphJson={graphData}
       />

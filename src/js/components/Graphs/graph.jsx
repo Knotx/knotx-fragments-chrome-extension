@@ -34,8 +34,8 @@ const GraphComponent = ({
 }) => {
   useEffect(() => {
     if (graphJson) {
-      const exampleGraphDeclaration = constructGraph(graphJson);
-      drawGraph(exampleGraphDeclaration, document.querySelector(selectors.GRAPH));
+      const graphDeclaration = constructGraph(graphJson);
+      drawGraph(graphDeclaration, document.querySelector(selectors.GRAPH));
     }
   }, [graphJson]);
 
