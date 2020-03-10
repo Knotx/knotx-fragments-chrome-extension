@@ -1,12 +1,12 @@
 import React from 'react';
 import EnzymeAdapter from 'enzyme-adapter-react-16';
-import Enzyme, { shallow, mount } from 'enzyme';
+import Enzyme, { shallow } from 'enzyme';
 import GraphComponent from './graph';
 import {
   GraphContainer,
   Graph,
 } from './graph.style';
-import { singleNode } from '../../helpers/graph/declarationHelper.mock';
+
 
 
 Enzyme.configure({ adapter: new EnzymeAdapter() });
