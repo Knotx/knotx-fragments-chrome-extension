@@ -18,11 +18,14 @@
 
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import renderjson from 'renderjson';
+import { renderJsonDefaultConfig } from '../../helpers/renderjsonHelper';
 import { drawGraph } from '../../helpers/graph/drawingHelper';
 import { constructGraph } from '../../helpers/graph/declarationHelper';
 import {
   GraphContainer,
   Graph,
+  Info,
 } from './graph.style';
 
 const selectors = {
@@ -32,16 +35,36 @@ const selectors = {
 const GraphComponent = ({
   graphJson,
 }) => {
+  // const [graphInfo, setGraphInfo] = React.useState({});
+
   useEffect(() => {
     if (graphJson) {
       const graphDeclaration = constructGraph(graphJson);
-      drawGraph(graphDeclaration, document.querySelector(selectors.GRAPH));
+      const network = drawGraph(graphDeclaration, document.querySelector(selectors.GRAPH));
+
+      const infoContainer = document.getElementById('info');
+      infoContainer.innerHTML = '';
+
+      network.on('click', (e) => {
+        const nodeId = e.nodes[0];
+
+        if (nodeId) {
+          const { info } = graphDeclaration.nodes.find((el) => el.id === nodeId);
+
+          infoContainer.innerHTML = '';
+
+          renderJsonDefaultConfig();
+
+          infoContainer.appendChild(renderjson(info));
+        }
+      });
     }
   }, [graphJson]);
 
   return (
     <GraphContainer className="graphContainer">
       <Graph className="graph" />
+      <Info id="info" />
     </GraphContainer>
   );
 };

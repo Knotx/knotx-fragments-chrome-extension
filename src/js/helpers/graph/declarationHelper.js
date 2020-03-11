@@ -42,6 +42,10 @@ const createVisNode = (node) => ({
   id: node.id,
   label: node.label,
   group: getNodeGroup(node),
+  info: {
+    hasAdditionalInfo: true,
+    ...node.info,
+  },
 });
 
 const getLeafs = (root, depth = 0) => {
@@ -69,6 +73,10 @@ const createVirtualStartNode = (composite, transitions) => ({
   type: 'virtual_start',
   id: `${composite.id}_virtual`,
   on: transitions,
+  info: {
+    hasAdditionalInfo: true,
+    ...composite.info,
+  },
 });
 
 const createVirtualEndNode = (composite, transitions) => ({
@@ -77,6 +85,10 @@ const createVirtualEndNode = (composite, transitions) => ({
   type: 'virtual_end',
   id: `${composite.id}_virtual2`,
   on: transitions,
+  info: {
+    hasAdditionalInfo: false,
+    label: 'compositeEnd',
+  },
 });
 
 const createTransitionsToSubtasks = (subtasks) => subtasks
@@ -125,6 +137,8 @@ export const flattenComposites = (node) => {
       });
     }
   }
+
+  flattenedNode.info = node;
 
   return flattenedNode;
 };

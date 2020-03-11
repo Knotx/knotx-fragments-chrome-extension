@@ -21,7 +21,11 @@ export const MainPanelWrapper = styled.div`
     margin-top: 40px;
     @media (min-width: ${PAGE_BREAK}px) {
         position: ${({ sidebarExpanded }) => (sidebarExpanded ? 'relative' : '')};
-        left: ${({ sidebarExpanded }) => (sidebarExpanded ? '40%' : '0')};
-        width: ${({ sidebarExpanded }) => (sidebarExpanded ? '60%' : '100vw')};
+        left: ${({ sidebarExpanded }) => (sidebarExpanded ? '35%' : '0')};
+        width: ${({ sidebarExpanded }) => (sidebarExpanded ? '65%' : '100vw')};
     }
+`;
+
+export const MainPanelHeader = styled.h1`
+    color: wheat;
 `;

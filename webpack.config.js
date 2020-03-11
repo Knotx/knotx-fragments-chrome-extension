@@ -1,4 +1,6 @@
 const path = require('path');
+const StyleLintWebpackPlugin = require('stylelint-webpack-plugin');
+
 
 module.exports = {
   mode: 'development',
@@ -26,6 +28,18 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader', 'eslint-loader'],
       },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
+
+  plugins: [
+    new StyleLintWebpackPlugin({
+      configFile: './styleintrc',
+      context: './src',
+      files: 'css/*',
+    }),
+  ],
 };

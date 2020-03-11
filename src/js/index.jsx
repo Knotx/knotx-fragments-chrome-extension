@@ -24,6 +24,7 @@ import {
   chromeConnections,
   chromeActions,
 } from './helpers/constants';
+import '../css/main.css';
 
 const store = new Store();
 chrome.devtools.panels.create(PANEL_NAME, null, 'index.html');

@@ -17,7 +17,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { MainPanelWrapper } from './mainPanel.style';
+import { MainPanelWrapper, MainPanelHeader } from './mainPanel.style';
 import GraphComponent from '../Graphs/graph';
 
 const MainPanel = ({ tabId }) => {
@@ -30,9 +30,9 @@ const MainPanel = ({ tabId }) => {
   return graphData
     ? (
       <MainPanelWrapper sidebarExpanded={sidebarExpanded}>
-        <h1>
-          { renderedGraphId }
-        </h1>
+        <MainPanelHeader>
+          { `Fragment ID: ${renderedGraphId}` }
+        </MainPanelHeader>
         <GraphComponent
           graphJson={graphData}
         />
@@ -40,9 +40,7 @@ const MainPanel = ({ tabId }) => {
     )
     : (
       <MainPanelWrapper sidebarExpanded={sidebarExpanded}>
-        <h1>
-          Please Choose any fragment
-        </h1>
+        <MainPanelHeader>Please Choose any fragment</MainPanelHeader>
       </MainPanelWrapper>
     );
 };

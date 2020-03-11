@@ -5,9 +5,8 @@ import GraphComponent from './graph';
 import {
   GraphContainer,
   Graph,
+  Info,
 } from './graph.style';
-
-
 
 Enzyme.configure({ adapter: new EnzymeAdapter() });
 
@@ -16,6 +15,7 @@ describe('A suite', () => {
     expect(shallow(<GraphComponent />).contains(
       <GraphContainer className="graphContainer">
         <Graph className="graph" />
+        <Info id="info" />
       </GraphContainer>,
     )).toBe(true);
   });

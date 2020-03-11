@@ -29,7 +29,7 @@ export const SidePanelWrapper = styled.div`
     transition: left .1s, width .1s;
 
     @media (min-width: ${PAGE_BREAK}px) {
-        width: ${({ renderedGraph }) => (renderedGraph === null ? '100%' : '40%')}
+        width: ${({ renderedGraph }) => (renderedGraph === null ? '100%' : '35%')}
     }
 `;
 
