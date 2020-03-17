@@ -19,7 +19,7 @@ import { PAGE_BREAK } from '../../helpers/constants';
 
 export const SidePanelWrapper = styled.div`
     position: fixed;
-    left: ${({ expanded }) => (expanded ? '0' : '-100%')};
+    margin-left: ${({ expanded }) => (expanded ? '0' : '-100%')};
     top: 0;
     padding-top: 40px;
     height: 100vh;
@@ -29,12 +29,20 @@ export const SidePanelWrapper = styled.div`
     transition: left .1s, width .1s;
 
     @media (min-width: ${PAGE_BREAK}px) {
+        position: ${({ expanded, renderedGraph }) => {
+    if (!expanded || !renderedGraph) return 'fixed';
+    return 'relative';
+  }};
+        margin-left: ${({ expanded, renderedGraph }) => {
+    if (!expanded && !renderedGraph) return '-100%';
+    if (!expanded && renderedGraph) return '-35%';
+    return '0';
+  }};
         width: ${({ renderedGraph }) => (renderedGraph === null ? '100%' : '35%')}
     }
 `;
 
 export const ToggleSidePanelButton = styled.button`
-    display: ${({ shouldDisplay }) => (shouldDisplay ? 'inline-block' : 'none')};
     position: fixed;
     left: ${({ expanded }) => (expanded ? '5px' : '0')};
     top: 0px;

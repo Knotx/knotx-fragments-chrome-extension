@@ -14,18 +14,16 @@
  * limitations under the License.
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { SidePanelWrapper, ToggleSidePanelButton } from './sidePanel.style';
 import FragmentList from '../FragmentList/fragmentList';
 import { HAMBURGER, CROSS } from '../../helpers/constants';
-import { setSidebarExpanded } from '../../state/actions/pageData';
 
 const SidePanel = ({ tabId }) => {
-  const expanded = useSelector(({ pageData }) => pageData[tabId].sidebarExpanded);
+  const [expanded, setExpanded] = useState(true);
   const renderedGraph = useSelector(({ pageData }) => pageData[tabId].renderedGraph);
-  const dispatch = useDispatch();
 
   return (
     <SidePanelWrapper
@@ -33,18 +31,8 @@ const SidePanel = ({ tabId }) => {
       renderedGraph={renderedGraph}
     >
       <ToggleSidePanelButton
-        shouldDisplay={renderedGraph !== null && renderedGraph !== undefined}
         expanded={expanded}
-        onClick={() => {
-          dispatch(
-            setSidebarExpanded(
-              {
-                id: tabId,
-                sidebarExpanded: !expanded,
-              },
-            ),
-          );
-        }}
+        onClick={() => setExpanded(!expanded)}
       >
         {expanded ? CROSS : HAMBURGER}
       </ToggleSidePanelButton>

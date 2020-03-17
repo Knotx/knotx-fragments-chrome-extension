@@ -25,7 +25,7 @@ import { constructGraph } from '../../helpers/graph/declarationHelper';
 import {
   GraphContainer,
   Graph,
-  Info,
+  GraphHeader,
 } from './graph.style';
 
 const selectors = {
@@ -34,16 +34,15 @@ const selectors = {
 
 const GraphComponent = ({
   graphJson,
+  fragmentId,
 }) => {
-  // const [graphInfo, setGraphInfo] = React.useState({});
-
   useEffect(() => {
     if (graphJson) {
       const graphDeclaration = constructGraph(graphJson);
       const network = drawGraph(graphDeclaration, document.querySelector(selectors.GRAPH));
 
-      const infoContainer = document.getElementById('info');
-      infoContainer.innerHTML = '';
+      const nodeInfoContainer = document.getElementById('nodeInfo');
+      nodeInfoContainer.innerHTML = '';
 
       network.on('click', (e) => {
         const nodeId = e.nodes[0];
@@ -51,11 +50,13 @@ const GraphComponent = ({
         if (nodeId) {
           const { info } = graphDeclaration.nodes.find((el) => el.id === nodeId);
 
-          infoContainer.innerHTML = '';
+          nodeInfoContainer.innerHTML = '';
 
           renderJsonDefaultConfig();
 
-          infoContainer.appendChild(renderjson(info));
+          nodeInfoContainer.appendChild(renderjson(info));
+        } else {
+          nodeInfoContainer.innerHTML = '';
         }
       });
     }
@@ -63,8 +64,10 @@ const GraphComponent = ({
 
   return (
     <GraphContainer className="graphContainer">
+      <GraphHeader>
+        <h2>{`ID: ${fragmentId}`}</h2>
+      </GraphHeader>
       <Graph className="graph" />
-      <Info id="info" />
     </GraphContainer>
   );
 };
@@ -72,11 +75,13 @@ const GraphComponent = ({
 
 GraphComponent.defaultProps = {
   graphJson: null,
+  fragmentId: null,
 };
 
 GraphComponent.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   graphJson: PropTypes.object,
+  fragmentId: PropTypes.string,
 };
 
 

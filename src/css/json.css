@@ -1,6 +1,9 @@
 
 pre.renderjson {
   font-size: 14px;
+  height: 100%;
+  overflow: scroll;
+  margin: 0;
 }
 
 .renderjson a {

@@ -15,6 +15,7 @@
  */
 
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
 import { defaultTheme, darkTheme } from './themes';
@@ -25,12 +26,21 @@ const App = ({ tabId }) => {
   const { themeName: chromeTheme } = chrome.devtools.panels;
   const theme = chromeTheme === 'default' ? defaultTheme : darkTheme;
 
-  return (
-    <ThemeProvider theme={theme}>
-      <SidePanel tabId={tabId} />
-      <MainPanel tabId={tabId} />
-    </ThemeProvider>
-  );
+  const detectKnotxFragments = useSelector(({ pageData }) => (
+    pageData[tabId] && pageData[tabId].fragments
+      ? pageData[tabId].fragments
+      : false));
+
+  return detectKnotxFragments.length
+    ? (
+      <ThemeProvider theme={theme}>
+        <SidePanel tabId={tabId} />
+        <MainPanel tabId={tabId} />
+      </ThemeProvider>
+    )
+    : (
+      <h1>Sorry, your page does not use Knot.x </h1>
+    );
 };
 
 App.propTypes = {

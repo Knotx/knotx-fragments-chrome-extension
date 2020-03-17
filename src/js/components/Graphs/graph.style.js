@@ -3,33 +3,27 @@ import { PAGE_BREAK } from '../../helpers/constants';
 
 export const GraphContainer = styled.div`
     display: flex;
-    height: 80vh;
+    height: 100vh;
+    flex-direction: column;
+    width: 100%;
 
     @media (max-width: ${PAGE_BREAK}px) {
-      flex-direction: column;
+      height: 50%;
+      flex: 1 1 auto;
     }
 `;
 
 export const Graph = styled.div`
     height: 100%;
-    width: 50%;
-    border-right: 1px solid white;
 
     @media (max-width: ${PAGE_BREAK}px) {
       height: 50%;
-      width: 100%;
-      border-right: none;
-      border-bottom: 1px solid white;
+      flex: 1 1 auto;
     }
 `;
 
-export const Info = styled.div`
-    height: 100%;
-    width: 50%;
-    overflow: scroll;
-
-    @media (max-width: ${PAGE_BREAK}px) {
-      height: 50%;
-      width: 100%;
-    }
+export const GraphHeader = styled.div`
+    color: wheat;
+    padding: 0 5px;
+    margin-left: 40px;
 `;

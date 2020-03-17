@@ -17,32 +17,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { MainPanelWrapper, MainPanelHeader } from './mainPanel.style';
+import { MainPanelWrapper, MainPanelContent } from './mainPanel.style';
 import GraphComponent from '../Graphs/graph';
+import RightNavBar from '../Navbars/rightNavbar/navbar';
 
 const MainPanel = ({ tabId }) => {
   const renderedGraphId = useSelector(({ pageData }) => pageData[tabId].renderedGraph);
-  const sidebarExpanded = useSelector(({ pageData }) => pageData[tabId].sidebarExpanded);
   const graphData = useSelector(({ pageData }) => (renderedGraphId
     ? pageData[tabId].fragments.find((el) => el.debug.fragment.id === renderedGraphId).debug.graph
     : null));
 
-  return graphData
-    ? (
-      <MainPanelWrapper sidebarExpanded={sidebarExpanded}>
-        <MainPanelHeader>
-          { `Fragment ID: ${renderedGraphId}` }
-        </MainPanelHeader>
+  return (
+    <MainPanelWrapper>
+      <MainPanelContent>
         <GraphComponent
           graphJson={graphData}
+          fragmentId={renderedGraphId}
         />
-      </MainPanelWrapper>
-    )
-    : (
-      <MainPanelWrapper sidebarExpanded={sidebarExpanded}>
-        <MainPanelHeader>Please Choose any fragment</MainPanelHeader>
-      </MainPanelWrapper>
-    );
+        <RightNavBar
+          tabId={tabId}
+          graphData={graphData}
+        />
+      </MainPanelContent>
+
+    </MainPanelWrapper>
+  );
 };
 
 MainPanel.propTypes = {
