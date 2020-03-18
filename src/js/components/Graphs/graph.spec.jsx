@@ -4,18 +4,20 @@ import Enzyme, { shallow } from 'enzyme';
 import GraphComponent from './graph';
 import {
   GraphContainer,
+  GraphHeader,
   Graph,
-  Info,
 } from './graph.style';
 
 Enzyme.configure({ adapter: new EnzymeAdapter() });
 
 describe('A suite', () => {
   it('should render without throwing an error', () => {
-    expect(shallow(<GraphComponent />).contains(
+    expect(shallow(<GraphComponent fragmentId="1" />).contains(
       <GraphContainer className="graphContainer">
+        <GraphHeader>
+          <h2>ID: 1</h2>
+        </GraphHeader>
         <Graph className="graph" />
-        <Info id="info" />
       </GraphContainer>,
     )).toBe(true);
   });

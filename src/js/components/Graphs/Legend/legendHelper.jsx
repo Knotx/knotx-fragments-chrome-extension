@@ -1,22 +1,7 @@
-/*
- * Copyright (C) 2020 Knot.x Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 import React from 'react';
+
 import {
-  LegendContainer,
+  LegendHeader,
   LegendSection,
   LegendItemIcon,
   SquareIcon,
@@ -25,10 +10,9 @@ import {
   LineIcon,
   LegendItemDescription,
   LegendItem,
-  LegendHeader,
 } from './legend.style';
 
-const legendArrays = {
+export const legendArrays = {
   nodes: [
     {
       desc: 'missing',
@@ -99,7 +83,7 @@ const legendArrays = {
   ],
 };
 
-const createLegend = (title, items) => {
+export const createLegend = (title, items) => {
   const getIcon = (shape, color) => {
     switch (shape) {
       case 'square':
@@ -113,7 +97,7 @@ const createLegend = (title, items) => {
       case 'dashed':
         return (<LineIcon color={color} shape="dashed" />);
       default:
-        return (<SquareIcon color={color} />);
+        return (<SquareIcon color="transparent" />);
     }
   };
 
@@ -126,7 +110,6 @@ const createLegend = (title, items) => {
         {item.desc}
       </LegendItemDescription>
     </LegendItem>
-
   ));
 
   return (
@@ -136,14 +119,3 @@ const createLegend = (title, items) => {
     </LegendSection>
   );
 };
-
-const Legend = () => (
-  <LegendContainer id="legend">
-    {createLegend('Nodes', legendArrays.nodes)}
-    {createLegend('Composites', legendArrays.composites)}
-    {createLegend('Labels', legendArrays.labels)}
-    {createLegend('Edges', legendArrays.edges)}
-  </LegendContainer>
-);
-
-export default Legend;

@@ -1,5 +1,5 @@
 import React from 'react';
-import Enzyme, { render, mount } from 'enzyme';
+import Enzyme, { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import EnzymeAdapter from 'enzyme-adapter-react-16';
@@ -26,8 +26,8 @@ const getWrapper = () => mount(
 );
 
 describe('A suite', () => {
-  it('should render to static HTML', () => {
+  it('should render message if fragment is not selected', () => {
     const wrapper = getWrapper();
-    expect(render(wrapper).text()).toEqual('Please Choose any fragment');
+    expect(wrapper.text()).toEqual('Please choose any fragment');
   });
 });

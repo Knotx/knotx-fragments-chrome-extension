@@ -24,7 +24,7 @@ import {
   LegendWrapper,
   NodeInfoWrapper,
 } from './navbar.style';
-import Legend from '../../Graphs/legend';
+import Legend from '../../Graphs/Legend/legend';
 
 const RightNavBar = () => {
   const [currentOption, setCurrentOption] = useState(null);

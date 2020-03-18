@@ -27,21 +27,28 @@ const MainPanel = ({ tabId }) => {
     ? pageData[tabId].fragments.find((el) => el.debug.fragment.id === renderedGraphId).debug.graph
     : null));
 
-  return (
-    <MainPanelWrapper>
-      <MainPanelContent>
-        <GraphComponent
-          graphJson={graphData}
-          fragmentId={renderedGraphId}
-        />
-        <RightNavBar
-          tabId={tabId}
-          graphData={graphData}
-        />
-      </MainPanelContent>
-
-    </MainPanelWrapper>
-  );
+  return renderedGraphId
+    ? (
+      <MainPanelWrapper>
+        <MainPanelContent>
+          <GraphComponent
+            graphJson={graphData}
+            fragmentId={renderedGraphId}
+          />
+          <RightNavBar
+            tabId={tabId}
+            graphData={graphData}
+          />
+        </MainPanelContent>
+      </MainPanelWrapper>
+    )
+    : (
+      <MainPanelWrapper>
+        <MainPanelContent>
+          <h1>Please choose any fragment</h1>
+        </MainPanelContent>
+      </MainPanelWrapper>
+    );
 };
 
 MainPanel.propTypes = {
