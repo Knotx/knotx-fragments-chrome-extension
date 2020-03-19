@@ -15,7 +15,7 @@
  */
 
 import {
-  SET_PAGE_DATA, REMOVE_PAGE_DATA, SET_SIDEBAR_EXPANDED, SET_RENDERED_GRAPH,
+  SET_PAGE_DATA, REMOVE_PAGE_DATA, SET_RENDERED_GRAPH,
 } from '../actionTypes/pageData';
 
 export const setPageData = (pageData) => ({
@@ -25,11 +25,6 @@ export const setPageData = (pageData) => ({
 
 export const removePageData = (pageData) => ({
   type: REMOVE_PAGE_DATA,
-  pageData,
-});
-
-export const setSidebarExpanded = (pageData) => ({
-  type: SET_SIDEBAR_EXPANDED,
   pageData,
 });
 

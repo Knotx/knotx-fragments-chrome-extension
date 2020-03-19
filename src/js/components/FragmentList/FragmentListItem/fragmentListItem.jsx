@@ -22,9 +22,9 @@ import {
 } from './fragmentListItem.style';
 import NodeList from '../NodeList/nodeList';
 import {
-  ENTER_KEY_CODE, PAGE_BREAK, ARROW_DOWN, ARROW_UP,
+  ENTER_KEY_CODE, ARROW_DOWN, ARROW_UP,
 } from '../../../helpers/constants';
-import { setSidebarExpanded, setRenderedGraph } from '../../../state/actions/pageData';
+import { setRenderedGraph } from '../../../state/actions/pageData';
 
 const FragmentListItem = ({
   status, id, type, nodes, tabId, time,
@@ -40,15 +40,6 @@ const FragmentListItem = ({
         renderedGraph: id,
       }),
     );
-
-    if (window.innerWidth < PAGE_BREAK) {
-      dispatch(
-        setSidebarExpanded({
-          id: tabId,
-          sidebarExpanded: false,
-        }),
-      );
-    }
   }
 
   return (

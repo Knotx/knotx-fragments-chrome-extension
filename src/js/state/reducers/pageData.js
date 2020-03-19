@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 import {
-  SET_PAGE_DATA, REMOVE_PAGE_DATA, SET_SIDEBAR_EXPANDED, SET_RENDERED_GRAPH,
+  SET_PAGE_DATA, REMOVE_PAGE_DATA, SET_RENDERED_GRAPH,
 } from '../actionTypes/pageData';
 
 export const initState = {};
@@ -37,15 +37,6 @@ export default (state = initState, { type, pageData }) => {
       if (newState[pageData.id]) delete newState[pageData.id];
       return newState;
     }
-
-    case SET_SIDEBAR_EXPANDED:
-      return {
-        ...state,
-        [pageData.id]: {
-          ...state[pageData.id],
-          sidebarExpanded: pageData.sidebarExpanded,
-        },
-      };
 
     case SET_RENDERED_GRAPH:
       return {

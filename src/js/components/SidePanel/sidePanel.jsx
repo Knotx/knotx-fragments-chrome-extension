@@ -14,16 +14,25 @@
  * limitations under the License.
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { SidePanelWrapper, ToggleSidePanelButton } from './sidePanel.style';
 import FragmentList from '../FragmentList/fragmentList';
-import { HAMBURGER, CROSS } from '../../helpers/constants';
+import { HAMBURGER, CROSS, PAGE_BREAK } from '../../helpers/constants';
 
 const SidePanel = ({ tabId }) => {
   const [expanded, setExpanded] = useState(true);
   const renderedGraph = useSelector(({ pageData }) => pageData[tabId].renderedGraph);
+
+  const isInitialMount = useRef(true);
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else if (window.innerWidth < PAGE_BREAK) {
+      setExpanded(false);
+    }
+  }, [renderedGraph]);
 
   return (
     <SidePanelWrapper

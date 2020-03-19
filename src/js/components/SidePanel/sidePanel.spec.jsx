@@ -34,7 +34,7 @@ describe('<SidePanel /> unit test', () => {
     </Provider>,
   );
 
-  it('click on fragment should hide sidebar when screen width is less than 700px', () => {
+  it('click on non active fragment should hide sidebar when screen width is less than 700px', () => {
     Object.defineProperty(window, 'innerWidth', {
       configurable: true,
       writable: true,
@@ -44,9 +44,9 @@ describe('<SidePanel /> unit test', () => {
     wrapper.find(FragmentListItemContainer);
     expect(wrapper.find(SidePanelWrapper).prop('expanded')).toEqual(true);
     wrapper.find(FragmentListItemContainer).first().simulate('click');
-    expect(wrapper.find(SidePanelWrapper).prop('expanded')).toEqual(true);
-    wrapper.find(ToggleSidePanelButton).first().simulate('click');
     expect(wrapper.find(SidePanelWrapper).prop('expanded')).toEqual(false);
+    wrapper.find(ToggleSidePanelButton).first().simulate('click');
+    expect(wrapper.find(SidePanelWrapper).prop('expanded')).toEqual(true);
     wrapper.find(ToggleSidePanelButton).first().simulate('click');
   });
 

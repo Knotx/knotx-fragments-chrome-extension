@@ -38,14 +38,6 @@ test('Validate removePageData type.', () => {
   expect(result.pageData).toBe(pageData);
 });
 
-test('Validate setSidebarExpanded type.', () => {
-  const pageData = {};
-  const result = setSidebarExpanded(pageData);
-
-  expect(result.type).toBe(SET_SIDEBAR_EXPANDED);
-  expect(result.pageData).toBe(pageData);
-});
-
 test('Validate setRenderedGraph type.', () => {
   const pageData = {};
   const result = setRenderedGraph(pageData);
