@@ -44,9 +44,6 @@ export const NavBarItem = styled.span`
       height: 100%;
       justify-content: center;
       padding: 0;
-}
-
-
     }
 `;
 

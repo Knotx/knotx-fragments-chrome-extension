@@ -17,40 +17,46 @@ import {
 
 Enzyme.configure({ adapter: new EnzymeAdapter() });
 
-describe('A suite', () => {
+describe('Correctly render legend component', () => {
   const getWrapper = (title, itemsProps) => mount(
     <LegendSection>
       <LegendHeader>{title}</LegendHeader>
-      {itemsProps.map((item) => (
-        <LegendItem key={item.desc}>
+      {itemsProps.map(({icon, desc}) => (
+        <LegendItem key={desc}>
           <LegendItemIcon>
-            {item.icon}
+            {icon}
           </LegendItemIcon>
           <LegendItemDescription>
-            {item.desc}
+            {desc}
           </LegendItemDescription>
         </LegendItem>
       ))}
     </LegendSection>,
   );
 
-  it('should render message if fragment is not selected', () => {
-    let wrapper = getWrapper('Nodes', [{ icon: <SquareIcon color="yellow" />, desc: 'missing' }]);
-    expect(wrapper.matchesElement(createLegend('Nodes', legendArraysMock.nodes))).toBe(true);
+  it('Should render legend section and set correctly icon shape and color', () => {
+    const NodesSectionWrapper = getWrapper('Nodes', [{ icon: <SquareIcon color="yellow" />, desc: 'missing' }]);
+    expect(NodesSectionWrapper.matchesElement(createLegend('Nodes', legendArraysMock.nodes))).toBe(true);
 
-    wrapper = getWrapper('Composites', [{ icon: <CircleIcon color="white" />, desc: 'startNode' }]);
-    expect(wrapper.matchesElement(createLegend('Composites', legendArraysMock.composites))).toBe(true);
+    const compositesSectionWrapper = getWrapper(
+      'Composites',
+      [{ icon: <CircleIcon color="white" />, desc: 'startNode' }],
+    );
+    expect(compositesSectionWrapper.matchesElement(createLegend('Composites', legendArraysMock.composites))).toBe(true);
 
-    wrapper = getWrapper('Labels', [{ icon: <RectangleIcon color="green" />, desc: '_success' }]);
-    expect(wrapper.matchesElement(createLegend('Labels', legendArraysMock.labels))).toBe(true);
+    const labelsSectionWrapper = getWrapper('Labels', [{ icon: <RectangleIcon color="green" />, desc: '_success' }]);
+    expect(labelsSectionWrapper.matchesElement(createLegend('Labels', legendArraysMock.labels))).toBe(true);
 
-    wrapper = getWrapper('Edges', [
+    const edgesSectionWrapper = getWrapper('Edges', [
       { icon: <LineIcon color="black" shape="solid" />, desc: 'processed' },
       { icon: <LineIcon color="grey" shape="dashed" />, desc: 'unprocessed' },
     ]);
-    expect(wrapper.matchesElement(createLegend('Edges', legendArraysMock.edges))).toBe(true);
+    expect(edgesSectionWrapper.matchesElement(createLegend('Edges', legendArraysMock.edges))).toBe(true);
 
-    wrapper = getWrapper('Undefined', [{ icon: <SquareIcon color="transparent" />, desc: 'undefined' }]);
-    expect(wrapper.matchesElement(createLegend('Undefined', legendArraysMock.undefined))).toBe(true);
+    const undefinedSEctionWrapper = getWrapper(
+      'Undefined',
+      [{ icon: <SquareIcon color="transparent" />, desc: 'undefined' }],
+    );
+    expect(undefinedSEctionWrapper.matchesElement(createLegend('Undefined', legendArraysMock.undefined))).toBe(true);
   });
 });

@@ -49,7 +49,7 @@ export const RectangleIcon = styled.div`
 export const LineIcon = styled.div`
     width: 100%;
     border: 1px;
-    border-style: ${({ shape }) => shape};;
+    border-style: ${({ shape }) => shape};
     border-color: ${({ color }) => color};
     margin-top: 50%;
 `;

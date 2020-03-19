@@ -15,9 +15,7 @@
  */
 
 import React from 'react';
-import {
-  LegendContainer,
-} from './legend.style';
+import { LegendContainer } from './legend.style';
 import { createLegend, legendArrays } from './legendHelper';
 
 const Legend = () => (

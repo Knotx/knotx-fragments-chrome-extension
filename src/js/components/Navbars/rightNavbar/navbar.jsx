@@ -26,14 +26,14 @@ import {
 } from './navbar.style';
 import Legend from '../../Graphs/Legend/legend';
 
+const navbarOptions = {
+  nodeInfo: 'nodeInfo',
+  legend: 'legend',
+};
+
 const RightNavBar = () => {
   const [currentOption, setCurrentOption] = useState(null);
   const [expanded, setExpanded] = useState(false);
-
-  const navbarOptions = {
-    nodeInfo: 'nodeInfo',
-    legend: 'legend',
-  };
 
   return (
     <RightNavBarContainer>

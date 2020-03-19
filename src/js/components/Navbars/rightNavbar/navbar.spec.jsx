@@ -1,9 +1,7 @@
 import React from 'react';
 import Enzyme, { mount } from 'enzyme';
 import EnzymeAdapter from 'enzyme-adapter-react-16';
-import {
-  toBeVisible,
-} from '@testing-library/jest-dom/matchers';
+import { toBeVisible } from '@testing-library/jest-dom/matchers';
 import RightNavBar from './navbar';
 import {
   NavBarItem,
@@ -22,7 +20,7 @@ describe('A suite', () => {
     <RightNavBar />,
   );
 
-  it('Display node info container in right panel.', () => {
+  it('Should display node info container in right panel.', () => {
     const wrapper = getWrapper();
     expect(wrapper.find(RightPanel).prop('showPanel')).toBe(false);
     expect(wrapper.find(RightPanel).getDOMNode()).not.toBeVisible();
@@ -37,7 +35,7 @@ describe('A suite', () => {
     expect(wrapper.find(NodeInfoWrapper).getDOMNode()).toBeVisible();
   });
 
-  it('Display legend container in right panel.', () => {
+  it('Should display legend container in right panel.', () => {
     const wrapper = getWrapper();
     expect(wrapper.find(RightPanel).prop('showPanel')).toBe(false);
     expect(wrapper.find(RightPanel).getDOMNode()).not.toBeVisible();
@@ -52,7 +50,7 @@ describe('A suite', () => {
     expect(wrapper.find(LegendWrapper).getDOMNode()).toBeVisible();
   });
 
-  it('Hide right panel after click on "-" button.', () => {
+  it('Should hide right panel after click on "-" button.', () => {
     const wrapper = getWrapper();
     expect(wrapper.find(RightPanel).prop('showPanel')).toBe(false);
     expect(wrapper.find(RightPanel).getDOMNode()).not.toBeVisible();

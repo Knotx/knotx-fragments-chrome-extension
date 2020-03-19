@@ -21,9 +21,7 @@ import {
   FragmentListItemContainer, Id, Status, StatusWrapper, Type, ExpandNodeListButton, IdHeader, Time, OverflowWrapper,
 } from './fragmentListItem.style';
 import NodeList from '../NodeList/nodeList';
-import {
-  ENTER_KEY_CODE, ARROW_DOWN, ARROW_UP,
-} from '../../../helpers/constants';
+import { ENTER_KEY_CODE, ARROW_DOWN, ARROW_UP } from '../../../helpers/constants';
 import { setRenderedGraph } from '../../../state/actions/pageData';
 
 const FragmentListItem = ({
