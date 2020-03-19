@@ -1,0 +1,67 @@
+import React from 'react';
+import Enzyme, { mount } from 'enzyme';
+import EnzymeAdapter from 'enzyme-adapter-react-16';
+import {
+  toBeVisible,
+} from '@testing-library/jest-dom/matchers';
+import RightNavBar from './navbar';
+import {
+  NavBarItem,
+  RightPanel,
+  NodeInfoWrapper,
+  LegendWrapper,
+  HideRightPanel,
+} from './navbar.style';
+
+
+Enzyme.configure({ adapter: new EnzymeAdapter() });
+expect.extend({ toBeVisible });
+
+describe('A suite', () => {
+  const getWrapper = () => mount(
+    <RightNavBar />,
+  );
+
+  it('Display node info container in right panel.', () => {
+    const wrapper = getWrapper();
+    expect(wrapper.find(RightPanel).prop('showPanel')).toBe(false);
+    expect(wrapper.find(RightPanel).getDOMNode()).not.toBeVisible();
+
+    const navbarItems = wrapper.find(NavBarItem);
+    navbarItems.at(0).simulate('click');
+
+    expect(wrapper.find(RightPanel).prop('showPanel')).toBe(true);
+    expect(wrapper.find(RightPanel).getDOMNode()).toBeVisible();
+
+    expect(wrapper.find(NodeInfoWrapper).prop('showNodeInfo')).toBe(true);
+    expect(wrapper.find(NodeInfoWrapper).getDOMNode()).toBeVisible();
+  });
+
+  it('Display legend container in right panel.', () => {
+    const wrapper = getWrapper();
+    expect(wrapper.find(RightPanel).prop('showPanel')).toBe(false);
+    expect(wrapper.find(RightPanel).getDOMNode()).not.toBeVisible();
+
+    const navbarItems = wrapper.find(NavBarItem);
+    navbarItems.at(1).simulate('click');
+
+    expect(wrapper.find(RightPanel).prop('showPanel')).toBe(true);
+    expect(wrapper.find(RightPanel).getDOMNode()).toBeVisible();
+
+    expect(wrapper.find(LegendWrapper).prop('showLegend')).toBe(true);
+    expect(wrapper.find(LegendWrapper).getDOMNode()).toBeVisible();
+  });
+
+  it('Hide right panel after click on "-" button.', () => {
+    const wrapper = getWrapper();
+    expect(wrapper.find(RightPanel).prop('showPanel')).toBe(false);
+    expect(wrapper.find(RightPanel).getDOMNode()).not.toBeVisible();
+
+    wrapper.find(NavBarItem).first().simulate('click');
+
+    wrapper.find(HideRightPanel).simulate('click');
+
+    expect(wrapper.find(RightPanel).getDOMNode()).not.toBeVisible();
+
+  });
+});

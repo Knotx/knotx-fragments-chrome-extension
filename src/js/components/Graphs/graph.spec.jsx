@@ -1,14 +1,26 @@
 import React from 'react';
 import EnzymeAdapter from 'enzyme-adapter-react-16';
-import Enzyme, { shallow } from 'enzyme';
+import Enzyme, { shallow, mount } from 'enzyme';
+import { act } from 'react-dom/test-utils';
+import {
+  toBeInTheDocument,
+} from '@testing-library/jest-dom/matchers';
 import GraphComponent from './graph';
+import RightNavBar from '../Navbars/rightNavbar/navbar';
 import {
   GraphContainer,
   GraphHeader,
   Graph,
 } from './graph.style';
+import {
+  NodeInfoWrapper,
+} from '../Navbars/rightNavbar/navbar.style';
+
+import { singleNode } from '../../helpers/graph/declarationHelper.mock';
+
 
 Enzyme.configure({ adapter: new EnzymeAdapter() });
+expect.extend({ toBeInTheDocument });
 
 describe('A suite', () => {
   it('should render without throwing an error', () => {
@@ -22,8 +34,18 @@ describe('A suite', () => {
     )).toBe(true);
   });
 
-  // TODO test for correct rendering graph.
+
+  // TODO: Provide test for rendering graph. Currently jest return an error, becouse cannot render a canva.
   // it('should render  throwing an error', () => {
-  //   expect(mount(<GraphComponent graphJson={singleNode} />).find('.vis-network')).toHaveLength(1);
+  //   let component;
+  //   act(() => {
+  //     component = mount(
+  //       <>
+  //         <GraphComponent graphJson={singleNode} fragmentId="1" />
+  //         <RightNavBar />
+  //       </>,
+  //     );
+  //   });
+  //   expect(component.find(NodeInfoWrapper).text()).toEqual('');
   // });
 });
