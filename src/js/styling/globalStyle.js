@@ -1,4 +1,19 @@
+import { createGlobalStyle } from 'styled-components';
 
+export const GlobalStyle = createGlobalStyle`
+/* NORMALIZE */
+body {
+  margin: 0;
+}
+
+/* GLOBAL */
+#root {
+display: flex;
+overflow-y: hidden;
+height: 100vh;
+}
+
+/* JSON */
 pre.renderjson {
   font-size: 14px;
   height: 100%;
@@ -45,3 +60,5 @@ pre.renderjson {
 .renderjson .array.syntax {
   color: lightsalmon;
 }
+
+`;

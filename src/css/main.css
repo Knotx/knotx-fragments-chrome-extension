@@ -1,8 +1,0 @@
-@import 'json.css';
-@import 'normalize.css';
-
-#root {
-  display: flex;
-  overflow-y: hidden;
-  height: 100vh;
-}

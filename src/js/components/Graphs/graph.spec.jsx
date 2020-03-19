@@ -1,26 +1,14 @@
 import React from 'react';
 import EnzymeAdapter from 'enzyme-adapter-react-16';
-import Enzyme, { shallow, mount } from 'enzyme';
-import { act } from 'react-dom/test-utils';
-import {
-  toBeInTheDocument,
-} from '@testing-library/jest-dom/matchers';
+import Enzyme, { shallow } from 'enzyme';
 import GraphComponent from './graph';
-import RightNavBar from '../Navbars/rightNavbar/navbar';
 import {
   GraphContainer,
   GraphHeader,
   Graph,
 } from './graph.style';
-import {
-  NodeInfoWrapper,
-} from '../Navbars/rightNavbar/navbar.style';
-
-import { singleNode } from '../../helpers/graph/declarationHelper.mock';
-
 
 Enzyme.configure({ adapter: new EnzymeAdapter() });
-expect.extend({ toBeInTheDocument });
 
 describe('A suite', () => {
   it('should render without throwing an error', () => {
