@@ -31,9 +31,10 @@ const TimelineComponent = ({
 }) => {
   useEffect(() => {
     const timelineContainer = document.querySelector(selectors.TIMELINE);
+    timelineContainer.innerHTML = '';
     const timelineDeclaration = constructTimeline(graphJson);
     drawTimeline(timelineContainer, timelineDeclaration);
-  }, []);
+  }, [graphJson]);
 
   return (
     <TimelineContainer className="timelineContainer">

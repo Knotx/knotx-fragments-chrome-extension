@@ -27,6 +27,7 @@ import {
   GraphHeader,
   GraphToogleViewButton,
   GraphFullScreenPanel,
+  GraphNavigationWrapper,
 } from './graph.style';
 import TimelineComponent from '../Timeline/timeline';
 
@@ -71,11 +72,19 @@ const GraphComponent = ({
         <h2>{`ID: ${fragmentId}`}</h2>
       </GraphHeader>
       <Graph className="graph" />
-      <GraphToogleViewButton
-        onClick={() => setFullPanelExpanded(true)}
-      >
-        PERFORMANCE VIEW
-      </GraphToogleViewButton>
+      <GraphNavigationWrapper>
+        <GraphToogleViewButton
+          onClick={() => setFullPanelExpanded(true)}
+        >
+          PERFORMANCE VIEW
+        </GraphToogleViewButton>
+        <GraphToogleViewButton
+          onClick={() => setFullPanelExpanded(false)}
+        >
+        GRAPH VIEW
+        </GraphToogleViewButton>
+      </GraphNavigationWrapper>
+
       <GraphFullScreenPanel
         shouldDisplay={fullPanelExpanded}
       >

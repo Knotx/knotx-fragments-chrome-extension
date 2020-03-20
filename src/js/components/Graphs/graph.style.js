@@ -24,6 +24,11 @@ export const GraphHeader = styled.div`
     margin-left: 40px;
 `;
 
+export const GraphNavigationWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
+
 export const GraphToogleViewButton = styled.button`
     position: relative;
     bottom: 80px;
@@ -33,12 +38,14 @@ export const GraphToogleViewButton = styled.button`
     padding: 5px;
     font-size: 18px;
     color: red;
+    z-index: 10;
+    margin: 0 10px;
 `;
 
 export const GraphFullScreenPanel = styled.div`
     position: fixed;
     z-index: 1;
-    background-color: #3a3a3a;
+    background-color: #242424;
     width: 100%;
     height: 100%;
     display: ${({ shouldDisplay }) => (shouldDisplay ? 'block' : 'none')};
