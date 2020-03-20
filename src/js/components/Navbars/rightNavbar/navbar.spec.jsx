@@ -1,6 +1,5 @@
 import React from 'react';
-import Enzyme, { mount } from 'enzyme';
-import EnzymeAdapter from 'enzyme-adapter-react-16';
+import { mount } from 'enzyme';
 import { toBeVisible } from '@testing-library/jest-dom/matchers';
 import RightNavBar from './navbar';
 import {
@@ -11,8 +10,6 @@ import {
   HideRightPanel,
 } from './navbar.style';
 
-
-Enzyme.configure({ adapter: new EnzymeAdapter() });
 expect.extend({ toBeVisible });
 
 describe('A suite', () => {

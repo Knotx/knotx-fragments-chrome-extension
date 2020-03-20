@@ -1,6 +1,5 @@
 import React from 'react';
-import EnzymeAdapter from 'enzyme-adapter-react-16';
-import Enzyme, { shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import GraphComponent from './graph';
 import {
   GraphContainer,
@@ -8,7 +7,6 @@ import {
   Graph,
 } from './graph.style';
 
-Enzyme.configure({ adapter: new EnzymeAdapter() });
 
 describe('A suite', () => {
   it('should render without throwing an error', () => {

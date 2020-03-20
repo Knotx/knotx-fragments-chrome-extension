@@ -15,8 +15,7 @@
  */
 
 import React from 'react';
-import Enzyme, { mount } from 'enzyme';
-import EnzymeAdapter from 'enzyme-adapter-react-16';
+import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import data from '../FragmentList/fragmentList.mock';
@@ -24,8 +23,6 @@ import reducer from '../../state/reducers/index';
 import SidePanel from './sidePanel';
 import { SidePanelWrapper, ToggleSidePanelButton } from './sidePanel.style';
 import { FragmentListItemContainer } from '../FragmentList/FragmentListItem/fragmentListItem.style';
-
-Enzyme.configure({ adapter: new EnzymeAdapter() });
 
 describe('<SidePanel /> unit test', () => {
   const getWrapper = () => mount(

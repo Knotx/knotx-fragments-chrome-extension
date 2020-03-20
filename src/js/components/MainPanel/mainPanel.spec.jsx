@@ -1,13 +1,9 @@
 import React from 'react';
-import Enzyme, { mount } from 'enzyme';
+import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import EnzymeAdapter from 'enzyme-adapter-react-16';
 import reducer from '../../state/reducers/index';
 import MainPanel from './mainPanel';
-
-
-Enzyme.configure({ adapter: new EnzymeAdapter() });
 
 const store = {
   pageData: {
