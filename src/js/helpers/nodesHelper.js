@@ -67,7 +67,9 @@ const createFragment = (id, nodes) => {
 
   if (isFragmentDataNode(fragmentNodes[0], id)) {
     const debugScript = fragmentNodes.shift();
+    console.log(debugScript);
     debug = JSON.parse(debugScript.textContent.trim() || '{}');
+    console.log(debug);
   }
 
   fragmentNodes

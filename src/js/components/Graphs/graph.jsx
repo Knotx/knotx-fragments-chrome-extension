@@ -16,7 +16,7 @@
 
 /* eslint no-new: 0 */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import renderjson from 'renderjson';
 import { drawGraph } from '../../helpers/graph/drawingHelper';
@@ -25,7 +25,10 @@ import {
   GraphContainer,
   Graph,
   GraphHeader,
+  GraphToogleViewButton,
+  GraphFullScreenPanel,
 } from './graph.style';
+import TimelineComponent from '../Timeline/timeline';
 
 renderjson.set_icons('+', '-');
 renderjson.set_show_to_level(1);
@@ -38,10 +41,14 @@ const GraphComponent = ({
   graphJson,
   fragmentId,
 }) => {
+  const [fullPanelExpanded, setFullPanelExpanded] = useState(false);
+
   useEffect(() => {
     if (graphJson) {
       const graphDeclaration = constructGraph(graphJson);
       const network = drawGraph(graphDeclaration, document.querySelector(selectors.GRAPH));
+
+      setFullPanelExpanded(false);
 
       const nodeInfoContainer = document.getElementById('nodeInfo');
       nodeInfoContainer.innerHTML = '';
@@ -64,6 +71,16 @@ const GraphComponent = ({
         <h2>{`ID: ${fragmentId}`}</h2>
       </GraphHeader>
       <Graph className="graph" />
+      <GraphToogleViewButton
+        onClick={() => setFullPanelExpanded(true)}
+      >
+        PERFORMANCE VIEW
+      </GraphToogleViewButton>
+      <GraphFullScreenPanel
+        shouldDisplay={fullPanelExpanded}
+      >
+        <TimelineComponent graphJson={graphJson} />
+      </GraphFullScreenPanel>
     </GraphContainer>
   );
 };
