@@ -16,6 +16,13 @@ export const GraphContainer = styled.div`
 export const Graph = styled.div`
      height: 50%;
      flex: 1 1 auto;
+     display: ${({ shouldDisplay }) => (shouldDisplay === 'graph' ? 'block' : 'none')};
+`;
+
+export const PerformanceTimeLine = styled.div`
+     height: 50%;
+     flex: 1 1 auto;
+     display: ${({ shouldDisplay }) => (shouldDisplay === 'performanceTimeLine' ? 'block' : 'none')};
 `;
 
 export const GraphHeader = styled.div`
@@ -31,7 +38,7 @@ export const GraphNavigationWrapper = styled.div`
 
 export const GraphToogleViewButton = styled.button`
     position: relative;
-    bottom: 80px;
+    bottom: 0;
     left: 50px;
     width: fit-content;
     border: 1px solid white;

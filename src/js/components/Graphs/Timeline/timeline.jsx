@@ -16,30 +16,27 @@
 
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { constructTimeline } from '../../helpers/timeline/declarationHelper';
-import { drawTimeline } from '../../helpers/timeline/drawHelper';
-import { TimelineContainer, Timeline } from './timeline.style';
-
-import 'vis-timeline/dist/vis-timeline-graph2d.min.css';
+import { constructTimeline } from '../../../helpers/timeline/declarationHelper';
+import { drawTimeline } from '../../../helpers/timeline/drawHelper';
+import { Timeline } from './timeline.style';
 
 const selectors = {
-  TIMELINE: '.timelineContainer .timeline',
+  TIMELINE: '.timeline',
 };
+
 
 const TimelineComponent = ({
   graphJson,
 }) => {
   useEffect(() => {
-    const timelineContainer = document.querySelector(selectors.TIMELINE);
-    timelineContainer.innerHTML = '';
+    const timeline = document.querySelector(selectors.TIMELINE);
+    timeline.innerHTML = '';
     const timelineDeclaration = constructTimeline(graphJson);
-    drawTimeline(timelineContainer, timelineDeclaration);
+    drawTimeline(timeline, timelineDeclaration);
   }, [graphJson]);
 
   return (
-    <TimelineContainer className="timelineContainer">
-      <Timeline className="timeline" />
-    </TimelineContainer>
+    <Timeline className="timeline" />
   );
 };
 

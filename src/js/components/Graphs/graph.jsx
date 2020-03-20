@@ -24,12 +24,12 @@ import { constructGraph } from '../../helpers/graph/declarationHelper';
 import {
   GraphContainer,
   Graph,
+  PerformanceTimeLine,
   GraphHeader,
   GraphToogleViewButton,
-  GraphFullScreenPanel,
   GraphNavigationWrapper,
 } from './graph.style';
-import TimelineComponent from '../Timeline/timeline';
+import TimelineComponent from './Timeline/timeline';
 
 renderjson.set_icons('+', '-');
 renderjson.set_show_to_level(1);
@@ -38,18 +38,23 @@ const selectors = {
   GRAPH: '.graphContainer .graph',
 };
 
+const displayOptions = {
+  graph: 'graph',
+  performanceTimeLine: 'performanceTimeLine',
+};
+
 const GraphComponent = ({
   graphJson,
   fragmentId,
 }) => {
-  const [fullPanelExpanded, setFullPanelExpanded] = useState(false);
+  const [displayOption, setDisplayOption] = useState(displayOptions.graph);
 
   useEffect(() => {
     if (graphJson) {
       const graphDeclaration = constructGraph(graphJson);
       const network = drawGraph(graphDeclaration, document.querySelector(selectors.GRAPH));
 
-      setFullPanelExpanded(false);
+      setDisplayOption('graph');
 
       const nodeInfoContainer = document.getElementById('nodeInfo');
       nodeInfoContainer.innerHTML = '';
@@ -71,25 +76,22 @@ const GraphComponent = ({
       <GraphHeader>
         <h2>{`ID: ${fragmentId}`}</h2>
       </GraphHeader>
-      <Graph className="graph" />
+      <Graph className="graph" shouldDisplay={displayOption} />
+      <PerformanceTimeLine shouldDisplay={displayOption}>
+        <TimelineComponent graphJson={graphJson} shouldDisplay={displayOption} />
+      </PerformanceTimeLine>
       <GraphNavigationWrapper>
         <GraphToogleViewButton
-          onClick={() => setFullPanelExpanded(true)}
+          onClick={() => setDisplayOption(displayOptions.performanceTimeLine)}
         >
           PERFORMANCE VIEW
         </GraphToogleViewButton>
         <GraphToogleViewButton
-          onClick={() => setFullPanelExpanded(false)}
+          onClick={() => setDisplayOption(displayOptions.graph)}
         >
         GRAPH VIEW
         </GraphToogleViewButton>
       </GraphNavigationWrapper>
-
-      <GraphFullScreenPanel
-        shouldDisplay={fullPanelExpanded}
-      >
-        <TimelineComponent graphJson={graphJson} />
-      </GraphFullScreenPanel>
     </GraphContainer>
   );
 };
