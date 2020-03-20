@@ -8,9 +8,9 @@ export const GlobalStyle = createGlobalStyle`
 
   /* GLOBAL */
   #root {
-  display: flex;
-  overflow-y: hidden;
-  height: 100vh;
+    display: flex;
+    overflow-y: hidden;
+    height: 100vh;
   }
 
   /* JSON */
