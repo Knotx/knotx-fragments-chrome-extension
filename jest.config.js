@@ -33,4 +33,7 @@ module.exports = {
     },
   },
   setupFilesAfterEnv: ['jest-extended'],
+  moduleNameMapper: {
+    '\\.css$': 'identity-obj-proxy',
+  },
 };

@@ -21,6 +21,7 @@ import { SidePanelWrapper, ToggleSidePanelButton } from './sidePanel.style';
 import FragmentList from '../FragmentList/fragmentList';
 import { HAMBURGER, CROSS } from '../../helpers/constants';
 import { setSidebarExpanded } from '../../state/actions/pageData';
+import FragmentGannt from '../FragmentGannt/fragmentGannt';
 
 const SidePanel = ({ tabId }) => {
   const expanded = useSelector(({ pageData }) => pageData[tabId].sidebarExpanded);
@@ -49,6 +50,7 @@ const SidePanel = ({ tabId }) => {
         {expanded ? CROSS : HAMBURGER}
       </ToggleSidePanelButton>
       <FragmentList tabId={tabId} />
+      <FragmentGannt tabId={tabId} />
     </SidePanelWrapper>
   );
 };
