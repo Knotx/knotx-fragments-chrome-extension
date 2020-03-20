@@ -15,11 +15,11 @@
  */
 
 import {
-  SET_PAGE_DATA, REMOVE_PAGE_DATA, SET_SIDEBAR_EXPANDED, SET_RENDERED_GRAPH,
+  SET_PAGE_DATA, REMOVE_PAGE_DATA, SET_RENDERED_GRAPH,
 } from '../actionTypes/pageData';
 
 import {
-  setPageData, removePageData, setSidebarExpanded, setRenderedGraph,
+  setPageData, removePageData, setRenderedGraph,
 } from './pageData';
 
 test('Validate setPageData type.', () => {

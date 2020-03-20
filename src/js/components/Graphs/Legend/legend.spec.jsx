@@ -20,7 +20,7 @@ describe('Correctly render legend component', () => {
   const getWrapper = (title, itemsProps) => mount(
     <div className="legendSection">
       <LegendHeader>{title}</LegendHeader>
-      {itemsProps.map(({icon, desc}) => (
+      {itemsProps.map(({ icon, desc }) => (
         <LegendItem key={desc}>
           <LegendItemIcon>
             {icon}
