@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 import {
@@ -83,27 +84,20 @@ export const legendArrays = {
 };
 
 export const createLegend = (title, items) => {
-  const getIcon = (shape, color) => {
-    switch (shape) {
-      case 'square':
-        return (<SquareIcon color={color} />);
-      case 'circle':
-        return (<CircleIcon color={color} />);
-      case 'rectangle':
-        return (<RectangleIcon color={color} />);
-      case 'solid':
-        return (<LineIcon color={color} shape="solid" />);
-      case 'dashed':
-        return (<LineIcon color={color} shape="dashed" />);
-      default:
-        return (<SquareIcon color="transparent" />);
-    }
+  /* eslint-disable react/display-name */
+  const getIcon = {
+    square: (color) => (<SquareIcon color={color} />),
+    circle: (color) => (<CircleIcon color={color} />),
+    rectangle: (color) => (<RectangleIcon color={color} />),
+    solid: (color) => (<LineIcon color={color} shape="solid" />),
+    dashed: (color) => (<LineIcon color={color} shape="dashed" />),
   };
+  /* eslint-enable react/display-name */
 
   const sectionItems = items.map(({ desc, shape, color }) => (
     <LegendItem key={desc}>
       <LegendItemIcon>
-        {getIcon(shape, color)}
+        {getIcon[shape](color)}
       </LegendItemIcon>
       <LegendItemDescription>
         {desc}

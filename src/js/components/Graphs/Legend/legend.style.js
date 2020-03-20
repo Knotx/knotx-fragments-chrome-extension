@@ -28,6 +28,7 @@ export const SquareIcon = styled.div`
     height: 100%;
     border: 1px solid black;
 `;
+
 export const CircleIcon = styled.div`
     background-color: ${({ color }) => color};
     width: 100%;
@@ -35,6 +36,7 @@ export const CircleIcon = styled.div`
     border: 1px solid black;
     border-radius: 50%;
 `;
+
 export const RectangleIcon = styled.div`
     background-color: ${({ color }) => color};
     width: 100%;
