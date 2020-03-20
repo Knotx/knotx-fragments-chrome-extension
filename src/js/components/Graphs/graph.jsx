@@ -19,7 +19,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import renderjson from 'renderjson';
-import { renderJsonDefaultConfig } from '../../helpers/renderjsonHelper';
 import { drawGraph } from '../../helpers/graph/drawingHelper';
 import { constructGraph } from '../../helpers/graph/declarationHelper';
 import {
@@ -27,6 +26,9 @@ import {
   Graph,
   GraphHeader,
 } from './graph.style';
+
+renderjson.set_icons('+', '-');
+renderjson.set_show_to_level(1);
 
 const selectors = {
   GRAPH: '.graphContainer .graph',
@@ -50,8 +52,6 @@ const GraphComponent = ({
         if (nodeId) {
           const { info } = graphDeclaration.nodes.find((el) => el.id === nodeId);
 
-
-          renderJsonDefaultConfig();
           nodeInfoContainer.appendChild(renderjson(info));
         }
       });

@@ -87,7 +87,7 @@ test('Flattening doesn\'t mutate the original graph', () => {
 
   flattenComposites(mocked);
 
-  expect(mocked).toStrictEqual(original);
+  expect(mocked).toMatchObject(original);
 });
 
 test('Flattened nested composited have properly assigned transitions to the end node', () => {
