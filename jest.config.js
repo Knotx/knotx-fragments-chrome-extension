@@ -25,7 +25,7 @@ module.exports = {
       statements: 100,
     },
     './src/js/components/Graphs/': {
-      branches: 60,
+      branches: 30,
       statements: 60,
       // TODO https://github.com/Knotx/knotx-fragments-chrome-extension/issues/35
       // branches: 80,
