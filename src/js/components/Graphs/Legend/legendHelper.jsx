@@ -97,7 +97,7 @@ export const createLegend = (title, items) => {
   const sectionItems = items.map(({ desc, shape, color }) => (
     <LegendItem key={desc}>
       <LegendItemIcon>
-        {getIcon[shape](color)}
+        {getIcon[shape] ? getIcon[shape](color) : ''}
       </LegendItemIcon>
       <LegendItemDescription>
         {desc}

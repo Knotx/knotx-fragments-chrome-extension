@@ -54,7 +54,7 @@ describe('Correctly render legend component', () => {
   });
 
   it('Should render legend section and set correctly icon shape and color for undefined elements', () => {
-    const wrapper = getWrapper('Undefined', [{ icon: <SquareIcon color="transparent" />, desc: 'undefined' }]);
+    const wrapper = getWrapper('Undefined', [{ icon: '', desc: 'undefined' }]);
     expect(wrapper.matchesElement(createLegend('Undefined', legendArraysMock.undefined))).toBe(true);
   });
 });
