@@ -1,8 +1,6 @@
 
 import pageDataReducer, { initState } from './pageData';
-import {
-  SET_PAGE_DATA, REMOVE_PAGE_DATA, SET_RENDERED_GRAPH,
-} from '../actionTypes/pageData';
+import { SET_PAGE_DATA, REMOVE_PAGE_DATA, SET_RENDERED_GRAPH } from '../actionTypes/pageData';
 
 
 const currentPageData = {
