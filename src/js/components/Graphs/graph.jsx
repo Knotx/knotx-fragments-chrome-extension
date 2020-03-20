@@ -46,17 +46,13 @@ const GraphComponent = ({
 
       network.on('click', (e) => {
         const nodeId = e.nodes[0];
-
+        nodeInfoContainer.innerHTML = '';
         if (nodeId) {
           const { info } = graphDeclaration.nodes.find((el) => el.id === nodeId);
 
-          nodeInfoContainer.innerHTML = '';
 
           renderJsonDefaultConfig();
-
           nodeInfoContainer.appendChild(renderjson(info));
-        } else {
-          nodeInfoContainer.innerHTML = '';
         }
       });
     }

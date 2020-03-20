@@ -60,6 +60,5 @@ describe('A suite', () => {
     wrapper.find(HideRightPanel).simulate('click');
 
     expect(wrapper.find(RightPanel).getDOMNode()).not.toBeVisible();
-
   });
 });

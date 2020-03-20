@@ -2,7 +2,6 @@ import React from 'react';
 
 import {
   LegendHeader,
-  LegendSection,
   LegendItemIcon,
   SquareIcon,
   CircleIcon,
@@ -113,9 +112,9 @@ export const createLegend = (title, items) => {
   ));
 
   return (
-    <LegendSection>
+    <div className="legendSection">
       <LegendHeader>{title}</LegendHeader>
       {sectionItems}
-    </LegendSection>
+    </div>
   );
 };

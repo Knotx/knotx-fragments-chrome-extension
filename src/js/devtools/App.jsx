@@ -26,10 +26,7 @@ const App = ({ tabId }) => {
   const { themeName: chromeTheme } = chrome.devtools.panels;
   const theme = chromeTheme === 'default' ? defaultTheme : darkTheme;
 
-  const detectKnotxFragments = useSelector(({ pageData }) => (
-    pageData[tabId] && pageData[tabId].fragments
-      ? pageData[tabId].fragments
-      : false));
+  const detectKnotxFragments = useSelector(({ pageData }) => (pageData[tabId]?.fragments || false));
 
   return detectKnotxFragments.length
     ? (

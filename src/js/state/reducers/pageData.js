@@ -13,9 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {
-  SET_PAGE_DATA, REMOVE_PAGE_DATA, SET_RENDERED_GRAPH,
-} from '../actionTypes/pageData';
+import { SET_PAGE_DATA, REMOVE_PAGE_DATA, SET_RENDERED_GRAPH } from '../actionTypes/pageData';
 
 export const initState = {};
 

@@ -1,5 +1,4 @@
 const path = require('path');
-const StyleLintWebpackPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
   mode: 'development',

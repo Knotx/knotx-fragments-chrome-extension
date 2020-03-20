@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 
-import {
-  SET_PAGE_DATA, REMOVE_PAGE_DATA, SET_RENDERED_GRAPH,
-} from '../actionTypes/pageData';
+import { SET_PAGE_DATA, REMOVE_PAGE_DATA, SET_RENDERED_GRAPH } from '../actionTypes/pageData';
 
 export const setPageData = (pageData) => ({
   type: SET_PAGE_DATA,

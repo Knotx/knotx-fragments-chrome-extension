@@ -5,7 +5,6 @@ import { createLegend } from './legendHelper';
 import { legendArraysMock } from './legend.mock';
 import {
   LegendHeader,
-  LegendSection,
   LegendItemIcon,
   SquareIcon,
   CircleIcon,
@@ -19,7 +18,7 @@ Enzyme.configure({ adapter: new EnzymeAdapter() });
 
 describe('Correctly render legend component', () => {
   const getWrapper = (title, itemsProps) => mount(
-    <LegendSection>
+    <div className="legendSection">
       <LegendHeader>{title}</LegendHeader>
       {itemsProps.map(({icon, desc}) => (
         <LegendItem key={desc}>
@@ -31,7 +30,7 @@ describe('Correctly render legend component', () => {
           </LegendItemDescription>
         </LegendItem>
       ))}
-    </LegendSection>,
+    </div>,
   );
 
   it('Should render legend section and set correctly icon shape and color', () => {

@@ -6,9 +6,6 @@ export const LegendContainer = styled.div`
     overflow: scroll;
 `;
 
-export const LegendSection = styled.div`
-`;
-
 export const LegendHeader = styled.h3`
     margin: 45px 15px 10px 15px;
 `;
