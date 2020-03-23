@@ -89,7 +89,7 @@ const GraphComponent = ({
         <GraphToogleViewButton
           onClick={() => setDisplayOption(displayOptions.graph)}
         >
-        GRAPH VIEW
+          GRAPH VIEW
         </GraphToogleViewButton>
       </GraphNavigationWrapper>
     </GraphContainer>
