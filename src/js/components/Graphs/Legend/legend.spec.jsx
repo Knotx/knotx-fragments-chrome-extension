@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { createLegend } from './legendHelper';
+import LegendSection from './legendSection';
 import { legendArraysMock } from './legend.mock';
 import {
   LegendHeader,
@@ -13,8 +13,8 @@ import {
   LegendItem,
 } from './legend.style';
 
-describe('Correctly render legend component', () => {
-  const getWrapper = (title, itemsProps) => mount(
+describe('Legend section component', () => {
+  const getExpectedValue = (title, itemsProps) => (
     <div className="legendSection">
       <LegendHeader>{title}</LegendHeader>
       {itemsProps.map(({ icon, desc }) => (
@@ -27,34 +27,46 @@ describe('Correctly render legend component', () => {
           </LegendItemDescription>
         </LegendItem>
       ))}
-    </div>,
+    </div>
   );
 
+  const getWrapper = (title, items) => mount(<LegendSection title={title} items={items} />);
+
   it('Should render legend section and set correctly icon shape and color for nodes', () => {
-    const wrapper = getWrapper('Nodes', [{ icon: <SquareIcon color="yellow" />, desc: 'missing' }]);
-    expect(wrapper.matchesElement(createLegend('Nodes', legendArraysMock.nodes))).toBe(true);
+    const expectedValue = getExpectedValue('Nodes', [{ icon: <SquareIcon color="yellow" />, desc: 'missing' }]);
+    const wrapper = getWrapper('Nodes', legendArraysMock.nodes);
+
+    expect(wrapper.contains(expectedValue)).toBe(true);
   });
 
   it('Should render legend section and set correctly icon shape and color for composite nodes', () => {
-    const wrapper = getWrapper('Composites', [{ icon: <CircleIcon color="white" />, desc: 'startNode' }]);
-    expect(wrapper.matchesElement(createLegend('Composites', legendArraysMock.composites))).toBe(true);
+    const expectedValue = getExpectedValue('Composites', [{ icon: <CircleIcon color="white" />, desc: 'startNode' }]);
+    const wrapper = getWrapper('Composites', legendArraysMock.composites);
+
+    expect(wrapper.contains(expectedValue)).toBe(true);
   });
 
   it('Should render legend section and set correctly icon shape and color for labels', () => {
-    const wrapper = getWrapper('Labels', [{ icon: <RectangleIcon color="green" />, desc: '_success' }]);
-    expect(wrapper.matchesElement(createLegend('Labels', legendArraysMock.labels))).toBe(true);
+    const expectedValue = getExpectedValue('Labels', [{ icon: <RectangleIcon color="green" />, desc: '_success' }]);
+    const wrapper = getWrapper('Labels', legendArraysMock.labels);
+
+    expect(wrapper.contains(expectedValue)).toBe(true);
   });
 
   it('Should render legend section and set correctly icon shape and color for edges', () => {
-    const wrapper = getWrapper('Edges', [
+    const expectedValue = getExpectedValue('Edges', [
       { icon: <LineIcon color="black" shape="solid" />, desc: 'processed' },
       { icon: <LineIcon color="grey" shape="dashed" />, desc: 'unprocessed' },
     ]);
-    expect(wrapper.matchesElement(createLegend('Edges', legendArraysMock.edges))).toBe(true);
+    const wrapper = getWrapper('Edges', legendArraysMock.edges);
+
+    expect(wrapper.contains(expectedValue)).toBe(true);
   });
 
   it('Should render legend section and set correctly icon shape and color for undefined elements', () => {
-    const wrapper = getWrapper('Undefined', [{ icon: '', desc: 'undefined' }]);
-    expect(wrapper.matchesElement(createLegend('Undefined', legendArraysMock.undefined))).toBe(true);
+    const expectedValue = getExpectedValue('Undefined', [{ icon: '', desc: 'undefined' }]);
+    const wrapper = getWrapper('Undefined', legendArraysMock.undefined);
+
+    expect(wrapper.contains(expectedValue)).toBe(true);
   });
 });

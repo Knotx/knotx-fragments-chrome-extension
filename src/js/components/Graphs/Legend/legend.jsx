@@ -15,15 +15,17 @@
  */
 
 import React from 'react';
+import LegendSection from './legendSection';
 import { LegendContainer } from './legend.style';
-import { createLegend, legendArrays } from './legendHelper';
+import { legendArrays } from './legendHelper';
+
 
 const Legend = () => (
   <LegendContainer id="legend">
-    {createLegend('Nodes', legendArrays.nodes)}
-    {createLegend('Composites', legendArrays.composites)}
-    {createLegend('Labels', legendArrays.labels)}
-    {createLegend('Edges', legendArrays.edges)}
+    <LegendSection title="Nodes" items={legendArrays.nodes} />
+    <LegendSection title="Composites" items={legendArrays.composites} />
+    <LegendSection title="Labels" items={legendArrays.labels} />
+    <LegendSection title="Edges" items={legendArrays.edges} />
   </LegendContainer>
 );
 

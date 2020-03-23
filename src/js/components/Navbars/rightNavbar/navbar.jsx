@@ -31,9 +31,25 @@ const navbarOptions = {
   legend: 'legend',
 };
 
+
 const RightNavBar = () => {
   const [currentOption, setCurrentOption] = useState(null);
   const [expanded, setExpanded] = useState(false);
+
+
+  const hidePanel = () => {
+    setCurrentOption(null);
+    if (expanded) {
+      setExpanded(false);
+    }
+  };
+
+  const openPanel = (option) => {
+    setCurrentOption(option);
+    if (!expanded) {
+      setExpanded(true);
+    }
+  };
 
   return (
     <RightNavBarContainer>
@@ -51,32 +67,17 @@ const RightNavBar = () => {
       </RightPanel>
       <NavBar>
         <HideRightPanel
-          onClick={() => {
-            setCurrentOption(null);
-            if (expanded) {
-              setExpanded(false);
-            }
-          }}
+          onClick={() => hidePanel()}
         >
           -
         </HideRightPanel>
         <NavBarItem
-          onClick={() => {
-            setCurrentOption(navbarOptions.nodeInfo);
-            if (!expanded) {
-              setExpanded(true);
-            }
-          }}
+          onClick={() => openPanel(navbarOptions.nodeInfo)}
         >
           info
         </NavBarItem>
         <NavBarItem
-          onClick={() => {
-            setCurrentOption(navbarOptions.legend);
-            if (!expanded) {
-              setExpanded(true);
-            }
-          }}
+          onClick={() => openPanel(navbarOptions.legend)}
         >
           Legend
         </NavBarItem>
