@@ -9,18 +9,16 @@ import {
   HideRightPanel,
 } from './navbar.style';
 
-describe('Right navbar component', () => {
-  const getWrapper = () => mount(
-    <RightNavBar />,
-  );
-
+describe('Navbar component', () => {
   it('Should display node info container in right panel.', () => {
-    const wrapper = getWrapper();
+    const wrapper = mount(<RightNavBar />);
+    expect(wrapper.find(RightPanel).prop('showPanel')).toBe(false);
     expect(wrapper.find(RightPanel).getDOMNode()).not.toBeVisible();
 
     const navbarItems = wrapper.find(NavBarItem);
     navbarItems.at(0).simulate('click');
 
+    expect(wrapper.find(RightPanel).prop('showPanel')).toBe(true);
     expect(wrapper.find(RightPanel).getDOMNode()).toBeVisible();
 
     expect(wrapper.find(NodeInfoWrapper).prop('showNodeInfo')).toBe(true);
@@ -28,19 +26,23 @@ describe('Right navbar component', () => {
   });
 
   it('Should display legend container in right panel.', () => {
-    const wrapper = getWrapper();
+    const wrapper = mount(<RightNavBar />);
+    expect(wrapper.find(RightPanel).prop('showPanel')).toBe(false);
     expect(wrapper.find(RightPanel).getDOMNode()).not.toBeVisible();
 
     const navbarItems = wrapper.find(NavBarItem);
     navbarItems.at(1).simulate('click');
 
+    expect(wrapper.find(RightPanel).prop('showPanel')).toBe(true);
     expect(wrapper.find(RightPanel).getDOMNode()).toBeVisible();
 
+    expect(wrapper.find(LegendWrapper).prop('showLegend')).toBe(true);
     expect(wrapper.find(LegendWrapper).getDOMNode()).toBeVisible();
   });
 
   it('Should hide right panel after click on "-" button.', () => {
-    const wrapper = getWrapper();
+    const wrapper = mount(<RightNavBar />);
+    expect(wrapper.find(RightPanel).prop('showPanel')).toBe(false);
     expect(wrapper.find(RightPanel).getDOMNode()).not.toBeVisible();
 
     wrapper.find(NavBarItem).first().simulate('click');

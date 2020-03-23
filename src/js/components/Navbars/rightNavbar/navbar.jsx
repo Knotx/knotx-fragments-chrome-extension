@@ -43,6 +43,7 @@ const RightNavBar = () => {
       setExpanded(false);
     }
   };
+  hidePanel.bind(this);
 
   const openPanel = (option) => {
     setCurrentOption(option);
@@ -67,7 +68,7 @@ const RightNavBar = () => {
       </RightPanel>
       <NavBar>
         <HideRightPanel
-          onClick={() => hidePanel()}
+          onClick={hidePanel}
         >
           -
         </HideRightPanel>
