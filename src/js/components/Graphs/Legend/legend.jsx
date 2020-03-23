@@ -15,10 +15,9 @@
  */
 
 import React from 'react';
-import LegendSection from './legendSection';
+import LegendSection from './LegendSection';
 import { LegendContainer } from './legend.style';
 import { legendArrays } from './legendHelper';
-
 
 const Legend = () => (
   <LegendContainer id="legend">

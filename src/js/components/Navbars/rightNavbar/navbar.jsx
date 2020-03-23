@@ -31,23 +31,18 @@ const navbarOptions = {
   legend: 'legend',
 };
 
-
 const RightNavBar = () => {
   const [currentOption, setCurrentOption] = useState(null);
   const [expanded, setExpanded] = useState(false);
 
 
-  const hidePanel = () => {
-    setCurrentOption(null);
-    if (expanded) {
-      setExpanded(false);
-    }
-  };
-
-  const openPanel = (option) => {
-    setCurrentOption(option);
-    if (!expanded) {
-      setExpanded(true);
+  const tooglePanel = (open, option) => {
+    if (!open && typeof open === 'boolean') {
+      setExpanded(open);
+      setCurrentOption(null);
+    } else {
+      setExpanded(open);
+      setCurrentOption(option);
     }
   };
 
@@ -67,17 +62,17 @@ const RightNavBar = () => {
       </RightPanel>
       <NavBar>
         <HideRightPanel
-          onClick={hidePanel}
+          onClick={() => tooglePanel(false)}
         >
           -
         </HideRightPanel>
         <NavBarItem
-          onClick={() => openPanel(navbarOptions.nodeInfo)}
+          onClick={() => tooglePanel(true, navbarOptions.nodeInfo)}
         >
           info
         </NavBarItem>
         <NavBarItem
-          onClick={() => openPanel(navbarOptions.legend)}
+          onClick={() => tooglePanel(true, navbarOptions.legend)}
         >
           Legend
         </NavBarItem>

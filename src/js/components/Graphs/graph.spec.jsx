@@ -7,7 +7,6 @@ import {
   Graph,
 } from './graph.style';
 
-
 describe('Graph component ', () => {
   it('should render without throwing an error', () => {
     expect(shallow(<GraphComponent fragmentId="1" />).contains(
@@ -20,5 +19,5 @@ describe('Graph component ', () => {
     )).toBe(true);
   });
 
-  // TODO: Provide test for rendering graph. Currently jest return an error, becouse cannot render a canva.
+  // TODO: Provide test for rendering graph. Currently jest return an error, because cannot render a canvas.
 });
