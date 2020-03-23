@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import LegendSection from './legendSection';
+import LegendSection from './LegendSection';
 import { legendArraysMock } from './legend.mock';
 import {
   LegendHeader,
