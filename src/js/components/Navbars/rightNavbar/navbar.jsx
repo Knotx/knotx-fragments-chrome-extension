@@ -43,7 +43,6 @@ const RightNavBar = () => {
       setExpanded(false);
     }
   };
-  hidePanel.bind(this);
 
   const openPanel = (option) => {
     setCurrentOption(option);
