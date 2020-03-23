@@ -35,7 +35,6 @@ const RightNavBar = () => {
   const [currentOption, setCurrentOption] = useState(null);
   const [expanded, setExpanded] = useState(false);
 
-
   const tooglePanel = (open, option) => {
     if (!open && typeof open === 'boolean') {
       setExpanded(open);
