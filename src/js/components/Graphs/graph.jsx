@@ -44,12 +44,12 @@ const GraphComponent = ({
   fragmentId,
 }) => {
   const [displayOption, setDisplayOption] = useState(displayOptions.graph);
-  const graph = useRef(null);
+  const graphRef = useRef(null);
 
   useEffect(() => {
     if (graphJson) {
       const graphDeclaration = constructGraph(graphJson);
-      const network = drawGraph(graphDeclaration, graph.current);
+      const network = drawGraph(graphDeclaration, graphRef.current);
 
       setDisplayOption(displayOptions.graph);
 
@@ -73,7 +73,7 @@ const GraphComponent = ({
       <GraphHeader>
         <h2>{`ID: ${fragmentId}`}</h2>
       </GraphHeader>
-      <Graph ref={graph} shouldDisplay={displayOption} />
+      <Graph ref={graphRef} shouldDisplay={displayOption} />
       <PerformanceTimeLine shouldDisplay={displayOption}>
         <TimelineComponent graphJson={graphJson} shouldDisplay={displayOption} />
       </PerformanceTimeLine>

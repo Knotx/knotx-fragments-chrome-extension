@@ -1,37 +1,50 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import GraphComponent from './graph';
+
 import {
-  GraphContainer,
   GraphHeader,
   Graph,
+  PerformanceTimeLine,
+  GraphNavigationWrapper,
+  GraphToogleViewButton,
 } from './graph.style';
+import RightNavBar from '../Navbars/rightNavbar/navbar';
+import { singleNode } from '../../helpers/graph/declarationHelper.mock';
+
+describe('Graph component', () => {
+  const wrapper = mount(
+    <>
+      <RightNavBar />
+      <GraphComponent fragmentId="1" graphJson={singleNode} />
+    </>,
+    { attachTo: document.body },
+  );
 
 
-describe('A suite', () => {
-  it('should render without throwing an error', () => {
-    expect(shallow(<GraphComponent fragmentId="1" />).contains(
-      <GraphContainer className="graphContainer">
-        <GraphHeader>
-          <h2>ID: 1</h2>
-        </GraphHeader>
-        <Graph className="graph" />
-      </GraphContainer>,
-    )).toBe(true);
+  it('should render correctly without throwing an error', () => {
+
+    expect(wrapper.find(GraphHeader).text()).toEqual('ID: 1');
+    expect(wrapper.find(Graph).getDOMNode()).toBeVisible();
+    expect(wrapper.find(PerformanceTimeLine).getDOMNode()).not.toBeVisible();
+    expect(wrapper.find(GraphNavigationWrapper).getDOMNode()).toBeVisible();
+    expect(wrapper.find(GraphToogleViewButton).at(0).text()).toEqual('PERFORMANCE VIEW');
+    expect(wrapper.find(GraphToogleViewButton).at(1).text()).toEqual('GRAPH VIEW');
   });
 
+  it('should correctly switch between graph and timeline view ', () => {
 
-  // TODO: Provide test for rendering graph. Currently jest return an error, becouse cannot render a canva.
-  // it('should render  throwing an error', () => {
-  //   let component;
-  //   act(() => {
-  //     component = mount(
-  //       <>
-  //         <GraphComponent graphJson={singleNode} fragmentId="1" />
-  //         <RightNavBar />
-  //       </>,
-  //     );
-  //   });
-  //   expect(component.find(NodeInfoWrapper).text()).toEqual('');
-  // });
+    expect(wrapper.find(PerformanceTimeLine).getDOMNode()).not.toBeVisible();
+    expect(wrapper.find(Graph).getDOMNode()).toBeVisible();
+
+    wrapper.find(GraphToogleViewButton).at(0).simulate('click');
+
+    expect(wrapper.find(PerformanceTimeLine).getDOMNode()).toBeVisible();
+    expect(wrapper.find(Graph).getDOMNode()).not.toBeVisible();
+
+    wrapper.find(GraphToogleViewButton).at(1).simulate('click');
+
+    expect(wrapper.find(PerformanceTimeLine).getDOMNode()).not.toBeVisible();
+    expect(wrapper.find(Graph).getDOMNode()).toBeVisible();
+  });
 });

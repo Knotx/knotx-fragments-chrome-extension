@@ -23,22 +23,29 @@ import { Timeline } from './timeline.style';
 const TimelineComponent = ({
   graphJson,
 }) => {
-  const timeline = useRef(null);
+  const timelineRef = useRef(null);
 
   useEffect(() => {
-    timeline.current.innerHTML = '';
-    const timelineDeclaration = constructTimeline(graphJson);
-    drawTimeline(timeline.current, timelineDeclaration);
+    timelineRef.current.innerHTML = '';
+    if (graphJson) {
+      const timelineDeclaration = constructTimeline(graphJson);
+      drawTimeline(timelineRef.current, timelineDeclaration);
+    }
   }, [graphJson]);
 
   return (
-    <Timeline ref={timeline} />
+    <Timeline ref={timelineRef} />
   );
+};
+
+
+TimelineComponent.defaultProps = {
+  graphJson: null,
 };
 
 TimelineComponent.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  graphJson: PropTypes.object.isRequired,
+  graphJson: PropTypes.object,
 };
 
 export default TimelineComponent;
