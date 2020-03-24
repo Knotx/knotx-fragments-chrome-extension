@@ -18,7 +18,7 @@ import { Timeline } from 'vis-timeline';
 
 const options = {
   width: '100%',
-  height: '500px',
+  height: '100%',
   margin: {
     item: 20,
   },

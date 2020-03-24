@@ -16,7 +16,7 @@
 
 /* eslint no-new: 0 */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import renderjson from 'renderjson';
 import { drawGraph } from '../../helpers/graph/drawingHelper';
@@ -24,24 +24,34 @@ import { constructGraph } from '../../helpers/graph/declarationHelper';
 import {
   GraphContainer,
   Graph,
+  PerformanceTimeLine,
   GraphHeader,
+  GraphToogleViewButton,
+  GraphNavigationWrapper,
 } from './graph.style';
+import TimelineComponent from './Timeline/timeline';
 
 renderjson.set_icons('+', '-');
 renderjson.set_show_to_level(1);
 
-const selectors = {
-  GRAPH: '.graphContainer .graph',
+const displayOptions = {
+  graph: 'graph',
+  performanceTimeLine: 'performanceTimeLine',
 };
 
 const GraphComponent = ({
   graphJson,
   fragmentId,
 }) => {
+  const [displayOption, setDisplayOption] = useState(displayOptions.graph);
+  const graphRef = useRef(null);
+
   useEffect(() => {
     if (graphJson) {
       const graphDeclaration = constructGraph(graphJson);
-      const network = drawGraph(graphDeclaration, document.querySelector(selectors.GRAPH));
+      const network = drawGraph(graphDeclaration, graphRef.current);
+
+      setDisplayOption(displayOptions.graph);
 
       const nodeInfoContainer = document.getElementById('nodeInfo');
       nodeInfoContainer.innerHTML = '';
@@ -63,7 +73,22 @@ const GraphComponent = ({
       <GraphHeader>
         <h2>{`ID: ${fragmentId}`}</h2>
       </GraphHeader>
-      <Graph className="graph" />
+      <Graph ref={graphRef} shouldDisplay={displayOption} />
+      <PerformanceTimeLine shouldDisplay={displayOption}>
+        <TimelineComponent graphJson={graphJson} shouldDisplay={displayOption} />
+      </PerformanceTimeLine>
+      <GraphNavigationWrapper>
+        <GraphToogleViewButton
+          onClick={() => setDisplayOption(displayOptions.performanceTimeLine)}
+        >
+          PERFORMANCE VIEW
+        </GraphToogleViewButton>
+        <GraphToogleViewButton
+          onClick={() => setDisplayOption(displayOptions.graph)}
+        >
+          GRAPH VIEW
+        </GraphToogleViewButton>
+      </GraphNavigationWrapper>
     </GraphContainer>
   );
 };
