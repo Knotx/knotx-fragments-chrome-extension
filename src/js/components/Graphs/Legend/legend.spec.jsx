@@ -4,8 +4,6 @@ import Legend from './Legend';
 import LegendSection from './LegendSection';
 import { legendArrays } from './legendHelper';
 import {
-  LegendHeader,
-  LegendItemIcon,
   SquareIcon,
   CircleIcon,
   RectangleIcon,
