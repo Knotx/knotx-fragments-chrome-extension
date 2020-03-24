@@ -220,7 +220,8 @@ Into a graph like this:
 
 Important thing to note is that, while all subtasks end with a transition to the `composite-node_virtual_end` node, only one of them (the deepest) contains an actual object in the transition.
 All other subtasks end with a transition into a string. It's termed `a reference` in the code and it's an ID of the actual node.
-It is like that in order to avoid duplication, especially during the second phase.
+It is like that in order to avoid duplication. Without it, the dataset-creation algorithm would treat transisions to the same node as transitions to multiple unique nodes.
+It'd result in parts of graph being copied multiple times, instead of multiple transitions transitioning to the same node.
 
 #### Timeline parser
 
