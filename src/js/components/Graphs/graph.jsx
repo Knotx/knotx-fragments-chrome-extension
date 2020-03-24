@@ -100,8 +100,7 @@ GraphComponent.defaultProps = {
 };
 
 GraphComponent.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
-  graphJson: PropTypes.object,
+  graphJson: PropTypes.instanceOf(Object),
   fragmentId: PropTypes.string,
 };
 

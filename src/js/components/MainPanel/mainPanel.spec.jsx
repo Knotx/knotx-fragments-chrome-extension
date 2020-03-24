@@ -13,17 +13,15 @@ const store = {
   },
 };
 
-const getWrapper = () => mount(
-  <Provider store={createStore(reducer, store)}>
-    <MainPanel
-      tabId={1}
-    />
-  </Provider>,
-);
-
-describe('A suite', () => {
+describe('Main panel component', () => {
   it('should render message if fragment is not selected', () => {
-    const wrapper = getWrapper();
+    const wrapper = mount(
+      <Provider store={createStore(reducer, store)}>
+        <MainPanel
+          tabId={1}
+        />
+      </Provider>,
+    );
     expect(wrapper.text()).toEqual('Please choose any fragment');
   });
 });

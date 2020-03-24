@@ -24,7 +24,7 @@ import {
   LegendWrapper,
   NodeInfoWrapper,
 } from './navbar.style';
-import Legend from '../../Graphs/Legend/legend';
+import Legend from '../../Graphs/Legend/Legend';
 
 const navbarOptions = {
   nodeInfo: 'nodeInfo',
@@ -34,6 +34,16 @@ const navbarOptions = {
 const RightNavBar = () => {
   const [currentOption, setCurrentOption] = useState(null);
   const [expanded, setExpanded] = useState(false);
+
+  const tooglePanel = (open, option) => {
+    if (!open && typeof open === 'boolean') {
+      setExpanded(open);
+      setCurrentOption(null);
+    } else {
+      setExpanded(open);
+      setCurrentOption(option);
+    }
+  };
 
   return (
     <RightNavBarContainer>
@@ -51,32 +61,17 @@ const RightNavBar = () => {
       </RightPanel>
       <NavBar>
         <HideRightPanel
-          onClick={() => {
-            setCurrentOption(null);
-            if (expanded) {
-              setExpanded(false);
-            }
-          }}
+          onClick={() => tooglePanel(false)}
         >
           -
         </HideRightPanel>
         <NavBarItem
-          onClick={() => {
-            setCurrentOption(navbarOptions.nodeInfo);
-            if (!expanded) {
-              setExpanded(true);
-            }
-          }}
+          onClick={() => tooglePanel(true, navbarOptions.nodeInfo)}
         >
           info
         </NavBarItem>
         <NavBarItem
-          onClick={() => {
-            setCurrentOption(navbarOptions.legend);
-            if (!expanded) {
-              setExpanded(true);
-            }
-          }}
+          onClick={() => tooglePanel(true, navbarOptions.legend)}
         >
           Legend
         </NavBarItem>
