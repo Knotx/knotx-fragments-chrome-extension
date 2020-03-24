@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { constructFragmentsTimeline } from '../../helpers/nodes/nodesHelper';
@@ -22,22 +22,17 @@ import { drawTimeline } from '../../helpers/timeline/drawHelper';
 import { GanntContainer, Timeline } from './fragmentGannt.style';
 import { setRenderedGraph } from '../../state/actions/pageData';
 
-import 'vis-timeline/dist/vis-timeline-graph2d.min.css';
-
-const selectors = {
-  GANNT: '.fragmentGanntContainer .timeline',
-};
 
 const FragmentGannt = ({ tabId }) => {
   const [timeline, setTimeline] = useState(null);
+  const timelineContainer = useRef(null);
   const dispatch = useDispatch();
-  const fragments = useSelector((state) => state.pageData[tabId].fragments);
+  const fragments = useSelector(({ pageData }) => pageData[tabId].fragments);
   const activeFragment = useSelector(({ pageData }) => pageData[tabId].renderedGraph);
 
   useEffect(() => {
-    const ganntContainer = document.querySelector(selectors.GANNT);
     const timelineDeclaration = constructFragmentsTimeline(fragments);
-    const newTimeline = drawTimeline(ganntContainer, timelineDeclaration);
+    const newTimeline = drawTimeline(timelineContainer.current, timelineDeclaration);
 
     const onSelect = (properties) => {
       const selectedId = properties.items[properties.items.length - 1];
@@ -61,11 +56,11 @@ const FragmentGannt = ({ tabId }) => {
     if (timeline) {
       timeline.setSelection([activeFragment], { focus: true });
     }
-  }, [activeFragment || '']);
+  }, [activeFragment]);
 
   return (
     <GanntContainer className="fragmentGanntContainer">
-      <Timeline className="timeline" />
+      <Timeline className="timeline" ref={timelineContainer} />
     </GanntContainer>
   );
 };

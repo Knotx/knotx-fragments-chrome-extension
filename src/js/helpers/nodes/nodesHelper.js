@@ -101,6 +101,11 @@ const createVisItem = ({ debug }) => ({
 });
 
 export const constructFragmentsTimeline = (fragments) => ({
-  items: new DataSet(fragments.map((fragment) => createVisItem(fragment))),
-  groups: new DataSet([{ id: 1, content: '' }]),
+  items: new DataSet(fragments.map(createVisItem)),
+  groups: new DataSet([
+    {
+      id: 1,
+      content: '',
+    },
+  ]),
 });
