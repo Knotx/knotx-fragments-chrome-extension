@@ -16,7 +16,7 @@
 
 /* eslint no-new: 0 */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import renderjson from 'renderjson';
 import { drawGraph } from '../../helpers/graph/drawingHelper';
@@ -34,10 +34,6 @@ import TimelineComponent from './Timeline/timeline';
 renderjson.set_icons('+', '-');
 renderjson.set_show_to_level(1);
 
-const selectors = {
-  GRAPH: '.graphContainer .graph',
-};
-
 const displayOptions = {
   graph: 'graph',
   performanceTimeLine: 'performanceTimeLine',
@@ -48,13 +44,14 @@ const GraphComponent = ({
   fragmentId,
 }) => {
   const [displayOption, setDisplayOption] = useState(displayOptions.graph);
+  const graph = useRef(null);
 
   useEffect(() => {
     if (graphJson) {
       const graphDeclaration = constructGraph(graphJson);
-      const network = drawGraph(graphDeclaration, document.querySelector(selectors.GRAPH));
+      const network = drawGraph(graphDeclaration, graph.current);
 
-      setDisplayOption('graph');
+      setDisplayOption(displayOptions.graph);
 
       const nodeInfoContainer = document.getElementById('nodeInfo');
       nodeInfoContainer.innerHTML = '';
@@ -76,7 +73,7 @@ const GraphComponent = ({
       <GraphHeader>
         <h2>{`ID: ${fragmentId}`}</h2>
       </GraphHeader>
-      <Graph className="graph" shouldDisplay={displayOption} />
+      <Graph ref={graph} shouldDisplay={displayOption} />
       <PerformanceTimeLine shouldDisplay={displayOption}>
         <TimelineComponent graphJson={graphJson} shouldDisplay={displayOption} />
       </PerformanceTimeLine>

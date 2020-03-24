@@ -14,29 +14,25 @@
  * limitations under the License.
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { constructTimeline } from '../../../helpers/timeline/declarationHelper';
 import { drawTimeline } from '../../../helpers/timeline/drawHelper';
 import { Timeline } from './timeline.style';
 
-const selectors = {
-  TIMELINE: '.timeline',
-};
-
-
 const TimelineComponent = ({
   graphJson,
 }) => {
+  const timeline = useRef(null);
+
   useEffect(() => {
-    const timeline = document.querySelector(selectors.TIMELINE);
-    timeline.innerHTML = '';
+    timeline.current.innerHTML = '';
     const timelineDeclaration = constructTimeline(graphJson);
-    drawTimeline(timeline, timelineDeclaration);
+    drawTimeline(timeline.current, timelineDeclaration);
   }, [graphJson]);
 
   return (
-    <Timeline className="timeline" />
+    <Timeline ref={timeline} />
   );
 };
 
