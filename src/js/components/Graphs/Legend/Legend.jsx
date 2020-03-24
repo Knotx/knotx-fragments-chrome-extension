@@ -14,19 +14,18 @@
  * limitations under the License.
  */
 
-import { SET_PAGE_DATA, REMOVE_PAGE_DATA, SET_RENDERED_GRAPH } from '../actionTypes/pageData';
+import React from 'react';
+import LegendSection from './LegendSection';
+import { LegendContainer } from './legend.style';
+import { legendArrays } from './legendHelper';
 
-export const setPageData = (pageData) => ({
-  type: SET_PAGE_DATA,
-  pageData,
-});
+const Legend = () => (
+  <LegendContainer id="legend">
+    <LegendSection title="Nodes" items={legendArrays.nodes} />
+    <LegendSection title="Composites" items={legendArrays.composites} />
+    <LegendSection title="Labels" items={legendArrays.labels} />
+    <LegendSection title="Edges" items={legendArrays.edges} />
+  </LegendContainer>
+);
 
-export const removePageData = (pageData) => ({
-  type: REMOVE_PAGE_DATA,
-  pageData,
-});
-
-export const setRenderedGraph = (pageData) => ({
-  type: SET_RENDERED_GRAPH,
-  pageData,
-});
+export default Legend;
