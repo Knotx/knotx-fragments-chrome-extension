@@ -17,14 +17,17 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { constructFragmentsTimeline } from '../../helpers/nodes/nodesHelper';
 import { drawTimeline } from '../../helpers/timeline/drawHelper';
-import { GanntContainer, Timeline } from './fragmentGannt.style';
+import { GanntContainer, Timeline, TimelineBar } from './fragmentGannt.style';
 import { setRenderedGraph } from '../../state/actions/pageData';
-
+import { FRAGMENTS_PERFORMANCE } from '../../helpers/constants';
 
 const FragmentGannt = ({ tabId }) => {
   const [timeline, setTimeline] = useState(null);
+  const [expanded, setExpanded] = useState(true);
   const timelineContainer = useRef(null);
   const dispatch = useDispatch();
   const fragments = useSelector(({ pageData }) => pageData[tabId].fragments);
@@ -37,10 +40,12 @@ const FragmentGannt = ({ tabId }) => {
     const onSelect = (properties) => {
       const selectedId = properties.items[properties.items.length - 1];
 
-      dispatch(setRenderedGraph({
-        id: tabId,
-        renderedGraph: selectedId,
-      }));
+      if (selectedId) {
+        dispatch(setRenderedGraph({
+          id: tabId,
+          renderedGraph: selectedId,
+        }));
+      }
     };
 
     newTimeline.on('select', onSelect);
@@ -60,7 +65,19 @@ const FragmentGannt = ({ tabId }) => {
 
   return (
     <GanntContainer className="fragmentGanntContainer">
-      <Timeline className="timeline" ref={timelineContainer} />
+      <TimelineBar
+        onClick={() => setExpanded(!expanded)}
+      >
+        <span>{FRAGMENTS_PERFORMANCE}</span>
+        {expanded
+          ? (<FontAwesomeIcon icon={faChevronDown} />)
+          : (<FontAwesomeIcon icon={faChevronUp} />) }
+      </TimelineBar>
+      <Timeline
+        className="timeline"
+        ref={timelineContainer}
+        expanded={expanded}
+      />
     </GanntContainer>
   );
 };
