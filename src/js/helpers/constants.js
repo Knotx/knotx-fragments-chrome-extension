@@ -37,7 +37,7 @@ export const chromeActions = {
 /* eslint-disable max-len */
 export const succesLoadExtensionMsgs = 'Knot.x devtool extension: Succesfully get fragments and page data. You can start using Knot.x extension';
 export const FRAGMENT_LIST_HEADER = 'List of fragments';
-export const frsagmentListTablesHeaders = {
+export const fragmentListTablesHeaders = {
   ID: 'ID',
   TYPE: 'TYPE',
   TIME: 'TIME',
