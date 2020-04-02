@@ -265,11 +265,19 @@ Parser consists of the following phases:
 
 ### CI
 
-### Testing
-Currently we test our app only through the unit tests. 
+## Testing
+Currently we test our app only through the unit tests. To testing we use two main technologies: Jest + Enzyme. 
+All js files (components & helpers) have own test. We follow the convention to create test file next to js file.
+ 
+ ```
+•
+├── exampleComponent.js
+├── exampleComponent.spec.js
+├── exampleHelper.js
+└── exampleHelper.spec.js 
+```
 
-## Technologies
-To testing we use two main technologies: Jest + Enzyme. 
+We use jest-coverage tool. After run tests in root direactory jest create build direactory. In this folder you can find an index.html with coverage raport. We try to stay on 80 - 100% coverage level.
 
 ## Implementation details
 
@@ -284,6 +292,24 @@ KNOT.x -> HTML MARKUP -> CONTENT SCRIPT -> BACKGROUND SCRIPT -> REDUX -> COMPONE
 ```
 
 ### Components
+The components structure look like this:
+
+```
+•
+└── App:
+    ├── SidePanel
+    │   ├── FragmenList
+    │   │   └── FragmentListItem
+    │   │       └── NodeList
+    │   └── FragmentGannt
+    │
+    └── MainPanel
+        └── Graph
+            ├──  Timeline
+            ├──  Legend
+            │    └── LegendSection 
+            └──  NodeInfo
+```
 
 #### Graph
 
