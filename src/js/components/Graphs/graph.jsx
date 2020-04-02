@@ -62,6 +62,7 @@ const GraphComponent = ({
   const graphData = useSelector(({ pageData }) => (
     pageData[tabId].fragments.find((el) => el.debug.fragment.id === fragmentId).debug.graph
   ));
+  const sidePanelExpanded = useSelector(({ pageData }) => pageData[tabId].sidebarExpanded);
 
   useEffect(() => {
     const graphDeclaration = constructGraph(graphData);
@@ -88,7 +89,7 @@ const GraphComponent = ({
 
   return (
     <GraphWrapper className="graphWrapper">
-      <GraphHeaderContainer>
+      <GraphHeaderContainer shouldHasMargin={!sidePanelExpanded}>
         <GraphHeader>
           {`ID: ${fragmentId}`}
         </GraphHeader>
