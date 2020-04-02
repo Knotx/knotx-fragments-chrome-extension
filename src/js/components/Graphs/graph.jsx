@@ -17,6 +17,7 @@
 /* eslint no-new: 0 */
 
 import React, { useEffect, useState, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
@@ -43,16 +44,14 @@ import NodeInfo from './NodeInfo/nodesInfo';
 import { nodeInfoToIcon } from './graphHelper';
 import { LEGEND_PANEL_HEADER, NODE_INFO_PANEL_HEADER, graphNavigation } from '../../helpers/constants';
 
-
 const displayOptions = {
   graph: 'graph',
   performanceTimeLine: 'performanceTimeLine',
 };
 
-
 const GraphComponent = ({
-  graphJson,
   fragmentId,
+  tabId,
 }) => {
   const [displayOption, setDisplayOption] = useState(displayOptions.graph);
   const [displayLegend, setDisplayLegend] = useState(false);
@@ -60,23 +59,26 @@ const GraphComponent = ({
   const [displayNodeInfo, setDisplayNodeInfo] = useState(false);
   const graphRef = useRef(null);
 
+  const graphData = useSelector(({ pageData }) => (
+    pageData[tabId].fragments.find((el) => el.debug.fragment.id === fragmentId).debug.graph
+  ));
+
   useEffect(() => {
-    if (graphJson) {
-      const graphDeclaration = constructGraph(graphJson);
-      const network = drawGraph(graphDeclaration, graphRef.current);
+    const graphDeclaration = constructGraph(graphData);
+    const network = drawGraph(graphDeclaration, graphRef.current);
 
-      setDisplayOption(displayOptions.graph);
+    setDisplayOption(displayOptions.graph);
+    setDisplayNodeInfo(false);
 
-      network.on('click', (e) => {
-        const nodeId = e.nodes[0];
-        if (nodeId) {
-          const { info } = graphDeclaration.nodes.find((el) => el.id === nodeId);
-          setDisplayNodeInfo(true);
-          setNodeInfo(info);
-        }
-      });
-    }
-  }, [graphJson]);
+    network.on('click', (e) => {
+      const nodeId = e.nodes[0];
+      if (nodeId) {
+        const { info } = graphDeclaration.nodes.find((el) => el.id === nodeId);
+        setDisplayNodeInfo(true);
+        setNodeInfo(info);
+      }
+    });
+  }, [fragmentId]);
 
   const handleSwitchView = (option) => {
     setDisplayOption(option);
@@ -114,7 +116,7 @@ const GraphComponent = ({
         </LegendIcon>
       </GraphContainer>
       <PerformanceTimeLineContainer shouldDisplay={displayOption}>
-        <TimelineComponent graphJson={graphJson} shouldDisplay={displayOption} />
+        <TimelineComponent graphJson={graphData} shouldDisplay={displayOption} />
       </PerformanceTimeLineContainer>
 
       <GraphAdditionalPanel shouldDisplay={displayNodeInfo}>
@@ -148,16 +150,9 @@ const GraphComponent = ({
   );
 };
 
-
-GraphComponent.defaultProps = {
-  graphJson: null,
-  fragmentId: null,
-};
-
 GraphComponent.propTypes = {
-  graphJson: PropTypes.instanceOf(Object),
-  fragmentId: PropTypes.string,
+  fragmentId: PropTypes.string.isRequired,
+  tabId: PropTypes.number.isRequired,
 };
-
 
 export default GraphComponent;
