@@ -266,10 +266,22 @@ Parser consists of the following phases:
 ### CI
 
 ### Testing
+Currently we test our app only through the unit tests. 
+
+## Technologies
+To testing we use two main technologies: Jest + Enzyme. 
 
 ## Implementation details
 
-### Parsing HTML
+### Data flow
+Extension get information about knot.x from html markup. Knot.x provide a tag with all necessery data. In next step our content script get this data and change structure to comfortable for us. Content script pass this data to background script whitch save them in redux.
+
+```
+KNOT.x -> HTML MARKUP -> CONTENT SCRIPT -> BACKGROUND SCRIPT -> REDUX -> COMPONENTS
+                               ^
+                               |
+                         Parsing helper
+```
 
 ### Components
 
@@ -278,6 +290,22 @@ Parser consists of the following phases:
 #### Timelines
 
 ### Data storage
+All datas about fragments and pages are store in redux. We store separate data set and app state for all active pages to allow using few devtools console for few Knot.x pages. Every pageData-set has own ID (chrome tab id). The structure of redux looks like this: 
+
+  
+```
+•
+└── pageData:
+    ├── 78: // tab id
+    │   ├── fragments: [] // list of fragments
+    │   ├── url: "https://example.com // page url
+    │   ├── sidebarExpanded: true // side panel expanded switch
+    │   └── renderedGraph: null // id of currently selected fragment
+    └── 110: 
+        └── ...
+```
+
+The pageData item is create on page load and destroy on page close. We create item for all active pages. If page doesn't use Knot.x , fragments propertie is empty.
 
 ## Contributors
 
