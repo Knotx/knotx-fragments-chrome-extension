@@ -11,7 +11,7 @@ the instructions below:
 - Build the extension:
   - go to the project folder
   - run command: `yarn install`
-  - run command: `yarn run dev`
+  - run command: `yarn run dev` or `yarn run watch` if you want to enable auto detect changes in code.
 - Load the extension from disk (more details [here](https://developer.chrome.com/extensions/getstarted) )
   - open the Chrome Extension Management page by navigating to `chrome://extensions`.
   - enable Developer Mode by clicking the toggle switch next to *Developer mode*.
@@ -303,6 +303,14 @@ All js files (components & helpers) have own test. We follow the convention to c
 
 We use jest-coverage tool. After run tests in the root directory jest create a build directory. In this folder you can find an index.html file with coverage report. We try to stay on 80 - 100% coverage level.
 
+```
+build/test/coverage/index.html
+```
+
+### How to test?
+1. run command to fire all tests: `yarn run test`
+2. run command to fire specific test: `yarn run test [path_to_test]`
+
 ## Implementation details
 
 ### Data flow
@@ -378,12 +386,3 @@ All data about fragments and pages are store in redux. We store a separate data 
 The pageData item is created on page load and destroy on page close. We create an item for all active pages. If the page doesn't use Knot.x , fragments property is empty.
 
 ## Contributors
-
-### How to run?
-1. go to the project folder
-2. run command: `yarn install`
-3. run command: `yarn run dev`
-
-### How to test?
-1. run command to fire all tests: `yarn run test`
-2. run command to fire specific test: `yarn run test [path_to_test]`
