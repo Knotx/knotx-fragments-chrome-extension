@@ -1,11 +1,11 @@
 # Knot.x Fragments Chrome Extension
-Extends the Developer Tools, adding a sidebar that displays Fragments data associated with the 
+Extends the Developer Tools, adding a sidebar that displays Fragments data associated with the
 selected DOM element.
 
 // TODO why do we need this?
 
 ## How to start?
-You can easily build the extension and select `dist` directory from Chrome extensions page. Follow 
+You can easily build the extension and select `dist` directory from Chrome extensions page. Follow
 the instructions below:
 
 - Build the extension:
@@ -32,9 +32,9 @@ the instructions below:
 Knot.x Fragments, when run in debug mode, injects information about fragments into the output.
 This information can then be read, parsed and displayed by various tools. Knot.x Fragments Chrome Extension is the official tool for this purpose.
 
-Of course fragments' outputs can have various formats. Currently, Knot.x supports injecting debug information into HTML only. 
-Therefore, this tool only works for fragment-generated HTML pages. 
-JSON support is planned for the near future. 
+Of course fragments' outputs can have various formats. Currently, Knot.x supports injecting debug information into HTML only.
+Therefore, this tool only works for fragment-generated HTML pages.
+JSON support is planned for the near future.
 
 ### HTML structure
 
@@ -47,7 +47,7 @@ For example, a page like this:
   <header>
     Weather Service
   </header>
-  
+
   <knotx:snippet data-knotx-task="weather-task">
     <span>
       {{fetch-weather-info._result.temperatue}} in {{fetch-weather-info._result.location}}
@@ -63,7 +63,7 @@ could result in:
   <header>
     Weather Service
   </header>
-  
+
   <!-- data-knotx-id="auto-generated-id" -->
   <script data-knotx-debug="log" data-knotx-id="auto-generated-id" type="application/json">{ debug-data-here }</script>
 
@@ -262,27 +262,51 @@ Parser consists of the following phases:
 ## Used technologies
 
 ### Extensions / Plugins
+main plugins:
+
+* React - https://reactjs.org/
+* Redux - https://redux.js.org/
+* Webext - https://github.com/tshaddix/webext-redux
+* styled-components - https://styled-components.com/
+* vis-network - https://visjs.github.io/vis-network/docs/network/
+* vis-timeline - https://visjs.github.io/vis-timeline/docs/timeline/
+* unique-selector - https://github.com/ericclemmons/unique-selector
+* renderjson - https://github.com/caldwell/renderjson
+* react-fontawesome - https://github.com/FortAwesome/react-fontawesome
+* Jest - https://jestjs.io/docs/en/cli.html
+* Enzyme - https://enzymejs.github.io/enzyme/
+* semver - https://github.com/npm/node-semver#readme
+* Babel - https://babeljs.io/
+* Eslint - https://eslint.org/
+* Webpack - https://webpack.js.org/
 
 ### CI
+We use CI to provide a highest quality of our code.
+
+CI checks:
+* Tests passing
+* App build without fails
+* Coverage level
+
 
 ## Testing
-Currently we test our app only through the unit tests. To testing we use two main technologies: Jest + Enzyme. 
-All js files (components & helpers) have own test. We follow the convention to create test file next to js file.
- 
+Currently we test our app only through the unit tests. To testing we use two main technologies: Jest + Enzyme.
+All js files (components & helpers) have own test. We follow the convention to create a test file next to js file.
+
  ```
 •
 ├── exampleComponent.js
 ├── exampleComponent.spec.js
 ├── exampleHelper.js
-└── exampleHelper.spec.js 
+└── exampleHelper.spec.js
 ```
 
-We use jest-coverage tool. After run tests in root direactory jest create build direactory. In this folder you can find an index.html with coverage raport. We try to stay on 80 - 100% coverage level.
+We use jest-coverage tool. After run tests in the root directory jest create a build directory. In this folder you can find an index.html file with coverage report. We try to stay on 80 - 100% coverage level.
 
 ## Implementation details
 
 ### Data flow
-Extension get information about knot.x from html markup. Knot.x provide a tag with all necessery data. In next step our content script get this data and change structure to comfortable for us. Content script pass this data to background script whitch save them in redux.
+Extension get information about knot.x from html markup. Knot.x in ebug mode provide a tag with all necessary data. In the next step our content script get this data and change structure to comfortable for us. Content script pass this data to background script which save them in redux.
 
 ```
 KNOT.x -> HTML MARKUP -> CONTENT SCRIPT -> BACKGROUND SCRIPT -> REDUX -> COMPONENTS
@@ -292,7 +316,7 @@ KNOT.x -> HTML MARKUP -> CONTENT SCRIPT -> BACKGROUND SCRIPT -> REDUX -> COMPONE
 ```
 
 ### Components
-The components structure look like this:
+The components structure in the main concept look like this:
 
 ```
 •
@@ -307,18 +331,38 @@ The components structure look like this:
         └── Graph
             ├──  Timeline
             ├──  Legend
-            │    └── LegendSection 
+            │    └── LegendSection
             └──  NodeInfo
 ```
 
-#### Graph
+#### Graph && timelines
+To create a data visualization we use vis.js library. Currently we have 3 charts in our application.
 
-#### Timelines
+* Timeline for fragments on sidePanel (FragmentGannt component)
+* Main graph for the fragment (Graph component)
+* Performance timeline for the fragment (Timeline component)
+
+### Styling
+We don't use any grid system to make our app beautiful. Everything is flex. To show and hide elements we try to use a react state, without saving this information in the redux store.
+
+To create styles we use styling-component .We follow the convention to create a test file next to js file.
+
+ ```
+•
+├── exampleComponent.js
+└── exampleComponent.style.js
+```
+
+some global styling and styling for renderjson markupwe store in
+ ```
+/src/js/styling/globalStyle.js
+  ```
+
 
 ### Data storage
-All datas about fragments and pages are store in redux. We store separate data set and app state for all active pages to allow using few devtools console for few Knot.x pages. Every pageData-set has own ID (chrome tab id). The structure of redux looks like this: 
+All data about fragments and pages are store in redux. We store a separate data set and an app state for all active pages to allow using a few dev tools console for a few Knot.x pages. Every pageData-set has own ID (chrome tab id). The structure of redux looks like this:
 
-  
+
 ```
 •
 └── pageData:
@@ -326,12 +370,12 @@ All datas about fragments and pages are store in redux. We store separate data s
     │   ├── fragments: [] // list of fragments
     │   ├── url: "https://example.com // page url
     │   ├── sidebarExpanded: true // side panel expanded switch
-    │   └── renderedGraph: null // id of currently selected fragment
-    └── 110: 
+    │   └── renderedGraph: null // id of the currently selected fragment
+    └── 110:
         └── ...
 ```
 
-The pageData item is create on page load and destroy on page close. We create item for all active pages. If page doesn't use Knot.x , fragments propertie is empty.
+The pageData item is created on page load and destroy on page close. We create an item for all active pages. If the page doesn't use Knot.x , fragments property is empty.
 
 ## Contributors
 
