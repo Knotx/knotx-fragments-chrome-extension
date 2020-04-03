@@ -345,7 +345,7 @@ To create a data visualization we use vis.js library. Currently we have 3 charts
 ### Styling
 We don't use any grid system to make our app beautiful. Everything is flex. To show and hide elements we try to use a react state, without saving this information in the redux store.
 
-To create styles we use styling-component .We follow the convention to create a test file next to js file.
+To create styles we use styling-component .We follow the convention to create a style file next to js file.
 
  ```
 •
