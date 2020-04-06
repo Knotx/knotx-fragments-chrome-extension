@@ -106,7 +106,6 @@ export const LegendIcon = styled.button`
 export const GraphAdditionalPanel = styled.div`
     background-color: ${({ theme }) => theme.ADDITIONAL_PANEL_CONTENT_BG};
     width: 100%;
-    overflow: scroll;
     border-top: ${({ theme }) => `1px solid ${theme.BORDER}`};
     display: ${({ shouldDisplay }) => (shouldDisplay ? 'block' : 'none')};
     min-height: 25%;
@@ -135,6 +134,7 @@ export const GraphAdditionalPanelHeader = styled.div`
 
 export const GraphAdditionalPanelContent = styled.div`
     margin-top: 41px;
+    height: calc(100% - 41px);
 `;
 
 export const GraphAdditionalPanelCloseButton = styled.div`

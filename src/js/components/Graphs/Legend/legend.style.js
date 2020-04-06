@@ -20,6 +20,8 @@ export const LegendContainer = styled.div`
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    overflow: scroll;
+    height: 100%;
 `;
 
 export const LegendHeader = styled.h3`
