@@ -18,5 +18,6 @@ import styled from 'styled-components';
 
 export const NodeIndoContainer = styled.div`
     padding: 15px;
-    height: calc(100% - 30px);
+    height: 100%;
+    box-sizing: border-box;
 `;
