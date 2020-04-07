@@ -22,6 +22,12 @@ export const LegendContainer = styled.div`
     flex-wrap: wrap;
     overflow: scroll;
     height: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
 `;
 
 export const LegendHeader = styled.h3`
