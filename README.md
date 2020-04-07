@@ -281,13 +281,11 @@ main plugins:
 * Webpack - https://webpack.js.org/
 
 ### CI
-We use CI to provide a highest quality of our code.
+The GitHub repository is integrated with Azure Pipelines (CI) to validate both new PRs and the master branch. Check the azure-pipelines.yml file for configuration details. So we check:
 
-CI checks:
-* Tests passing
-* App build without fails
-* Coverage level
-
+* code conventions with Eslint
+* code logic with unit tests using Jest
+* test coverage level with preconfigured thresholds (see jest.config.js for more details).
 
 ## Testing
 We believe that unit tests remain the best documentation. All React components, processing logic (helpers) and actions (such as a button click) are validated with unit tests. We use Jest and Enzyme frameworks to validate both components (React) with combination with mocked storage (Redux).
