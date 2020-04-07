@@ -309,7 +309,7 @@ build/test/coverage/index.html
 
 ### How to test?
 1. run command to fire all tests: `yarn run test`
-2. run command to fire specific test: `yarn run test [path_to_test]`
+2. run command to fire the specific test: `yarn run test [path_to_test]`
 
 ## Implementation details
 
