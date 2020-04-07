@@ -290,22 +290,19 @@ CI checks:
 
 
 ## Testing
-Currently we test our app only through the unit tests. To testing we use two main technologies: Jest + Enzyme.
-All js files (components & helpers) have own test. We follow the convention to create a test file next to js file.
+We believe that unit tests remain the best documentation. All React components, processing logic (helpers) and actions (such as a button click) are validated with unit tests. We use Jest and Enzyme frameworks to validate both components (React) with combination with mocked storage (Redux).
 
- ```
-•
-├── exampleComponent.js
-├── exampleComponent.spec.js
-├── exampleHelper.js
-└── exampleHelper.spec.js
-```
 
-We use jest-coverage tool. After run tests in the root directory jest create a build directory. In this folder you can find an index.html file with coverage report. We try to stay on 80 - 100% coverage level.
+All JS files (components & helpers) have their own tests that are placed next to the tested sources. We follow the convention:
+* *.mock.js - it is configuration containing mocks for our tests
+* *.spec.jsx - it contains unit tests
 
-```
-build/test/coverage/index.html
-```
+
+Additionally, we placed tests coverage verification in our CI. We use the jest-coverage tool for that. We decided to keep the coverage level at truly high levels (80 - 100%). It should enable future refactoring and code changes.
+
+
+When tests are executed, then we generate the report (test-report.xml) file in the build/test folder. Moreover, there is the coverage directory that contains the index.html file with unit tests coverage report.
+
 
 ### How to run tests?
 1. run command to fire all tests: `yarn run test`
