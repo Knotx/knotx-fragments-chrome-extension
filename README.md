@@ -349,9 +349,9 @@ We use `vis.js` library to visualise [fragments](https://github.com/Knotx/knotx-
 - Timeline showing the processing times of all steps performed while processing a specific fragment (`MainPanel `: `Timeline` component)
 
 ### Styling
-We don't use any grid system to make our app beautiful. Everything is flex. To show and hide elements we try to use a react state, without saving this information in the redux store.
+We don't use any grid system to make our app beautiful. Everything is flex. To show and hide elements we try to use a react state, without saving this information in the redux store. SidePanelExpanded info is currently an one exception.
 
-To create styles we use styling-component .We follow the convention to create a style file next to js file.
+To create styles we use styling-component. We follow the convention to create a style file next to js file.
 
  ```
 •
