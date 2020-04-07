@@ -314,7 +314,11 @@ build/test/coverage/index.html
 ## Implementation details
 
 ### Data flow
-Extension get information about knot.x from html markup. Knot.x in ebug mode provide a tag with all necessary data. In the next step our content script get this data and change structure to comfortable for us. Content script pass this data to background script which save them in redux.
+An extension's architecture includes such components as:
+
+background script that contains listeners for browser events and communication with Redux
+content script that contains JavaScript that executes in the context of a page that has been loaded in the browser.
+Depending on the format (JSON or HTML markup), fragments' debug data is processed by the content script first and then stored in Redux with the background script (which basically wraps Redux store). Content script transformations are described [here](https://github.com/Knotx/knotx-fragments-chrome-extension#debug-fragment-data).
 
 ```
 KNOT.x -> HTML MARKUP -> CONTENT SCRIPT -> BACKGROUND SCRIPT -> REDUX -> COMPONENTS
