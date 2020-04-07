@@ -391,6 +391,6 @@ The example below presents how data is stored in Redux:
         └── ...
 ```
 
-The pageData item is created on page load and destroy on page close. We create an item for all active pages. If the page doesn't use Knot.x , fragments property is empty.
+The pageData entry is created on page load and destroyed when we close the tab. If the page does not contain Knot.x fragments, fragments property is empty.
 
 ## Contributors
