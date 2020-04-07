@@ -294,8 +294,8 @@ We believe that unit tests remain the best documentation. All React components, 
 
 
 All JS files (components & helpers) have their own tests that are placed next to the tested sources. We follow the convention:
-* *.mock.js - it is configuration containing mocks for our tests
-* *.spec.jsx - it contains unit tests
+* ```*.mock.js``` - it is configuration containing mocks for our tests
+* ```*.spec.jsx``` - it contains unit tests
 
 
 Additionally, we placed tests coverage verification in our CI. We use the jest-coverage tool for that. We decided to keep the coverage level at truly high levels (80 - 100%). It should enable future refactoring and code changes.
