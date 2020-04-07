@@ -264,21 +264,21 @@ Parser consists of the following phases:
 ### Extensions / Plugins
 main plugins:
 
-* React - https://reactjs.org/
-* Redux - https://redux.js.org/
-* Webext - https://github.com/tshaddix/webext-redux
-* styled-components - https://styled-components.com/
-* vis-network - https://visjs.github.io/vis-network/docs/network/
-* vis-timeline - https://visjs.github.io/vis-timeline/docs/timeline/
-* unique-selector - https://github.com/ericclemmons/unique-selector
-* renderjson - https://github.com/caldwell/renderjson
-* react-fontawesome - https://github.com/FortAwesome/react-fontawesome
-* Jest - https://jestjs.io/docs/en/cli.html
-* Enzyme - https://enzymejs.github.io/enzyme/
-* semver - https://github.com/npm/node-semver#readme
-* Babel - https://babeljs.io/
-* Eslint - https://eslint.org/
-* Webpack - https://webpack.js.org/
+* [React](https://reactjs.org/)
+* [Redux](https://redux.js.org/)
+* [Webext](https://github.com/tshaddix/webext-redux)
+* [styled-components](https://styled-components.com/)
+* [vis-network](https://visjs.github.io/vis-network/docs/network/)
+* [vis-timeline](https://visjs.github.io/vis-timeline/docs/timeline/)
+* [unique-selector](https://github.com/ericclemmons/unique-selector)
+* [renderjson](https://github.com/caldwell/renderjson)
+* [react-fontawesome](https://github.com/FortAwesome/react-fontawesome)
+* [Jest](https://jestjs.io/docs/en/cli.html)
+* [Enzyme](https://enzymejs.github.io/enzyme/)
+* [semver](https://github.com/npm/node-semver#readme)
+* [Babel](https://babeljs.io/)
+* [Eslint](https://eslint.org/)
+* [Webpack](https://webpack.js.org/)
 
 ### CI
 The GitHub repository is integrated with Azure Pipelines (CI) to validate both new PRs and the master branch. Check the azure-pipelines.yml file for configuration details. So we check:
