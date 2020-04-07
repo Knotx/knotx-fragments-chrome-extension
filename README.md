@@ -307,7 +307,7 @@ We use jest-coverage tool. After run tests in the root directory jest create a b
 build/test/coverage/index.html
 ```
 
-### How to test?
+### How to run tests?
 1. run command to fire all tests: `yarn run test`
 2. run command to fire the specific test: `yarn run test [path_to_test]`
 
