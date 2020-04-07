@@ -343,11 +343,10 @@ The components structure in the main concept look like this:
 ```
 
 #### Graph && timelines
-To create a data visualization we use vis.js library. Currently we have 3 charts in our application.
-
-* Timeline for fragments on sidePanel (FragmentGannt component)
-* Main graph for the fragment (Graph component)
-* Performance timeline for the fragment (Timeline component)
+We use `vis.js` library to visualise [fragments](https://github.com/Knotx/knotx-fragments/tree/master/api#fragment)' processing details. See the following components:
+- Timeline showing the processing time of  all fragments (`SidePanel `: `FragmentGantt` component)
+- Chart presenting the logic of processing a particular fragment (`MainPanel `: `Graph` component)
+- Timeline showing the processing times of all steps performed while processing a specific fragment (`MainPanel `: `Timeline` component)
 
 ### Styling
 We don't use any grid system to make our app beautiful. Everything is flex. To show and hide elements we try to use a react state, without saving this information in the redux store.
@@ -367,7 +366,17 @@ some global styling and styling for renderjson markupwe store in
 
 
 ### Data storage
-All data about fragments and pages are store in redux. We store a separate data set and an app state for all active pages to allow using a few dev tools console for a few Knot.x pages. Every pageData-set has own ID (chrome tab id). The structure of redux looks like this:
+We use Redux as storage. It keeps details about:
+- parsed list of fragments
+- application state such as details which panel was expanded/hidden etc.
+
+Once loaded page data is stored in a map where:
+- key is a Chrome tab identifier 
+- value contains fragments, page data and application state per tab.
+
+Such storage solution makes it easy to analyse many pages at the same time, switching between them, and running many Chrome Dev Tools Console instances.
+
+The example below presents how data is stored in Redux:
 
 
 ```
