@@ -13,9 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import Legend from './Legend';
 
-import { createStore } from 'redux';
-import withReduxEnhancer from 'addon-redux/enhancer';
-import reducers from './reducers/index';
+export default {
+  title: 'Legend',
+  component: Legend,
+};
 
-export const store = createStore(reducers, withReduxEnhancer);
+const stories = storiesOf('Logic Components | MainPanel.Graph.Legend', module);
+
+stories.add('Legend', () => <Legend />);

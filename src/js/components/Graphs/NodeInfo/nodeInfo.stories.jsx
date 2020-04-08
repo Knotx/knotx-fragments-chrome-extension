@@ -14,28 +14,18 @@
  * limitations under the License.
  */
 import React from 'react';
-import { Provider } from 'react-redux';
 import { storiesOf } from '@storybook/react';
-import addons from '@storybook/addons';
-import withRedux from 'addon-redux/withRedux';
 import {
-  withKnobs, number,
+  withKnobs, object,
 } from '@storybook/addon-knobs';
-import SidePanel from './sidePanel';
-import data from '../FragmentList/fragmentList.mock';
-import { store } from '../../state/store';
+import NodeInfo from './NodeInfo';
+import { singleNodeWithTransitions } from '../../../helpers/graph/declarationHelper.mock';
 
-const withReduxSettings = {
-  Provider,
-  store,
-  state: { pageData: data },
-  actions: [],
+export default {
+  title: 'Legend',
+  component: NodeInfo,
 };
 
-const withReduxDecorator = withRedux(addons)(withReduxSettings);
-
-const stories = storiesOf('Logic Components  | SidePanel', module);
-stories.addDecorator(withReduxDecorator);
+const stories = storiesOf('Logic Components | MainPanel.Graph.NodeInfo', module);
 stories.addDecorator(withKnobs);
-
-stories.add('SidePanel', () => <SidePanel tabId={number('tabId', 777)} />);
+stories.add('NodeInfo', () => <NodeInfo nodeJson={object('nodeJson', singleNodeWithTransitions)} />);

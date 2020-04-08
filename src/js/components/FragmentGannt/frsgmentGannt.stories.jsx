@@ -15,23 +15,28 @@
  */
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import data from '../FragmentList/fragmentList.mock';
-import reducer from '../../state/reducers/index';
-import FragmentGannt from './fragmentGannt';
 import 'vis-timeline/dist/vis-timeline-graph2d.min.css';
+import { storiesOf } from '@storybook/react';
+import addons from '@storybook/addons';
+import withRedux from 'addon-redux/withRedux';
+import {
+  withKnobs, number,
+} from '@storybook/addon-knobs';
+import FragmentGannt from './fragmentGannt';
+import { store } from '../../state/store';
+import data from '../FragmentList/fragmentList.mock';
 
-export default {
-  title: 'FragmentGannt',
-  component: FragmentGannt,
+
+const withReduxSettings = {
+  Provider,
+  store,
+  state: { pageData: data },
+  actions: [],
 };
 
-export const ToStorybook = () => (
-  <Provider store={createStore(reducer, { pageData: data })}>
-    <FragmentGannt tabId={777} />
-  </Provider>
-);
+const withReduxDecorator = withRedux(addons)(withReduxSettings);
 
-ToStorybook.story = {
-  name: 'FragmentGannt',
-};
+const stories = storiesOf('Logic Components | SidePanel.FragmentGantt', module);
+stories.addDecorator(withReduxDecorator);
+stories.addDecorator(withKnobs);
+stories.add('FragmentGantt', () => <FragmentGannt tabId={number('tabId', 777)} />);

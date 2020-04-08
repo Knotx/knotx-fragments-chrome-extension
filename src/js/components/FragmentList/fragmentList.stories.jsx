@@ -15,22 +15,27 @@
  */
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import FragmentList from './fragmentList';
+import { storiesOf } from '@storybook/react';
+import addons from '@storybook/addons';
+import withRedux from 'addon-redux/withRedux';
+import {
+  withKnobs, number,
+} from '@storybook/addon-knobs';
 import data from './fragmentList.mock';
-import reducer from '../../state/reducers/index';
+import FragmentList from './fragmentList';
+import { store } from '../../state/store';
 
-export default {
-  title: 'FragmentList',
-  component: FragmentList,
+
+const withReduxSettings = {
+  Provider,
+  store,
+  state: { pageData: data },
+  actions: [],
 };
 
-export const ToStorybook = () => (
-  <Provider store={createStore(reducer, { pageData: data })}>
-    <FragmentList tabId={777} />
-  </Provider>
-);
+const withReduxDecorator = withRedux(addons)(withReduxSettings);
 
-ToStorybook.story = {
-  name: 'FragmentList',
-};
+const stories = storiesOf('Logic Components | SidePanel.FragmentList', module);
+stories.addDecorator(withReduxDecorator);
+stories.addDecorator(withKnobs);
+stories.add('FragmentList', () => <FragmentList tabId={number('tabId', 777)} />);

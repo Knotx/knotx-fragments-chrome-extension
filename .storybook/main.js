@@ -1,8 +1,7 @@
 module.exports = {
-  stories: ['../stories/**/*.stories.js', '../src/js/components/**/*.stories.jsx' ],
+  stories: ['../src/js/components/**/*.stories.jsx' ],
   addons: [
-  '@storybook/addon-actions',
-  '@storybook/addon-links',
+  '@storybook/addon-knobs/register',
   'storybook-addon-styled-component-theme/dist/register',
 ],
   webpackFinal: async config => {

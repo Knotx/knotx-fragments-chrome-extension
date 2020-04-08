@@ -26,7 +26,7 @@ import {
 } from './helpers/constants';
 import { GlobalStyle } from './styling/globalStyle';
 
-const store = new Store();
+export const store = new Store();
 chrome.devtools.panels.create(PANEL_NAME, null, 'index.html');
 
 

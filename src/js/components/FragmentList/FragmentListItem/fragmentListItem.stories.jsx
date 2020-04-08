@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 import React from 'react';
-import { Provider } from 'react-redux';
 import { storiesOf } from '@storybook/react';
+import {
+  withKnobs, object, text, number,
+} from '@storybook/addon-knobs';
+import { Provider } from 'react-redux';
 import addons from '@storybook/addons';
 import withRedux from 'addon-redux/withRedux';
-import {
-  withKnobs, number,
-} from '@storybook/addon-knobs';
-import SidePanel from './sidePanel';
-import data from '../FragmentList/fragmentList.mock';
-import { store } from '../../state/store';
+import FragmentListItem from './fragmentListItem';
+import data from '../fragmentList.mock';
+import { store } from '../../../state/store';
 
 const withReduxSettings = {
   Provider,
@@ -34,8 +34,17 @@ const withReduxSettings = {
 
 const withReduxDecorator = withRedux(addons)(withReduxSettings);
 
-const stories = storiesOf('Logic Components  | SidePanel', module);
+
+const stories = storiesOf('Logic Components | SidePanel.FragmentList.FragmentListItem', module);
 stories.addDecorator(withReduxDecorator);
 stories.addDecorator(withKnobs);
-
-stories.add('SidePanel', () => <SidePanel tabId={number('tabId', 777)} />);
+stories.add('FragmentListItem', () => (
+  <FragmentListItem
+    status={text('status', 'success')}
+    id={text('id', '1')}
+    type={text('type', 'snippet')}
+    nodes={object('nodes', [])}
+    tabId={number('tabId', 777)}
+    time={text('time', '100')}
+  />
+));

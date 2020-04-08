@@ -15,27 +15,44 @@
  */
 import React from 'react';
 import { Provider } from 'react-redux';
+import 'vis-timeline/dist/vis-timeline-graph2d.min.css';
 import { storiesOf } from '@storybook/react';
 import addons from '@storybook/addons';
 import withRedux from 'addon-redux/withRedux';
 import {
-  withKnobs, number,
+  withKnobs, number, text,
 } from '@storybook/addon-knobs';
-import SidePanel from './sidePanel';
-import data from '../FragmentList/fragmentList.mock';
+import Graph from './Graph';
 import { store } from '../../state/store';
+import { compositeNodeWithTransitions } from '../../helpers/graph/declarationHelper.mock';
+
+const state = {
+  pageData: {
+    1: {
+      fragments: [
+        {
+          debug: {
+            fragment: {
+              id: '1',
+            },
+            graph: compositeNodeWithTransitions,
+          },
+        },
+      ],
+    },
+  },
+};
 
 const withReduxSettings = {
   Provider,
   store,
-  state: { pageData: data },
+  state,
   actions: [],
 };
 
 const withReduxDecorator = withRedux(addons)(withReduxSettings);
 
-const stories = storiesOf('Logic Components  | SidePanel', module);
+const stories = storiesOf('Logic Components | MainPanel.Graph', module);
 stories.addDecorator(withReduxDecorator);
 stories.addDecorator(withKnobs);
-
-stories.add('SidePanel', () => <SidePanel tabId={number('tabId', 777)} />);
+stories.add('Graph', () => <Graph tabId={number('tabId', 1)} fragmentId={text('fragmentId', '1')} />);
