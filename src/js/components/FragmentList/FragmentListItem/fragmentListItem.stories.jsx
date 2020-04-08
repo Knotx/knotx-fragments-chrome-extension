@@ -13,10 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import {
-  withKnobs, object, text, number,
+  withKnobs,
+  array,
+  text,
+  number,
 } from '@storybook/addon-knobs';
 import { Provider } from 'react-redux';
 import addons from '@storybook/addons';
@@ -34,7 +38,6 @@ const withReduxSettings = {
 
 const withReduxDecorator = withRedux(addons)(withReduxSettings);
 
-
 const stories = storiesOf('Logic Components | SidePanel.FragmentList.FragmentListItem', module);
 stories.addDecorator(withReduxDecorator);
 stories.addDecorator(withKnobs);
@@ -43,7 +46,12 @@ stories.add('FragmentListItem', () => (
     status={text('status', 'success')}
     id={text('id', '1')}
     type={text('type', 'snippet')}
-    nodes={object('nodes', [])}
+    nodes={array('nodes', [
+      {
+        selector: '.container-fluid > :nth-child(2) > :nth-child(2)',
+        tag: 'DIV',
+      },
+    ])}
     tabId={number('tabId', 777)}
     time={text('time', '100')}
   />

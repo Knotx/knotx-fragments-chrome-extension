@@ -13,18 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import React from 'react';
 import { Provider } from 'react-redux';
 import { storiesOf } from '@storybook/react';
 import addons from '@storybook/addons';
 import withRedux from 'addon-redux/withRedux';
-import {
-  withKnobs, number,
-} from '@storybook/addon-knobs';
+import { withKnobs, number } from '@storybook/addon-knobs';
 import data from './fragmentList.mock';
 import FragmentList from './fragmentList';
 import { store } from '../../state/store';
-
 
 const withReduxSettings = {
   Provider,

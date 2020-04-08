@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import React from 'react';
 import { Provider } from 'react-redux';
 import 'vis-timeline/dist/vis-timeline-graph2d.min.css';
@@ -25,7 +26,6 @@ import {
 import FragmentGannt from './fragmentGannt';
 import { store } from '../../state/store';
 import data from '../FragmentList/fragmentList.mock';
-
 
 const withReduxSettings = {
   Provider,

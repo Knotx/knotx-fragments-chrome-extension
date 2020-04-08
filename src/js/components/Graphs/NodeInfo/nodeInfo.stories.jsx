@@ -13,11 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import {
-  withKnobs, object,
-} from '@storybook/addon-knobs';
+import { withKnobs, object } from '@storybook/addon-knobs';
 import NodeInfo from './NodeInfo';
 import { singleNodeWithTransitions } from '../../../helpers/graph/declarationHelper.mock';
 

@@ -13,14 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import React from 'react';
 import { Provider } from 'react-redux';
 import { storiesOf } from '@storybook/react';
 import addons from '@storybook/addons';
 import withRedux from 'addon-redux/withRedux';
-import {
-  withKnobs, number,
-} from '@storybook/addon-knobs';
+import { withKnobs, number } from '@storybook/addon-knobs';
 import SidePanel from './sidePanel';
 import data from '../FragmentList/fragmentList.mock';
 import { store } from '../../state/store';
@@ -34,7 +33,7 @@ const withReduxSettings = {
 
 const withReduxDecorator = withRedux(addons)(withReduxSettings);
 
-const stories = storiesOf('Logic Components  | SidePanel', module);
+const stories = storiesOf('Logic Components | SidePanel', module);
 stories.addDecorator(withReduxDecorator);
 stories.addDecorator(withKnobs);
 

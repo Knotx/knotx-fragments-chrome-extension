@@ -13,15 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import React from 'react';
 import { Provider } from 'react-redux';
 import 'vis-timeline/dist/vis-timeline-graph2d.min.css';
 import { storiesOf } from '@storybook/react';
 import addons from '@storybook/addons';
 import withRedux from 'addon-redux/withRedux';
-import {
-  withKnobs, number, text,
-} from '@storybook/addon-knobs';
+import { withKnobs, number, text } from '@storybook/addon-knobs';
 import Graph from './Graph';
 import { store } from '../../state/store';
 import { compositeNodeWithTransitions } from '../../helpers/graph/declarationHelper.mock';
