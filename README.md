@@ -342,7 +342,6 @@ The components structure in the main concept look like this:
             └──  NodeInfo
 ```
 
-
 You can find interactive documentation for all components in our storyBook.
 
 To open story book follow this steps:
@@ -373,7 +372,6 @@ some global styling and styling for renderjson markupwe store in
  ```
 /src/js/styling/globalStyle.js
   ```
-
 
 ### Data storage
 We use Redux as storage. It keeps details about:

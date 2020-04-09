@@ -28,7 +28,6 @@ import FragmentListItem from './FragmentListItem';
 import data from '../fragmentList.mock';
 import { withReduxSettings } from '../../../../../.storybook/storiesHelper';
 
-
 const withReduxDecorator = withRedux(addons)(withReduxSettings({ pageData: data }));
 
 storiesOf('Logic Components | SidePanel.FragmentList.FragmentListItem', module)

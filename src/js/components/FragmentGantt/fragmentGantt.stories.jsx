@@ -18,14 +18,11 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import addons from '@storybook/addons';
 import withRedux from 'addon-redux/withRedux';
-import {
-  withKnobs, number,
-} from '@storybook/addon-knobs';
+import { withKnobs, number } from '@storybook/addon-knobs';
 import FragmentGantt from './FragmentGantt';
 import data from '../FragmentList/fragmentList.mock';
 import 'vis-timeline/dist/vis-timeline-graph2d.min.css';
 import { withReduxSettings } from '../../../../.storybook/storiesHelper';
-
 
 const withReduxDecorator = withRedux(addons)(withReduxSettings({ pageData: data }));
 

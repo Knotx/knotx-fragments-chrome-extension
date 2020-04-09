@@ -29,7 +29,6 @@ import { GlobalStyle } from './styling/globalStyle';
 export const store = new Store();
 chrome.devtools.panels.create(PANEL_NAME, null, 'index.html');
 
-
 const port = chrome.runtime.connect({ name: chromeConnections.KNOTX_DEVTOOL_CONNECTION });
 
 port.postMessage(chromeActions.GET_CURRENT_TAB_INFO);

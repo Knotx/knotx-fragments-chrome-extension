@@ -16,9 +16,7 @@
 
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import {
-  withKnobs, object,
-} from '@storybook/addon-knobs';
+import { withKnobs, object } from '@storybook/addon-knobs';
 import NodePerformanceTimeline from './Timeline';
 import { singleNodeWithTransition } from '../../../helpers/timeline/declerationHelper.mock';
 import 'vis-timeline/dist/vis-timeline-graph2d.min.css';

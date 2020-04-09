@@ -20,9 +20,7 @@ import { constructTimeline } from '../../../helpers/timeline/declarationHelper';
 import { drawTimeline } from '../../../helpers/timeline/drawHelper';
 import { Timeline } from './timeline.style';
 
-const NodePerformanceTimeline = ({
-  graphJson,
-}) => {
+const NodePerformanceTimeline = ({ graphJson }) => {
   const timelineRef = useRef(null);
 
   useEffect(() => {
