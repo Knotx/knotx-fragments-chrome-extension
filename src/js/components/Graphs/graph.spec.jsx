@@ -18,7 +18,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import Graph from './graph';
+import Graph from './Graph';
 import { nodeInfoToIcon } from './graphHelper';
 import reducer from '../../state/reducers/index';
 
