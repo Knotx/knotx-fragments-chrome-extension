@@ -31,21 +31,21 @@ import { withReduxSettings } from '../../../../../.storybook/storiesHelper';
 
 const withReduxDecorator = withRedux(addons)(withReduxSettings({ pageData: data }));
 
-const stories = storiesOf('Logic Components | SidePanel.FragmentList.FragmentListItem', module);
-stories.addDecorator(withReduxDecorator);
-stories.addDecorator(withKnobs);
-stories.add('FragmentListItem', () => (
-  <FragmentListItem
-    status={text('status', 'success')}
-    id={text('id', '1')}
-    type={text('type', 'snippet')}
-    nodes={array('nodes', [
-      {
-        selector: '.container-fluid > :nth-child(2) > :nth-child(2)',
-        tag: 'DIV',
-      },
-    ])}
-    tabId={number('tabId', 777)}
-    time={text('time', '100')}
-  />
-));
+storiesOf('Logic Components | SidePanel.FragmentList.FragmentListItem', module)
+  .addDecorator(withReduxDecorator)
+  .addDecorator(withKnobs)
+  .add('FragmentListItem', () => (
+    <FragmentListItem
+      status={text('status', 'success')}
+      id={text('id', '1')}
+      type={text('type', 'snippet')}
+      nodes={array('nodes', [
+        {
+          selector: '.container-fluid > :nth-child(2) > :nth-child(2)',
+          tag: 'DIV',
+        },
+      ])}
+      tabId={number('tabId', 777)}
+      time={text('time', '100')}
+    />
+  ));

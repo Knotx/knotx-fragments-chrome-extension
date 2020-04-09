@@ -23,8 +23,8 @@ import NodePerformanceTimeline from './Timeline';
 import { singleNodeWithTransition } from '../../../helpers/timeline/declerationHelper.mock';
 import 'vis-timeline/dist/vis-timeline-graph2d.min.css';
 
-const stories = storiesOf('Logic Components | MainPanel.Graph.NodePerformanceTimeline', module);
-stories.addDecorator(withKnobs);
-stories.add('NodePerformanceTimeline', () => (
-  <NodePerformanceTimeline graphJson={object('graphJson', singleNodeWithTransition)} />
-));
+storiesOf('Logic Components | MainPanel.Graph.NodePerformanceTimeline', module)
+  .addDecorator(withKnobs)
+  .add('NodePerformanceTimeline', () => (
+    <NodePerformanceTimeline graphJson={object('graphJson', singleNodeWithTransition)} />
+  ));

@@ -44,7 +44,7 @@ const state = {
 
 const withReduxDecorator = withRedux(addons)(withReduxSettings(state));
 
-const stories = storiesOf('Logic Components | MainPanel.Graph', module);
-stories.addDecorator(withReduxDecorator);
-stories.addDecorator(withKnobs);
-stories.add('Graph', () => <Graph tabId={number('tabId', 1)} fragmentId={text('fragmentId', '1')} />);
+storiesOf('Logic Components | MainPanel.Graph', module)
+  .addDecorator(withReduxDecorator)
+  .addDecorator(withKnobs)
+  .add('Graph', () => <Graph tabId={number('tabId', 1)} fragmentId={text('fragmentId', '1')} />);

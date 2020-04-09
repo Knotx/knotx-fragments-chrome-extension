@@ -20,6 +20,6 @@ import { withKnobs, object } from '@storybook/addon-knobs';
 import NodeInfo from './NodeInfo';
 import { singleNodeWithTransitions } from '../../../helpers/graph/declarationHelper.mock';
 
-const stories = storiesOf('Logic Components | MainPanel.Graph.NodeInfo', module);
-stories.addDecorator(withKnobs);
-stories.add('NodeInfo', () => <NodeInfo nodeJson={object('nodeJson', singleNodeWithTransitions)} />);
+storiesOf('Logic Components | MainPanel.Graph.NodeInfo', module)
+  .addDecorator(withKnobs)
+  .add('NodeInfo', () => <NodeInfo nodeJson={object('nodeJson', singleNodeWithTransitions)} />);

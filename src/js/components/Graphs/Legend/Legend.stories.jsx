@@ -18,7 +18,5 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Legend from './Legend';
 
-
-const stories = storiesOf('Logic Components | MainPanel.Graph.Legend', module);
-
-stories.add('Legend', () => <Legend />);
+storiesOf('Logic Components | MainPanel.Graph.Legend', module)
+  .add('Legend', () => <Legend />);

@@ -29,7 +29,7 @@ import { withReduxSettings } from '../../../../.storybook/storiesHelper';
 
 const withReduxDecorator = withRedux(addons)(withReduxSettings({ pageData: data }));
 
-const stories = storiesOf('Logic Components | SidePanel.FragmentGantt', module);
-stories.addDecorator(withReduxDecorator);
-stories.addDecorator(withKnobs);
-stories.add('FragmentGantt', () => <FragmentGantt tabId={number('tabId', 777)} />);
+storiesOf('Logic Components | SidePanel.FragmentGantt', module)
+  .addDecorator(withReduxDecorator)
+  .addDecorator(withKnobs)
+  .add('FragmentGantt', () => <FragmentGantt tabId={number('tabId', 777)} />);

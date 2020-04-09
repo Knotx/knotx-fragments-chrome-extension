@@ -25,8 +25,7 @@ import { withReduxSettings } from '../../../../.storybook/storiesHelper';
 
 const withReduxDecorator = withRedux(addons)(withReduxSettings({ pageData: data }));
 
-const stories = storiesOf('Logic Components | SidePanel', module);
-stories.addDecorator(withReduxDecorator);
-stories.addDecorator(withKnobs);
-
-stories.add('SidePanel', () => <SidePanel tabId={number('tabId', 777)} />);
+storiesOf('Logic Components | SidePanel', module)
+  .addDecorator(withReduxDecorator)
+  .addDecorator(withKnobs)
+  .add('SidePanel', () => <SidePanel tabId={number('tabId', 777)} />);
