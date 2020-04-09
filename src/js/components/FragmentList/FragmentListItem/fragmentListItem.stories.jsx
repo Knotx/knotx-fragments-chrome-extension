@@ -22,21 +22,14 @@ import {
   text,
   number,
 } from '@storybook/addon-knobs';
-import { Provider } from 'react-redux';
 import addons from '@storybook/addons';
 import withRedux from 'addon-redux/withRedux';
 import FragmentListItem from './FragmentListItem';
 import data from '../fragmentList.mock';
-import { store } from '../../../state/store';
+import { withReduxSettings } from '../../../../../.storybook/storiesHelper';
 
-const withReduxSettings = {
-  Provider,
-  store,
-  state: { pageData: data },
-  actions: [],
-};
 
-const withReduxDecorator = withRedux(addons)(withReduxSettings);
+const withReduxDecorator = withRedux(addons)(withReduxSettings({ pageData: data }));
 
 const stories = storiesOf('Logic Components | SidePanel.FragmentList.FragmentListItem', module);
 stories.addDecorator(withReduxDecorator);

@@ -15,23 +15,15 @@
  */
 
 import React from 'react';
-import { Provider } from 'react-redux';
 import { storiesOf } from '@storybook/react';
 import addons from '@storybook/addons';
 import withRedux from 'addon-redux/withRedux';
 import { withKnobs, number } from '@storybook/addon-knobs';
 import SidePanel from './SidePanel';
 import data from '../FragmentList/fragmentList.mock';
-import { store } from '../../state/store';
+import { withReduxSettings } from '../../../../.storybook/storiesHelper';
 
-const withReduxSettings = {
-  Provider,
-  store,
-  state: { pageData: data },
-  actions: [],
-};
-
-const withReduxDecorator = withRedux(addons)(withReduxSettings);
+const withReduxDecorator = withRedux(addons)(withReduxSettings({ pageData: data }));
 
 const stories = storiesOf('Logic Components | SidePanel', module);
 stories.addDecorator(withReduxDecorator);

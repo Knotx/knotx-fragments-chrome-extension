@@ -15,15 +15,15 @@
  */
 
 import React from 'react';
-import { Provider } from 'react-redux';
 import 'vis-timeline/dist/vis-timeline-graph2d.min.css';
 import { storiesOf } from '@storybook/react';
 import addons from '@storybook/addons';
 import withRedux from 'addon-redux/withRedux';
 import { withKnobs, number, text } from '@storybook/addon-knobs';
 import Graph from './Graph';
-import { store } from '../../state/store';
 import { compositeNodeWithTransitions } from '../../helpers/graph/declarationHelper.mock';
+import { withReduxSettings } from '../../../../.storybook/storiesHelper';
+
 
 const state = {
   pageData: {
@@ -42,14 +42,7 @@ const state = {
   },
 };
 
-const withReduxSettings = {
-  Provider,
-  store,
-  state,
-  actions: [],
-};
-
-const withReduxDecorator = withRedux(addons)(withReduxSettings);
+const withReduxDecorator = withRedux(addons)(withReduxSettings(state));
 
 const stories = storiesOf('Logic Components | MainPanel.Graph', module);
 stories.addDecorator(withReduxDecorator);
