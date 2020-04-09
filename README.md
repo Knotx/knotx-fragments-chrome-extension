@@ -15,7 +15,7 @@ See the main benefits:
 
 | Developer   | Quality Assurance | Business |
 |:------------|:------------------|:---------|
-| - Easier debugging.​ <br> - New developers can quickly understand the backend data flow. <br>​ - Developers can easier identify the bug root cause (service/backend/frontend layer).​ <br> - Tool can be helpful during QA demo sessions.​ |  - Easier to analyse weak points in the backend logic​ <br> - Enable inspecting for root causes of page rendering performance problems | - Business Analyst can easily analyse / verify the implementation and even show the visualisation to clients. <br> - Easier to design the architecture to be ready for changes and potential network errors. <br> - Visualization can be used in always up-to-date documentation.​ |
+| - Easier debugging.​ <br> - New developers can quickly understand the backend data flow. <br>​ - Developers can easier identify the bug root cause (service/backend/frontend layer).​ <br> - Tool can be helpful during QA demo sessions.​ |  - Easier to analyse weak points in the backend logic​ <br> - Enable inspecting for root causes of page rendering performance issues | - Business can easily analyse/verify the business logic implementation <br> - Visualization can be used in always up-to-date documentation.​ |
 
 ## How to start?
 You can easily build the extension and select `dist` directory from Chrome extensions page. Follow
