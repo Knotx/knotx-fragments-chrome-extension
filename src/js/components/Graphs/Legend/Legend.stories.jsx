@@ -18,10 +18,6 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import Legend from './Legend';
 
-export default {
-  title: 'Legend',
-  component: Legend,
-};
 
 const stories = storiesOf('Logic Components | MainPanel.Graph.Legend', module);
 

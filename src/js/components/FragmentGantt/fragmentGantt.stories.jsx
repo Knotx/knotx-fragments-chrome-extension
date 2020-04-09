@@ -23,7 +23,7 @@ import withRedux from 'addon-redux/withRedux';
 import {
   withKnobs, number,
 } from '@storybook/addon-knobs';
-import FragmentGannt from './fragmentGantt';
+import FragmentGantt from './FragmentGantt';
 import { store } from '../../state/store';
 import data from '../FragmentList/fragmentList.mock';
 
@@ -39,4 +39,4 @@ const withReduxDecorator = withRedux(addons)(withReduxSettings);
 const stories = storiesOf('Logic Components | SidePanel.FragmentGantt', module);
 stories.addDecorator(withReduxDecorator);
 stories.addDecorator(withKnobs);
-stories.add('FragmentGantt', () => <FragmentGannt tabId={number('tabId', 777)} />);
+stories.add('FragmentGantt', () => <FragmentGantt tabId={number('tabId', 777)} />);
