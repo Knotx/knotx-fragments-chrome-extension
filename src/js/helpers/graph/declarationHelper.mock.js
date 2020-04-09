@@ -23,7 +23,7 @@ export const singleNode = {
   type: 'single',
   response: {
     transition: '_success',
-    invocations: {},
+    invocations: [],
   },
 };
 
@@ -51,13 +51,13 @@ export const singleNodeWithTransitions = {
       status: 'success',
       type: 'single',
       response: {
-        invocations: {},
+        invocations: [],
         transition: '_success',
       },
     },
   },
   response: {
-    invocations: {},
+    invocations: [],
     transition: 'custom1',
   },
 };
@@ -91,13 +91,13 @@ export const compositeNode = {
       status: 'success',
       type: 'single',
       response: {
-        invocations: {},
+        invocations: [],
         transition: '_success',
       },
     },
   ],
   response: {
-    invocations: {},
+    invocations: [],
     transition: '_success',
   },
 };
@@ -118,7 +118,7 @@ export const compositeNodeWithTransitions = {
       started: 54321,
       finished: 65432,
       response: {
-        invocations: {},
+        invocations: [],
         transition: 'success',
       },
     },
@@ -130,7 +130,7 @@ export const compositeNodeWithTransitions = {
       started: 54321,
       finished: 65432,
       response: {
-        invocations: {},
+        invocations: [],
         transition: 'success',
       },
     },
@@ -147,7 +147,7 @@ export const compositeNodeWithTransitions = {
       started: 54321,
       finished: 65432,
       response: {
-        invocations: {},
+        invocations: [],
         transition: 'success',
       },
     },
@@ -166,7 +166,7 @@ export const compositeWithMultipleLevelEndNodes = {
       status: 'error',
       type: 'single',
       response: {
-        invocations: {},
+        invocations: [],
         transition: '_error',
       },
     },
@@ -182,13 +182,13 @@ export const compositeWithMultipleLevelEndNodes = {
           status: 'success',
           type: 'single',
           response: {
-            invocations: {},
+            invocations: [],
             transition: '_success',
           },
         },
       },
       response: {
-        invocations: {},
+        invocations: [],
         transition: '_error',
       },
     },
@@ -200,13 +200,13 @@ export const compositeWithMultipleLevelEndNodes = {
       status: 'error',
       type: 'single',
       response: {
-        invocations: {},
+        invocations: [],
         transition: '_error',
       },
     },
   },
   response: {
-    invocations: {},
+    invocations: [],
     transition: '_success',
   },
 };
@@ -229,7 +229,7 @@ export const compositeWithNodeWithAllTransitions = {
           status: 'success',
           type: 'single',
           response: {
-            invocations: {},
+            invocations: [],
             transition: 'success',
           },
         },
@@ -241,7 +241,7 @@ export const compositeWithNodeWithAllTransitions = {
         },
       },
       response: {
-        invocations: {},
+        invocations: [],
         transition: 'success',
       },
     },
@@ -256,7 +256,7 @@ export const compositeWithNodeWithAllTransitions = {
       status: 'success',
       type: 'single',
       response: {
-        invocations: {},
+        invocations: [],
         transition: 'success',
       },
     },
@@ -275,7 +275,7 @@ export const compositeWithComplexTransitions = {
       status: 'error',
       type: 'single',
       response: {
-        invocations: {},
+        invocations: [],
         transition: '_error',
       },
     },
@@ -291,13 +291,13 @@ export const compositeWithComplexTransitions = {
           status: 'success',
           type: 'single',
           response: {
-            invocations: {},
+            invocations: [],
             transition: '_success',
           },
         },
       },
       response: {
-        invocations: {},
+        invocations: [],
         transition: '_error',
       },
     },
@@ -309,13 +309,13 @@ export const compositeWithComplexTransitions = {
       status: 'error',
       type: 'single',
       response: {
-        invocations: {},
+        invocations: [],
         transition: '_error',
       },
     },
   },
   response: {
-    invocations: {},
+    invocations: [],
     transition: '_success',
   },
 };
@@ -338,7 +338,7 @@ export const compositeWithUnprocessedNodeInSubtask = {
           status: 'error',
           type: 'single',
           response: {
-            invocations: {},
+            invocations: [],
             transition: '_error',
           },
         },
@@ -350,13 +350,13 @@ export const compositeWithUnprocessedNodeInSubtask = {
         },
       },
       response: {
-        invocations: {},
+        invocations: [],
         transition: '_success',
       },
     },
   ],
   response: {
-    invocations: {},
+    invocations: [],
     transition: '_error',
   },
 };
@@ -381,13 +381,13 @@ export const compositeWithMissingNodeInSubtask = {
         },
       },
       response: {
-        invocations: {},
+        invocations: [],
         transition: 'custom',
       },
     },
   ],
   response: {
-    invocations: {},
+    invocations: [],
     transition: '_error',
   },
 };
@@ -416,13 +416,13 @@ export const compositeWithUnevenSubtasks = {
               status: 'success',
               type: 'single',
               response: {
-                invocations: {},
+                invocations: [],
                 transition: '_success',
               },
             },
           },
           response: {
-            invocations: {},
+            invocations: [],
             transition: '_success',
           },
         },
@@ -434,7 +434,7 @@ export const compositeWithUnevenSubtasks = {
         },
       },
       response: {
-        invocations: {},
+        invocations: [],
         transition: '_success',
       },
     },
@@ -444,7 +444,7 @@ export const compositeWithUnevenSubtasks = {
       status: 'success',
       type: 'single',
       response: {
-        invocations: {},
+        invocations: [],
         transition: '_success',
       },
     },
@@ -469,19 +469,19 @@ export const nestedComposites = {
           status: 'error',
           type: 'single',
           response: {
-            invocations: {},
+            invocations: [],
             transition: '_error',
           },
         },
       ],
       response: {
-        invocations: {},
+        invocations: [],
         transition: '_error',
       },
     },
   ],
   response: {
-    invocations: {},
+    invocations: [],
     transition: '_error',
   },
 };
