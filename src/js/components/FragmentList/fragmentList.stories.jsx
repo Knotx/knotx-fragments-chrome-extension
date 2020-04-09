@@ -21,7 +21,7 @@ import addons from '@storybook/addons';
 import withRedux from 'addon-redux/withRedux';
 import { withKnobs, number } from '@storybook/addon-knobs';
 import data from './fragmentList.mock';
-import FragmentList from './fragmentList';
+import FragmentList from './FragmentList';
 import { store } from '../../state/store';
 
 const withReduxSettings = {

@@ -20,7 +20,7 @@ import { storiesOf } from '@storybook/react';
 import addons from '@storybook/addons';
 import withRedux from 'addon-redux/withRedux';
 import { withKnobs, number } from '@storybook/addon-knobs';
-import SidePanel from './sidePanel';
+import SidePanel from './SidePanel';
 import data from '../FragmentList/fragmentList.mock';
 import { store } from '../../state/store';
 

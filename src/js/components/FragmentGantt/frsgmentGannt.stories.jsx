@@ -23,7 +23,7 @@ import withRedux from 'addon-redux/withRedux';
 import {
   withKnobs, number,
 } from '@storybook/addon-knobs';
-import FragmentGannt from './fragmentGannt';
+import FragmentGannt from './fragmentGantt';
 import { store } from '../../state/store';
 import data from '../FragmentList/fragmentList.mock';
 

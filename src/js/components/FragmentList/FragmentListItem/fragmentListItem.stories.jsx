@@ -25,7 +25,7 @@ import {
 import { Provider } from 'react-redux';
 import addons from '@storybook/addons';
 import withRedux from 'addon-redux/withRedux';
-import FragmentListItem from './fragmentListItem';
+import FragmentListItem from './FragmentListItem';
 import data from '../fragmentList.mock';
 import { store } from '../../../state/store';
 

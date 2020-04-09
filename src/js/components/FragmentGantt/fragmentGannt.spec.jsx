@@ -18,7 +18,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { mount } from 'enzyme';
-import FragmentGannt from './fragmentGannt';
+import FragmentGannt from './fragmentGantt';
 import data from '../FragmentList/fragmentList.mock';
 import reducer from '../../state/reducers/index';
 import { Timeline, TimelineBar } from './fragmentGannt.style';
