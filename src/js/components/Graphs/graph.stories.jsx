@@ -24,7 +24,6 @@ import Graph from './Graph';
 import { compositeNodeWithTransitions } from '../../helpers/graph/declarationHelper.mock';
 import { withReduxSettings } from '../../../../.storybook/storiesHelper';
 
-
 const state = {
   pageData: {
     1: {
