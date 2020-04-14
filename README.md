@@ -342,14 +342,11 @@ The components structure in the main concept look like this:
             └──  NodeInfo
 ```
 
-You can find interactive documentation for all components in our storyBook.
+You can find interactive documentation for all components in our [storybook](https://storybook.js.org/).
 
-To open story book follow this steps:
-- clone this repo
-- run command ``` yarn install  ```
-- run command ``` yarn run dev ```
+To open the storybook follow the steps below:
 - run command ``` yarn storybook ```
-- go to http://localhost:6006/
+- go to [localhost:6006](http://localhost:6006/)
 
 #### Graph && timelines
 We use `vis.js` library to visualise [fragments](https://github.com/Knotx/knotx-fragments/tree/master/api#fragment)' processing details. See the following components:
