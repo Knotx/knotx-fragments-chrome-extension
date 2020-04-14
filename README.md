@@ -345,9 +345,7 @@ The components structure in the main concept look like this:
 You can find interactive documentation for all components in our [storybook](https://storybook.js.org/).
 
 To open the storybook follow the steps below:
-- clone this repo
 - run command ``` yarn install  ```
-- run command ``` yarn run dev ```
 - run command ``` yarn storybook ```
 - go to [localhost:6006](http://localhost:6006/)
 
