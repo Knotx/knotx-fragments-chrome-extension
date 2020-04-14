@@ -344,7 +344,7 @@ The components structure in the main concept look like this:
 
 You can find interactive documentation for all components in our storyBook.
 
-To open story book follow this steps:
+To open the storybook follow the steps below:
 - clone this repo
 - run command ``` yarn install  ```
 - run command ``` yarn run dev ```
