@@ -27,6 +27,7 @@ const config = {
 describe('SidePanel', () => {
   it('visually looks correct', async () => {
     await page.goto('http://localhost:6006/iframe.html?id=logic-components-sidepanel--sidepanel');
+    await page.evaluateHandle('document.fonts.ready');
     const image = await page.screenshot();
 
     expect(image).toMatchImageSnapshot(config);
@@ -36,6 +37,7 @@ describe('SidePanel', () => {
 describe('FragmentGantt', () => {
   it('FragmentGantt visually looks correct', async () => {
     await page.goto('http://localhost:6006/iframe.html?id=logic-components-sidepanel-fragmentgantt--fragmentgantt');
+    await page.evaluateHandle('document.fonts.ready');
     const image = await page.screenshot();
 
     expect(image).toMatchImageSnapshot(config);
@@ -45,6 +47,7 @@ describe('FragmentGantt', () => {
 describe('FragmentList', () => {
   it('FragmentList visually looks correct', async () => {
     await page.goto('http://localhost:6006/iframe.html?id=logic-components-sidepanel-fragmentlist--fragmentlist');
+    await page.evaluateHandle('document.fonts.ready');
     const image = await page.screenshot();
 
     expect(image).toMatchImageSnapshot(config);
@@ -53,6 +56,7 @@ describe('FragmentList', () => {
   it('FragmentListItem visually looks correct', async () => {
     // eslint-disable-next-line max-len
     await page.goto('http://localhost:6006/iframe.html?id=logic-components-sidepanel-fragmentlist-fragmentlistitem--fragmentlistitem');
+    await page.evaluateHandle('document.fonts.ready');
     const image = await page.screenshot();
 
     expect(image).toMatchImageSnapshot(config);
@@ -63,6 +67,7 @@ describe('FragmentList', () => {
 describe('Legend', () => {
   it('Legend visually looks correct', async () => {
     await page.goto('http://localhost:6006/iframe.html?id=logic-components-mainpanel-graph-legend--legend');
+    await page.evaluateHandle('document.fonts.ready');
     const image = await page.screenshot();
 
     expect(image).toMatchImageSnapshot(config);
@@ -72,6 +77,7 @@ describe('Legend', () => {
 describe('NodeInfo', () => {
   it('NodeInfo visually looks correct', async () => {
     await page.goto('http://localhost:6006/iframe.html?id=logic-components-mainpanel-graph-nodeinfo--nodeinfo');
+    await page.evaluateHandle('document.fonts.ready');
     const image = await page.screenshot();
 
     expect(image).toMatchImageSnapshot(config);
@@ -82,6 +88,7 @@ describe('NodePerformanceTimeline', () => {
   it('NodePerformanceTimeline visually looks correct', async () => {
     // eslint-disable-next-line max-len
     await page.goto('http://localhost:6006/iframe.html?id=logic-components-mainpanel-graph-nodeperformancetimeline--nodeperformancetimeline');
+    await page.evaluateHandle('document.fonts.ready');
     const image = await page.screenshot();
 
     expect(image).toMatchImageSnapshot(config);
@@ -91,6 +98,7 @@ describe('NodePerformanceTimeline', () => {
 describe('Graph', () => {
   it('Graph visually looks correct', async () => {
     await page.goto('http://localhost:6006/iframe.html?id=logic-components-mainpanel-graph--graph');
+    await page.evaluateHandle('document.fonts.ready');
     const image = await page.screenshot();
 
     expect(image).toMatchImageSnapshot(config);
