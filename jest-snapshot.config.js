@@ -14,11 +14,16 @@
  * limitations under the License.
  */
 
-import Adapter from 'enzyme-adapter-react-16';
-import { toBeVisible } from '@testing-library/jest-dom/matchers';
-import { configure } from 'enzyme';
-import { toMatchImageSnapshot } from 'jest-image-snapshot';
-
-configure({ adapter: new Adapter() });
-
-expect.extend({ toBeVisible, toMatchImageSnapshot });
+process.env.TEST_REPORT_PATH = 'build/test';
+module.exports = {
+  bail: true,
+  verbose: true,
+  errorOnDeprecated: true,
+  testResultsProcessor: './node_modules/jest-junit-reporter',
+  setupFilesAfterEnv: ['jest-extended', './jest.setup.js'],
+  moduleNameMapper: {
+    '\\.css$': 'identity-obj-proxy',
+  },
+  preset: 'jest-puppeteer',
+  testRegex: './*\\.snapshot\\.js$',
+};
