@@ -49,7 +49,7 @@ export function mapDataToComponents(fragments, tabId) {
 }
 
 export function sortFragmentsByStatus(fragments) {
-  const sortOrder = ['success', 'other', 'missing', 'unprocessed', 'error'];
+  const sortOrder = ['success', 'other', 'missing', 'unprocessed', 'failure'];
   const ordering = sortOrder.reduce((result, current, index) => (
     {
       ...result,
