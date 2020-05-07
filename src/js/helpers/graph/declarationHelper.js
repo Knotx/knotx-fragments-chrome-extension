@@ -85,11 +85,14 @@ const createVirtualEndNode = (composite, transitions) => ({
   },
 });
 
-const createTransitionsToSubtasks = (subtasks) => subtasks
-  .reduce((total, current, index) => ({
-    ...total,
-    [`_subtask_${index}`]: current,
-  }), {});
+// const createTransitionsToSubtasks = (subtasks) => subtasks
+//   .reduce((total, current, index) => ({
+//     ...total,
+//     [`_subtask_${index}`]: current,
+//   }), {});
+
+const createTransitionsToSubtasks = (subtasks) => Object
+  .fromEntries(subtasks.map((task, index) => [`_subtask_${index}`, task]));
 
 const getNodeWithTransitionInEndNodes = (root, transitionName, transitionTo) => {
   const newRoot = JSON.parse(JSON.stringify(root));
