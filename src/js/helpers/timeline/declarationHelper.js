@@ -119,8 +119,5 @@ export const constructTimeline = (json) => {
   const groups = extractGroupData(items)
     .map(({ name, subgroups }, index) => createTimelineGroup(name, index, subgroups.length ? subgroups : null));
 
-  // eslint-disable-next-line no-console
-  console.log({ items, groups });
-
   return { items: new DataSet(items), groups: new DataSet(groups) };
 };
