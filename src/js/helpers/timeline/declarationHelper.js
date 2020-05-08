@@ -56,9 +56,15 @@ export const getGraphWithUniqueLabels = (root, takenLabels = {}) => ({
 export const getProcessedNodes = (root, generateUniqueLabels = true) => {
   const rootNode = generateUniqueLabels ? getGraphWithUniqueLabels(root) : root;
 
-  return (hasProcessedTransition(rootNode)
-    ? [rootNode, ...getProcessedNodes(getNextNodes(rootNode), false)]
-    : [rootNode]);
+  if (hasProcessedTransition(rootNode)) {
+    return [rootNode, ...getProcessedNodes(getNextNodes(rootNode), false)];
+  }
+
+  if (rootNode.status.toLowerCase() !== 'missing') {
+    return [rootNode];
+  }
+
+  return [];
 };
 
 const generateGroupName = (node) => node.uniqueLabel;
@@ -112,6 +118,9 @@ export const constructTimeline = (json) => {
 
   const groups = extractGroupData(items)
     .map(({ name, subgroups }, index) => createTimelineGroup(name, index, subgroups.length ? subgroups : null));
+
+  // eslint-disable-next-line no-console
+  console.log({ items, groups });
 
   return { items: new DataSet(items), groups: new DataSet(groups) };
 };
