@@ -6,7 +6,7 @@ data associated with the selected DOM element.
   <img src="assets/images/preview.gif" alt="Knot.x Fragments Chrome Extension"/>
 </p>
 
-It is a bridge between the problem space (domain) and the space of solutions. Domain experts can 
+It is a bridge between the business logic (domain) and the solution. Domain experts can 
 easily verify the implementation of business logic, define new scenarios and deal with network problems 
 (defining fallbacks) gradually. Developers and QAs can easily learn business logic, verify API 
 responses/delays, and check page rendering performance issues.
@@ -410,5 +410,3 @@ The example below presents how data is stored in Redux:
 ```
 
 The pageData entry is created on page load and destroyed when we close the tab. If the page does not contain Knot.x fragments, fragments property is empty.
-
-## Contributors
