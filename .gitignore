@@ -28,11 +28,12 @@ Thumbs.db
 
 # Build              #
 ######################
-dist
+dist/js
+dist/main.js
+
 test-report.xml
 package-lock.json
 yarn-error.log
-__diff_output__
 
 # Node               #
 ######################
