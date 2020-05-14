@@ -24,6 +24,7 @@ import {
   chromeConnections,
   chromeActions,
 } from '../helpers/constants';
+import { dumpOptions } from '../content/dump';
 
 wrapStore(store);
 
@@ -46,7 +47,7 @@ chrome.tabs.onRemoved.addListener((tabId) => {
 
 chrome.runtime.onMessage.addListener(
   (request, sender, sendResponse) => {
-    if (sender.tab) {
+    if (sender.tab && request.type === chromeActions.INIT_STORE) {
       const pageDataObj = {
         fragments: request.fragmentsData,
         id: sender.tab.id,
@@ -73,14 +74,26 @@ chrome.runtime.onMessage.addListener(
 chrome.runtime.onConnect.addListener((port) => {
   if (port.name !== chromeConnections.KNOTX_DEVTOOL_CONNECTION) return;
 
-  port.onMessage.addListener((requestType) => {
-    if (requestType === chromeActions.GET_CURRENT_TAB_INFO) {
+  port.onMessage.addListener((request) => {
+    if (request.type === chromeActions.GET_CURRENT_TAB_INFO) {
       chrome.tabs.query({
         active: true,
       },
       (tabs) => {
         port.postMessage(tabs[0]);
       });
+    }
+  });
+
+  port.onMessage.addListener(async (request) => {
+    if (request.type === chromeActions.DUMP_PAGE) {
+      // eslint-disable-next-line no-undef
+      await singlefile.extension.injectScript(request.data.tabId, dumpOptions);
+      await chrome.tabs.executeScript(
+        request.data.tabId,
+        { code: 'dump()', allFrames: false, runAt: 'document_idle' },
+      );
+      await port.postMessage('dump_complete');
     }
   });
 });

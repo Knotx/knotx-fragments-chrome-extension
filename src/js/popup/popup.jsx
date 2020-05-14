@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-import { findFragmentsInContent } from '../helpers/nodes/nodesHelper';
-import { status, chromeActions } from '../helpers/constants';
-import { dump } from './dump';
+import React from 'react';
+import PropTypes from 'prop-types';
+import DumpButton from '../components/dumpButton/dumpButton';
+import { PopupWrapper } from './popup.styled';
 
-window.onload = () => {
-  chrome.runtime.sendMessage({
-    fragmentsData: findFragmentsInContent(),
-    type: chromeActions.INIT_STORE,
-  }, (response) => {
-    if (response.status === status.succes) {
-      // eslint-disable-next-line no-console
-      console.log(response.msg);
-    }
-  });
+const App = ({ tabId }) => (
+  <PopupWrapper>
+    <DumpButton tabId={tabId} />
+  </PopupWrapper>
+
+);
+
+App.propTypes = {
+  tabId: PropTypes.number.isRequired,
 };
 
-window.dump = dump;
+export default App;

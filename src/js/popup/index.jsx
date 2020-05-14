@@ -16,31 +16,20 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Store } from 'webext-redux';
-import { Provider } from 'react-redux';
-import App from './devtools/App';
-import {
-  PANEL_NAME,
-  chromeConnections,
-  chromeActions,
-} from './helpers/constants';
-import { GlobalStyle } from './styling/globalStyle';
-
-export const store = new Store();
-chrome.devtools.panels.create(PANEL_NAME, null, 'index.html');
+import App from './popup';
+import { chromeConnections, chromeActions } from '../helpers/constants';
+import { GlobalStyle } from '../styling/globalStyle';
 
 const port = chrome.runtime.connect({ name: chromeConnections.KNOTX_DEVTOOL_CONNECTION });
 
 port.postMessage({ type: chromeActions.GET_CURRENT_TAB_INFO });
 port.onMessage.addListener(({ id }) => {
-  store.ready().then(() => {
-    ReactDOM.render(
-      <Provider store={store}>
-        <App tabId={id} />
-        <GlobalStyle />
-      </Provider>,
-      document.getElementById('root'),
-    );
-    port.disconnect();
-  });
+  ReactDOM.render(
+    <>
+      <App tabId={id} />
+      <GlobalStyle />
+    </>,
+    document.getElementById('popup'),
+  );
+  port.disconnect();
 });

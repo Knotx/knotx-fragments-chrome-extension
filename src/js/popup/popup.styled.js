@@ -1,3 +1,4 @@
+
 /*
  * Copyright (C) 2020 Knot.x Project
  *
@@ -14,20 +15,10 @@
  * limitations under the License.
  */
 
-import { findFragmentsInContent } from '../helpers/nodes/nodesHelper';
-import { status, chromeActions } from '../helpers/constants';
-import { dump } from './dump';
+import styled from 'styled-components';
 
-window.onload = () => {
-  chrome.runtime.sendMessage({
-    fragmentsData: findFragmentsInContent(),
-    type: chromeActions.INIT_STORE,
-  }, (response) => {
-    if (response.status === status.succes) {
-      // eslint-disable-next-line no-console
-      console.log(response.msg);
-    }
-  });
-};
-
-window.dump = dump;
+export const PopupWrapper = styled.div`
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+`;

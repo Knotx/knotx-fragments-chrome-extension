@@ -1,3 +1,4 @@
+
 /*
  * Copyright (C) 2020 Knot.x Project
  *
@@ -14,20 +15,34 @@
  * limitations under the License.
  */
 
-import { findFragmentsInContent } from '../helpers/nodes/nodesHelper';
-import { status, chromeActions } from '../helpers/constants';
-import { dump } from './dump';
+import styled from 'styled-components';
 
-window.onload = () => {
-  chrome.runtime.sendMessage({
-    fragmentsData: findFragmentsInContent(),
-    type: chromeActions.INIT_STORE,
-  }, (response) => {
-    if (response.status === status.succes) {
-      // eslint-disable-next-line no-console
-      console.log(response.msg);
+export const DumpBtn = styled.button`
+  border: 1px solid black;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.7
+  }
+`;
+
+export const Spinner = styled.div`
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
     }
-  });
-};
+  }
 
-window.dump = dump;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  border-radius: 50%;
+  border: 3px solid #242424;
+  border-top-color: #9A9A9A;
+  animation: 1.5s spin infinite linear;
+`;

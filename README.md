@@ -1,14 +1,14 @@
 # Knot.x Fragments Chrome Extension
-Extends the Developer Tools, adding a sidebar that displays [Fragments](https://github.com/Knotx/knotx-fragments) 
+Extends the Developer Tools, adding a sidebar that displays [Fragments](https://github.com/Knotx/knotx-fragments)
 data associated with the selected DOM element.
 
 <p align="center">
   <img src="assets/images/preview.gif" alt="Knot.x Fragments Chrome Extension"/>
 </p>
 
-It is a bridge between the business logic (domain) and the solution. Domain experts can 
-easily verify the implementation of business logic, define new scenarios and deal with network problems 
-(defining fallbacks) gradually. Developers and QAs can easily learn business logic, verify API 
+It is a bridge between the business logic (domain) and the solution. Domain experts can
+easily verify the implementation of business logic, define new scenarios and deal with network problems
+(defining fallbacks) gradually. Developers and QAs can easily learn business logic, verify API
 responses/delays, and check page rendering performance issues.
 
 See the main benefits:
@@ -292,6 +292,7 @@ main plugins:
 * [Babel](https://babeljs.io/)
 * [Eslint](https://eslint.org/)
 * [Webpack](https://webpack.js.org/)
+* [SingleFile](https://github.com/gildas-lormeau/SingleFile )
 
 ### CI
 The GitHub repository is integrated with Azure Pipelines (CI) to validate both new PRs and the master branch. Check the azure-pipelines.yml file for configuration details. So we check:
@@ -410,3 +411,20 @@ The example below presents how data is stored in Redux:
 ```
 
 The pageData entry is created on page load and destroyed when we close the tab. If the page does not contain Knot.x fragments, fragments property is empty.
+
+## Page dump functionality
+We provide a page dump functionality to allow easier bug reproducing on different machines. Users can download the current state of the page when a bug occurs. It's especially useful for nondeterministic bugs that can disappear after refreshing the page.
+
+To provide this functionality we include the SingleFile extension. The documentation on integrating the SingleFile API with other extensions can be found [here](https://github.com/gildas-lormeau/SingleFile/wiki/How-to-integrate-the-API-of-SingleFile-into-an-extension)
+
+
+Users can dump a page by clicking on the 'dump page button' in the extension popup. It fires the following data flow:
+
+```
+popup -> background -> content -> popup
+
+```
+
+Dump implementation can be found in ```/src/js/content/dump.js```
+
+## Contributors
