@@ -4,9 +4,7 @@
   "description": "Extends the Developer Tools, adding a sidebar that displays the Knotx Fragments data associated with the selected DOM element.",
   "devtools_page": "index.html",
   "background": {
-    "scripts": [
-      "js/background.js"
-    ],
+    "scripts": ["js/background.js"],
     "persistent": false
   },
   "content_scripts": [
