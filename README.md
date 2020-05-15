@@ -1,14 +1,14 @@
 # Knot.x Fragments Chrome Extension
-Extends the Developer Tools, adding a sidebar that displays [Fragments](https://github.com/Knotx/knotx-fragments) 
+Extends the Developer Tools, adding a sidebar that displays [Fragments](https://github.com/Knotx/knotx-fragments)
 data associated with the selected DOM element.
 
 <p align="center">
   <img src="assets/images/preview.gif" alt="Knot.x Fragments Chrome Extension"/>
 </p>
 
-It is a bridge between the business logic (domain) and the solution. Domain experts can 
-easily verify the implementation of business logic, define new scenarios and deal with network problems 
-(defining fallbacks) gradually. Developers and QAs can easily learn business logic, verify API 
+It is a bridge between the business logic (domain) and the solution. Domain experts can
+easily verify the implementation of business logic, define new scenarios and deal with network problems
+(defining fallbacks) gradually. Developers and QAs can easily learn business logic, verify API
 responses/delays, and check page rendering performance issues.
 
 See the main benefits:
@@ -318,6 +318,12 @@ When tests are executed, then we generate the report (test-report.xml) file in t
 ### How to run tests?
 1. run command to fire all tests: `yarn run test`
 2. run command to fire the specific test: `yarn run test [path_to_test]`
+3. run command to fire snapshot tests: `yarn run snapshot`
+
+### Snapshots
+We use 2 kind of snapshot tests. Markup snapshots, and Image snpashots. You can find config, and diff output in ``` src/js/snapshots/```. If you want to change a look or markup, you have to remove old snapshots and create new by `yarn run snapshot`
+
+Image snapshots use another jest config file then unit tests, and murkup snapshots. You can find config in ```jest-snapshot.config.js```
 
 ## Implementation details
 
