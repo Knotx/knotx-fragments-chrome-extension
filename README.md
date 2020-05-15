@@ -321,7 +321,7 @@ When tests are executed, then we generate the report (test-report.xml) file in t
 3. run command to fire snapshot tests: `yarn run snapshot`
 
 ### Snapshots
-We use 2 kind of snapshot tests. Markup snapshots, and Image snpashots. You can find config, and diff output in ``` src/js/snapshots/```. If you want to change a look or markup, you have to remove old snapshots and create new by `yarn run snapshot`
+We use 2 kind of snapshot tests. Markup snapshots, and Image snpashots. Both of them are implemented using storybook. You can find config and diff output in ``` src/js/snapshots/```. If you want to change a look or markup, you have to remove old snapshots and create new by `yarn run snapshot` (in case of image snapshots) or `yarn run test` ( in case of markup snapshots)
 
 Image snapshots use another jest config file then unit tests, and murkup snapshots. You can find config in ```jest-snapshot.config.js```
 
