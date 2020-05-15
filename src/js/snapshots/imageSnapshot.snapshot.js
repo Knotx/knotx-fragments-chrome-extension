@@ -19,7 +19,7 @@
 // page object is from jest-puppeteer API
 
 const config = {
-  failureThreshold: 0.01,
+  failureThreshold: 0.02,
   failureThresholdType: 'percent',
 };
 
