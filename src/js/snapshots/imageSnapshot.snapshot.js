@@ -53,7 +53,7 @@ describe('FragmentList', () => {
     expect(image).toMatchImageSnapshot(config);
   });
 
-  it('FragmentListItem visually looks correct', async () => {
+  it('FragmentListItem is visually correct', async () => {
     // eslint-disable-next-line max-len
     await page.goto('http://localhost:6006/iframe.html?id=logic-components-sidepanel-fragmentlist-fragmentlistitem--fragmentlistitem');
     await page.evaluateHandle('document.fonts.ready');
@@ -62,7 +62,6 @@ describe('FragmentList', () => {
     expect(image).toMatchImageSnapshot(config);
   });
 });
-
 
 describe('Legend', () => {
   it('is visually correct', async () => {
