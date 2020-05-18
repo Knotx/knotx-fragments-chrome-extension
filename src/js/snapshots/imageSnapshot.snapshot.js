@@ -35,7 +35,7 @@ describe('SidePanel', () => {
 describe('FragmentGantt', () => {
   it('is visually correct', async () => {
     const image = await snapshot(
-      'http://localhost:6006/iframe.html?id=logic-components-sidepanel-fragmentgantt--fragmentgantt'
+      'http://localhost:6006/iframe.html?id=logic-components-sidepanel-fragmentgantt--fragmentgantt',
     );
     expect(image).toMatchImageSnapshot();
   });
@@ -44,7 +44,7 @@ describe('FragmentGantt', () => {
 describe('FragmentList', () => {
   it('FragmentList is visually correct', async () => {
     const image = await snapshot(
-      'http://localhost:6006/iframe.html?id=logic-components-sidepanel-fragmentlist--fragmentlist'
+      'http://localhost:6006/iframe.html?id=logic-components-sidepanel-fragmentlist--fragmentlist',
     );
     expect(image).toMatchImageSnapshot();
   });
@@ -59,7 +59,7 @@ describe('FragmentList', () => {
 describe('Legend', () => {
   it('is visually correct', async () => {
     const image = await snapshot(
-      'http://localhost:6006/iframe.html?id=logic-components-mainpanel-graph-legend--legend'
+      'http://localhost:6006/iframe.html?id=logic-components-mainpanel-graph-legend--legend',
     );
     expect(image).toMatchImageSnapshot();
   });
@@ -68,7 +68,7 @@ describe('Legend', () => {
 describe('NodeInfo', () => {
   it('is visually correct', async () => {
     const image = await snapshot(
-      'http://localhost:6006/iframe.html?id=logic-components-mainpanel-graph-nodeinfo--nodeinfo'
+      'http://localhost:6006/iframe.html?id=logic-components-mainpanel-graph-nodeinfo--nodeinfo',
     );
     expect(image).toMatchImageSnapshot();
   });
@@ -78,7 +78,7 @@ describe('NodePerformanceTimeline', () => {
   it('is visually correct', async () => {
     const image = await snapshot(
       // eslint-disable-next-line max-len
-      'http://localhost:6006/iframe.html?id=logic-components-mainpanel-graph-nodeperformancetimeline--nodeperformancetimeline'
+      'http://localhost:6006/iframe.html?id=logic-components-mainpanel-graph-nodeperformancetimeline--nodeperformancetimeline',
     );
     expect(image).toMatchImageSnapshot();
   });

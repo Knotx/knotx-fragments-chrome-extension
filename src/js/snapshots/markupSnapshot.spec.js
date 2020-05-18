@@ -18,7 +18,6 @@ import initStoryshots, { snapshotWithOptions } from '@storybook/addon-storyshots
 
 initStoryshots({
   test: snapshotWithOptions({
-    // eslint-disable-next-line consistent-return
     createNodeMock: () => document.createElement('div'),
   }),
 });
