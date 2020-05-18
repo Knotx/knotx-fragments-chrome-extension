@@ -18,88 +18,75 @@
 
 // page object is from jest-puppeteer API
 
-const config = {
-  failureThreshold: 0.02,
-  failureThresholdType: 'percent',
+const snapshot = async (url) => {
+  await page.goto(url);
+  await page.evaluateHandle('document.fonts.ready');
+  const image = await page.screenshot();
+  return image;
 };
-
 
 describe('SidePanel', () => {
   it('is visually correct', async () => {
-    await page.goto('http://localhost:6006/iframe.html?id=logic-components-sidepanel--sidepanel');
-    await page.evaluateHandle('document.fonts.ready');
-    const image = await page.screenshot();
-
-    expect(image).toMatchImageSnapshot(config);
+    const image = await snapshot('http://localhost:6006/iframe.html?id=logic-components-sidepanel--sidepanel');
+    expect(image).toMatchImageSnapshot();
   });
 });
 
 describe('FragmentGantt', () => {
   it('is visually correct', async () => {
-    await page.goto('http://localhost:6006/iframe.html?id=logic-components-sidepanel-fragmentgantt--fragmentgantt');
-    await page.evaluateHandle('document.fonts.ready');
-    const image = await page.screenshot();
-
-    expect(image).toMatchImageSnapshot(config);
+    const image = await snapshot(
+      'http://localhost:6006/iframe.html?id=logic-components-sidepanel-fragmentgantt--fragmentgantt'
+    );
+    expect(image).toMatchImageSnapshot();
   });
 });
 
 describe('FragmentList', () => {
   it('FragmentList is visually correct', async () => {
-    await page.goto('http://localhost:6006/iframe.html?id=logic-components-sidepanel-fragmentlist--fragmentlist');
-    await page.evaluateHandle('document.fonts.ready');
-    const image = await page.screenshot();
-
-    expect(image).toMatchImageSnapshot(config);
+    const image = await snapshot(
+      'http://localhost:6006/iframe.html?id=logic-components-sidepanel-fragmentlist--fragmentlist'
+    );
+    expect(image).toMatchImageSnapshot();
   });
 
   it('FragmentListItem is visually correct', async () => {
     // eslint-disable-next-line max-len
-    await page.goto('http://localhost:6006/iframe.html?id=logic-components-sidepanel-fragmentlist-fragmentlistitem--fragmentlistitem');
-    await page.evaluateHandle('document.fonts.ready');
-    const image = await page.screenshot();
-
-    expect(image).toMatchImageSnapshot(config);
+    const image = await snapshot('http://localhost:6006/iframe.html?id=logic-components-sidepanel-fragmentlist-fragmentlistitem--fragmentlistitem');
+    expect(image).toMatchImageSnapshot();
   });
 });
 
 describe('Legend', () => {
   it('is visually correct', async () => {
-    await page.goto('http://localhost:6006/iframe.html?id=logic-components-mainpanel-graph-legend--legend');
-    await page.evaluateHandle('document.fonts.ready');
-    const image = await page.screenshot();
-
-    expect(image).toMatchImageSnapshot(config);
+    const image = await snapshot(
+      'http://localhost:6006/iframe.html?id=logic-components-mainpanel-graph-legend--legend'
+    );
+    expect(image).toMatchImageSnapshot();
   });
 });
 
 describe('NodeInfo', () => {
   it('is visually correct', async () => {
-    await page.goto('http://localhost:6006/iframe.html?id=logic-components-mainpanel-graph-nodeinfo--nodeinfo');
-    await page.evaluateHandle('document.fonts.ready');
-    const image = await page.screenshot();
-
-    expect(image).toMatchImageSnapshot(config);
+    const image = await snapshot(
+      'http://localhost:6006/iframe.html?id=logic-components-mainpanel-graph-nodeinfo--nodeinfo'
+    );
+    expect(image).toMatchImageSnapshot();
   });
 });
 
 describe('NodePerformanceTimeline', () => {
   it('is visually correct', async () => {
-    // eslint-disable-next-line max-len
-    await page.goto('http://localhost:6006/iframe.html?id=logic-components-mainpanel-graph-nodeperformancetimeline--nodeperformancetimeline');
-    await page.evaluateHandle('document.fonts.ready');
-    const image = await page.screenshot();
-
-    expect(image).toMatchImageSnapshot(config);
+    const image = await snapshot(
+      // eslint-disable-next-line max-len
+      'http://localhost:6006/iframe.html?id=logic-components-mainpanel-graph-nodeperformancetimeline--nodeperformancetimeline'
+    );
+    expect(image).toMatchImageSnapshot();
   });
 });
 
 describe('Graph', () => {
   it('is visually correct', async () => {
-    await page.goto('http://localhost:6006/iframe.html?id=logic-components-mainpanel-graph--graph');
-    await page.evaluateHandle('document.fonts.ready');
-    const image = await page.screenshot();
-
-    expect(image).toMatchImageSnapshot(config);
+    const image = await snapshot('http://localhost:6006/iframe.html?id=logic-components-mainpanel-graph--graph');
+    expect(image).toMatchImageSnapshot();
   });
 });

@@ -17,8 +17,13 @@
 import Adapter from 'enzyme-adapter-react-16';
 import { toBeVisible } from '@testing-library/jest-dom/matchers';
 import { configure } from 'enzyme';
-import { toMatchImageSnapshot } from 'jest-image-snapshot';
+import { configureToMatchImageSnapshot } from 'jest-image-snapshot';
 
 configure({ adapter: new Adapter() });
+
+const toMatchImageSnapshot = configureToMatchImageSnapshot({
+  failureThreshold: 0.02,
+  failureThresholdType: 'percent',
+});
 
 expect.extend({ toBeVisible, toMatchImageSnapshot });
