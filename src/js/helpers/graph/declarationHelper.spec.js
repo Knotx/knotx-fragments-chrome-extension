@@ -163,7 +163,7 @@ test('Missing node is parsed correctly', () => {
   };
 
   const expectedGraph = {
-    nodes: [{...createNode('M', '!', 'missing', 0), info }],
+    nodes: [{ ...createNode('M', '!', 'missing', 0), info }],
     edges: [],
   };
 
