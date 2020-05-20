@@ -33,9 +33,7 @@ export const getNodeGroup = (node) => {
 };
 
 const createVisNode = (node) => {
-  console.log(node);
-
-  const info = node.status === 'MISSING'
+  const info = node.status.toLowerCase() === 'missing'
     ? {
       id: node.id,
       label: node.label,

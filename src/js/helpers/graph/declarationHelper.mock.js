@@ -27,6 +27,18 @@ export const singleNode = {
   },
 };
 
+export const singleMissingNode = {
+  id: 'M',
+  label: '!',
+  status: 'missing',
+  type: 'single',
+  on: {},
+  subtasks: [],
+  started: 0,
+  finished: 0,
+  response: {},
+};
+
 export const singleNodeWithTransitions = {
   id: 'A',
   label: 'A label',
