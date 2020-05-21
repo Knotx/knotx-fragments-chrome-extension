@@ -431,11 +431,10 @@ should contain SNAPSHOT version.
 
 Executing scripts below:
 ```pebble
-mkdir packages
 yarn run dev
 yarn release minor
 ```
 
-we produce the ZIP file containing all required distribution files. In the `./manifest.json` file 
+we produce the ZIP file in `./build` containing all required distribution files. In the `./manifest.json` file 
 there is the released version.
 

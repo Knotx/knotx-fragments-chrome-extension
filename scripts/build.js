@@ -26,7 +26,7 @@ compiler.run(() => {
   const output = fs.createWriteStream(path.join(
     __dirname,
     '..',
-    'packages',
+    'build',
     `knotx-chrome-extension-${releaseVersion}.zip`,
   ));
 
