@@ -14,10 +14,11 @@ compiler.run(() => {
   const currentVersion = pkg.version;
   const releaseOption = process.argv[2] || 'patch';
 
-  const newVersion = incrementSemver(currentVersion, releaseOption);
+  const releaseVersion = incrementSemver(currentVersion, releaseOption);
+  const nextDevVersion = incrementSemver(releaseVersion, 'patch') + "-SNAPSHOT";
 
-  manifest.version = newVersion;
-  pkg.version = newVersion;
+  manifest.version = releaseVersion;
+  pkg.version = nextDevVersion;
 
   fs.writeFileSync('./package.json', JSON.stringify(pkg, null, 2));
   fs.writeFileSync('./dist/manifest.json', JSON.stringify(manifest, null, 2));
@@ -26,7 +27,7 @@ compiler.run(() => {
     __dirname,
     '..',
     'packages',
-    `knotx-chrome-extension-${newVersion}.zip`,
+    `knotx-chrome-extension-${releaseVersion}.zip`,
   ));
 
   const archive = archiver('zip', {
