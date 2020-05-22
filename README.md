@@ -430,7 +430,7 @@ The application version is configured in `/package.json` file. Please note that 
 should contain SNAPSHOT version. 
 
 Executing scripts below:
-```pebble
+```shell script
 yarn run dev
 yarn release minor
 ```
