@@ -42,6 +42,10 @@ const createVisNode = (node) => {
     }
     : { ...node.info };
 
+  if (node.type === 'SINGLE') {
+    delete info.subtasks;
+  }
+
   return {
     id: node.id,
     label: node.label,
