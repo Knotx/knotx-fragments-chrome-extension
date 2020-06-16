@@ -20,7 +20,8 @@ export const singleNode = {
   id: 'A',
   label: 'A label',
   status: 'success',
-  type: 'single',
+  type: 'SINGLE',
+  subtasks: [],
   response: {
     transition: '_success',
     invocations: [],
