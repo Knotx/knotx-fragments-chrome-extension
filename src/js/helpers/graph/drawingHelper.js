@@ -123,4 +123,11 @@ export const defaultGraphConfiguration = {
   physics: false,
 };
 
-export const drawGraph = (graph, element, options = defaultGraphConfiguration) => new Network(element, graph, options);
+export const drawGraph = (graph, element, options = defaultGraphConfiguration) => {
+  try {
+    return new Network(element, graph, options);
+  } catch (_) {
+    // The Network object cannot be created in some non-browser environments, fallback to an empty object
+    return { on: () => {} };
+  }
+};
