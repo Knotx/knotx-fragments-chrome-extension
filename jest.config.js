@@ -19,6 +19,7 @@ module.exports = {
   bail: true,
   verbose: true,
   errorOnDeprecated: true,
+  preset: "jest-puppeteer",
   testTimeout: 1000,
   testResultsProcessor: './node_modules/jest-junit-reporter',
   collectCoverage: true,

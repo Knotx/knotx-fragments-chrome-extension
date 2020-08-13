@@ -30,6 +30,7 @@ const toMatchImageSnapshot = configureToMatchImageSnapshot({
 expect.extend({ toBeVisible, toMatchImageSnapshot });
 
 const cryptoPolyfill = {
+  ...crypto,
   getRandomValues: function (buffer) {
     return crypto.randomFillSync(buffer);
   }
