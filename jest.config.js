@@ -20,6 +20,7 @@ module.exports = {
   verbose: true,
   errorOnDeprecated: true,
   preset: "jest-puppeteer",
+  testEnvironment: "jsdom",
   testTimeout: 1000,
   testResultsProcessor: './node_modules/jest-junit-reporter',
   collectCoverage: true,
