@@ -24,7 +24,7 @@ export const legendArrays = {
       desc: 'missing',
       color: COLOR_MISSING,
       shape: 'square',
-      docs: 'http://stackoverflow.com/',
+      docs: 'README.md',
     },
     {
       desc: 'unprocessed',
