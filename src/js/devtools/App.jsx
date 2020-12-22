@@ -38,7 +38,7 @@ const App = ({ tabId }) => {
       <ThemeProvider theme={theme}>
         <SidePanel tabId={tabId} />
         <MainPanel tabId={tabId} />
-        <DocPage tabId={tabId} />
+        <DocPage tabId={tabId} themeName={theme.name} />
       </ThemeProvider>
     )
     : (

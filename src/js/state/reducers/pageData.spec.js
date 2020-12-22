@@ -19,6 +19,7 @@ import { SET_PAGE_DATA, REMOVE_PAGE_DATA, SET_RENDERED_GRAPH } from '../actionTy
 
 const currentPageData = {
   id: 'example_id_0',
+  docPageLink: '',
   url: 'www.exampleurl0.com',
   fragments: [],
   renderedGraph: '123',
@@ -27,6 +28,7 @@ const currentPageData = {
 
 const nextPageData = {
   id: 'example_id_1',
+  docPageLink: '',
   url: 'www.exampleurl1.com',
   fragments: [],
   renderedGraph: null,
@@ -44,6 +46,7 @@ describe('pageData reducer', () => {
       const expectedData = {
         [currentPageData.id]: {
           url: currentPageData.url,
+          docPageLink: currentPageData.docPageLink,
           fragments: currentPageData.fragments,
           renderedGraph: null,
           sidebarExpanded: true,
@@ -58,6 +61,7 @@ describe('pageData reducer', () => {
       const initialState = {
         [currentPageData.id]: {
           url: currentPageData.url,
+          docPageLink: currentPageData.docPageLink,
           fragments: currentPageData.fragments,
           renderedGraph: null,
           sidebarExpanded: true,
@@ -67,12 +71,14 @@ describe('pageData reducer', () => {
       const expectedData = {
         [currentPageData.id]: {
           url: currentPageData.url,
+          docPageLink: currentPageData.docPageLink,
           fragments: currentPageData.fragments,
           renderedGraph: null,
           sidebarExpanded: true,
         },
         [nextPageData.id]: {
           url: nextPageData.url,
+          docPageLink: currentPageData.docPageLink,
           fragments: nextPageData.fragments,
           renderedGraph: null,
           sidebarExpanded: true,
@@ -94,6 +100,7 @@ describe('pageData reducer', () => {
       const initialState = {
         [currentPageData.id]: {
           url: currentPageData.url,
+          docPageLink: currentPageData.docPageLink,
           fragments: currentPageData.fragments,
           renderedGraph: null,
           sidebarExpanded: true,
@@ -103,6 +110,7 @@ describe('pageData reducer', () => {
       const expectedData = {
         [nextPageData.id]: {
           url: nextPageData.url,
+          docPageLink: currentPageData.docPageLink,
           fragments: nextPageData.fragments,
           renderedGraph: null,
           sidebarExpanded: true,
