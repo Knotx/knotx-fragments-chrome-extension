@@ -19,7 +19,9 @@
 // page object is from jest-puppeteer API
 
 const snapshot = async (url) => {
-  await page.goto(url);
+  await page.goto(url, { waitUntil: 'load' });
+  page.waitForTimeout(1000);
+
   return page.screenshot();
 };
 
