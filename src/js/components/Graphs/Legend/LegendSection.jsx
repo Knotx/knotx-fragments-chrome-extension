@@ -69,7 +69,7 @@ const LegendSection = ({ tabId, title, items }) => {
 LegendSection.propTypes = {
   title: PropTypes.string.isRequired,
   items: PropTypes.instanceOf(Object).isRequired,
-  tabId: PropTypes.instanceOf(Object).isRequired,
+  tabId: PropTypes.number.isRequired,
 };
 
 export default LegendSection;

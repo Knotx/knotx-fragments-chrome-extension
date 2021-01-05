@@ -34,7 +34,8 @@ describe('<NodeList /> unit test', () => {
       <FragmentListItem
         key={1}
         number={1}
-        name="name"
+        fragmentId="1234-1234-1234"
+        taskName="taskName"
         status="success"
         type="snippet"
         nodes={[]}
@@ -57,7 +58,7 @@ describe('<NodeList /> unit test', () => {
 
   it('Should have proper name', () => {
     const wrapper = getWrapper();
-    expect(wrapper.find(TableNameItem).at(0).text()).toBe('name');
+    expect(wrapper.find(TableNameItem).at(0).text()).toBe('taskName');
   });
 
   it('Should have proper type', () => {

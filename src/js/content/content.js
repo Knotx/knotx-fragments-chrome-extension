@@ -14,14 +14,19 @@
  * limitations under the License.
  */
 
-import { findFragmentsInContent } from '../helpers/nodes/nodesHelper';
 import { status } from '../helpers/constants';
+import { chooseStrategy } from './contentStrategies';
 
-window.onload = () => {
-  chrome.runtime.sendMessage({ fragmentsData: findFragmentsInContent() }, (response) => {
+export const getData = async (contentType) => {
+  const getContent = chooseStrategy(contentType);
+  const fragmentsData = await getContent();
+
+  chrome.runtime.sendMessage({ fragmentsData }, (response) => {
     if (response.status === status.succes) {
       // eslint-disable-next-line no-console
       console.log(response.msg);
     }
   });
 };
+
+window.onload = getData(document.contentType);

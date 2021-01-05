@@ -17,7 +17,7 @@
 // CONSTANTS
 export const PANEL_NAME = 'Knot.x';
 export const status = {
-  succes: 'succes',
+  success: 'success',
   error: 'error',
 };
 export const ENTER_KEY_CODE = 13;
@@ -35,7 +35,7 @@ export const chromeActions = {
 
 // STATIC ELEMENTS
 /* eslint-disable max-len */
-export const succesLoadExtensionMsgs = 'Knot.x devtool extension: Succesfully get fragments and page data. You can start using Knot.x extension';
+export const successLoadExtensionMsg = 'Knot.x devtool extension: Successfully get fragments and page data. You can start using Knot.x extension.';
 export const FRAGMENT_LIST_HEADER = 'List of fragments';
 export const fragmentListTablesHeaders = {
   NUMBER: '#',

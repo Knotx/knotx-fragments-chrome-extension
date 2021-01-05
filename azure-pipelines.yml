@@ -25,12 +25,13 @@ pool:
 
 variables:
   YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
-  NODE_VERSION: 12.x
+  NODE_VERSION: 14.x
 
 steps:
   - task: NodeTool@0
     inputs:
       versionSpec: $(NODE_VERSION)
+    displayName: "Install Node.js"
   - task: Cache@2
     inputs:
       key: 'yarn | "$(Agent.OS)" | "$(node_version)" | yarn.lock'

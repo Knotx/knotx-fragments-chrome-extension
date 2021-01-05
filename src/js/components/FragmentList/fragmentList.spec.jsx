@@ -177,7 +177,8 @@ describe('<FragmentList /> unit test', () => {
     generatedComponents.forEach((element) => {
       expect(element).toHaveProperty('props');
       expect(element.props).toHaveProperty('number');
-      expect(element.props).toHaveProperty('name');
+      expect(element.props).toHaveProperty('fragmentId');
+      expect(element.props).toHaveProperty('taskName');
       expect(element.props).toHaveProperty('type');
       expect(element.props).toHaveProperty('status');
     });
@@ -237,21 +238,21 @@ describe('<FragmentList /> unit test', () => {
     expect(wrapper
       .find(FragmentListItem)
       .first()
-      .prop('name')).toEqual('E [name]');
+      .prop('taskName')).toEqual('E [name]');
 
     sortingButton.simulate('click');
 
     expect(wrapper
       .find(FragmentListItem)
       .first()
-      .prop('name')).toEqual('A [name]');
+      .prop('taskName')).toEqual('A [name]');
 
     sortingButton.simulate('click');
 
     expect(wrapper
       .find(FragmentListItem)
       .first()
-      .prop('name')).toEqual('E [name]');
+      .prop('taskName')).toEqual('E [name]');
   });
 
   it('sorting by time works', () => {
