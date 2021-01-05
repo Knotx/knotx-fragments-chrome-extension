@@ -19,7 +19,7 @@ import { setPageData, removePageData } from '../state/actions/pageData';
 import { store } from '../state/store';
 import {
   status,
-  succesLoadExtensionMsgs,
+  successLoadExtensionMsg,
   chromeConnections,
   chromeActions,
 } from '../helpers/constants';
@@ -60,7 +60,7 @@ chrome.runtime.onMessage.addListener(
       if (currentPageData?.fragments?.length && currentPageData.url) {
         sendResponse({
           status: status.succes,
-          msg: succesLoadExtensionMsgs,
+          msg: successLoadExtensionMsg,
           obj: pageData,
         });
       }
