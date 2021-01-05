@@ -20,7 +20,7 @@
 
 const snapshot = async (url) => {
   await page.goto(url, { waitUntil: 'load' });
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(2000);
 
   return page.screenshot();
 };
