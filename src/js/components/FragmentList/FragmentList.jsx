@@ -37,7 +37,8 @@ export const mapDataToComponents = (fragments, tabId) => fragments.map(({ debug,
     <FragmentListItem
       key={fragment.id}
       number={number + 1}
-      name={fragment.configuration['data-knotx-task']}
+      fragmentId={fragment.id}
+      taskName={fragment.configuration['data-knotx-task']}
       status={debug.status.toLowerCase()}
       type={fragment.type}
       nodes={nodes}
@@ -64,7 +65,7 @@ export const sortFragmentsByStatus = (fragments) => {
 
 const sortingOptions = {
   status: 'status',
-  name: 'name',
+  taskName: 'taskName',
   type: 'type',
   time: 'time',
 };
@@ -82,7 +83,7 @@ const FragmentList = ({ tabId }) => {
   };
 
   const typeSortComparator = (a, b) => a.props.type.localeCompare(b.props.type);
-  const nameSortComparator = (a, b) => a.props.name.localeCompare(b.props.name);
+  const nameSortComparator = (a, b) => a.props.taskName.localeCompare(b.props.taskName);
   const timeSortComparator = (a, b) => a.props.time - b.props.time;
 
   useEffect(() => {
@@ -116,9 +117,9 @@ const FragmentList = ({ tabId }) => {
 
         <SortingButton
           onClick={() => {
-            if (currentSorting !== sortingOptions.name) {
+            if (currentSorting !== sortingOptions.taskName) {
               setFragments(fragments.concat().sort(nameSortComparator));
-              setCurrentSorting(sortingOptions.name);
+              setCurrentSorting(sortingOptions.taskName);
             } else {
               resetState();
             }
@@ -126,7 +127,7 @@ const FragmentList = ({ tabId }) => {
         >
           <span className="tableHeaderName">{fragmentListTablesHeaders.NAME}</span>
           <span className="tableHeaderIcon">
-            {currentSorting === sortingOptions.name
+            {currentSorting === sortingOptions.taskName
               ? (<FontAwesomeIcon icon={faLongArrowAltUp} />)
               : (<FontAwesomeIcon icon={faLongArrowAltDown} />)}
           </span>
