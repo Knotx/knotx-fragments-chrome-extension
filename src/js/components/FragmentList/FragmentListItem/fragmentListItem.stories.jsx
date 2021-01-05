@@ -36,9 +36,9 @@ storiesOf('Logic Components | SidePanel.FragmentList.FragmentListItem', module)
   .add('FragmentListItem', () => (
     <FragmentListItem
       status={text('status', 'success')}
-      number={text('number', '1')}
+      number={number('number', 1)}
       fragmentId={text('fragmentId', 'asdf-asdf-asdf')}
-      taskName={text('name', 'name')}
+      taskName={text('taskName', 'name')}
       type={text('type', 'snippet')}
       nodes={array('nodes', [
         {

@@ -58,7 +58,7 @@ describe('<NodeList /> unit test', () => {
 
   it('Should have proper name', () => {
     const wrapper = getWrapper();
-    expect(wrapper.find(TableNameItem).at(0).text()).toBe('name');
+    expect(wrapper.find(TableNameItem).at(0).text()).toBe('taskName');
   });
 
   it('Should have proper type', () => {
