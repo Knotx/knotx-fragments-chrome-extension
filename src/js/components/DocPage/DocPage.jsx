@@ -27,28 +27,8 @@ import {
   DocLink,
 } from './docPage.style';
 import { setDocPageLink } from '../../state/actions/pageData';
+import { loadMarkdown } from './docPageHelper';
 import '../../styling/markdown.css';
-
-const showdown = require('showdown');
-
-const converter = new showdown.Converter();
-converter.setFlavor('github');
-converter.setOption('openLinksInNewWindow', 'true');
-
-export const loadMarkdown = (path) => {
-  const user = 'Knotx';
-  const repo = 'knotx-fragments-chrome-extension';
-  const url = `https://api.github.com/repos/${user}/${repo}/contents/${path}`;
-  const requestOptions = { headers: { accept: 'application/vnd.github.v3.raw' } };
-  fetch(url, requestOptions)
-    .then((response) => {
-      if (!response.ok) return '# There was error with your response, please check the details and try again';
-      return response.text();
-    })
-    .then((response) => {
-      document.getElementById('doc-page-container').innerHTML = converter.makeHtml(response);
-    });
-};
 
 const DocPage = ({ tabId, themeName = 'DEFAULT' }) => {
   const dispatch = useDispatch();
