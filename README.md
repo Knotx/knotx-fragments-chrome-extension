@@ -288,14 +288,65 @@ To open the storybook follow the steps below:
 - go to [localhost:6006](http://localhost:6006/)
 
 #### Graph && timelines
+
 We use `vis.js` library:
-* [vis-network](https://visjs.github.io/vis-network/docs/network/)
-* [vis-timeline](https://visjs.github.io/vis-timeline/docs/timeline/)
+
+- [vis-network](https://visjs.github.io/vis-network/docs/network/)
+- [vis-timeline](https://visjs.github.io/vis-timeline/docs/timeline/)
 
 to visualise fragments task execution data. The following `vis.js` components are used:
-- `Timeline` showing the processing time of  all fragments (`SidePanel `: `FragmentGantt` component)
-- `Chart` presenting the logic of processing a particular fragment (`MainPanel `: `Graph` component)
-- `Timeline` showing the processing times of all steps performed while processing a specific fragment (`MainPanel `: `Timeline` component)
+
+- `Timeline` showing the processing time of  all fragments (`SidePanel`: `FragmentGantt` component)
+- `Chart` presenting the logic of processing a particular fragment (`MainPanel`: `Graph` component)
+- `Timeline` showing the processing times of all steps performed while processing a specific fragment (`MainPanel`: `Timeline` component)
+
+#### Node info
+
+A node info component represents:
+
+- [graph node](https://github.com/Knotx/knotx-fragments/tree/master/task/api#node) details such as configuration options
+- [graph node execution log](https://github.com/Knotx/knotx-fragments/blob/master/task/handler/log/api/docs/asciidoc/dataobjects.adoc#graphnodeexecutionlog) produced by [consumers](https://github.com/Knotx/knotx-fragments/tree/master/task/handler/log).
+
+Since execution log is JSON with many technical details, we prepared `views` to help you to navigate through it:
+
+- `EXECUTION` - this is a summary view available only for [Actions](https://github.com/Knotx/knotx-fragments/tree/master/action/library) showing key Action details (such as HTTP request and response details for HTTP Action)
+- `OPTIONS` - [node configuration options](https://github.com/Knotx/knotx-fragments/tree/master/task/factory/default#node)
+- `FRAGMENT` - changes in a fragment (payload and body)
+- `RAW` - raw execution log
+
+Based on node state, we can see a subset of views:
+
+- processed (`SUCCESS`, `ERROR`, `OTHER`):
+  - `EXECUTION`
+  - `OPTIONS`
+  - `FRAGMENT`
+  - `RAW`
+- `UNPROCESSED`
+  - `OPTIONS`
+
+[Missing nodes](https://github.com/Knotx/knotx-fragments/tree/master/task/handler/log#missing-nodes) have no views.
+
+##### HTTP Action
+
+The `EXECUTION` view displays detailed information about the HTTP request and response. In case of an error / exception / timeout, we see the request and error details.
+
+#### Circuit Breaker Behaviour
+
+The `EXECUTION` view displays a "wrapped" `execution` view. This means that for an HTTP Action, it shows an HTTP request and response.
+
+The behaviour can repeat wrapped Action invocations ,so we can use [1], [2], [3], ... buttons to navigate through them.
+
+More details for the case with HTTP Action [here](https://github.com/Knotx/knotx-fragments/issues/177).
+
+#### Cache Action
+
+- CB (HTTP Action) - @marcin please update: https://github.com/Knotx/knotx-fragments/issues/177
+
+- execution
+  - [1, 2, 3, 4] - invocations
+  - select 1, then we present execution for specific Action (request / response from HTTP Action)
+
+- CB (Cache (HTTP Action)) - @marcin prepare the scenario
 
 #### Styling
 We don't use any grid system to make our app beautiful. Everything is flex. To show and hide elements
