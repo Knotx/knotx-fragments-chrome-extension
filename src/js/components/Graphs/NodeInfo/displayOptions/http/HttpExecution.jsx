@@ -37,7 +37,6 @@ const HttpExecution = ({ nodeJson }) => {
   const [responseInfo, setResponseInfo] = useState(nodeJson.response.invocations[0].logs.response);
   const [responseBody, setResponseBody] = useState(nodeJson.response.invocations[0].logs.responseBody);
 
-
   const setInfo = (index) => {
     setLoopIndex(index);
     setRequestInfo(nodeJson.response.invocations[loopIndex].logs.request);

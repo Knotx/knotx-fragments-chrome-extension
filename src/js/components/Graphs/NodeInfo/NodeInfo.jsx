@@ -20,7 +20,6 @@ import { NodeInfoContainer, NodeInfoOptionsBar, NodeInfoOption } from './nodeInf
 import Raw from './displayOptions/raw/Raw';
 import { detectActionType } from '../../../helpers/knotxActions/knotxActionsHelper';
 
-
 const NodeInfo = ({ nodeJson }) => {
   const actionObj = detectActionType(nodeJson);
 
@@ -46,7 +45,7 @@ const NodeInfo = ({ nodeJson }) => {
         type="button"
         active={activeOption === 'raw'}
       >
-      RAW
+        RAW
       </NodeInfoOption>
     );
 
@@ -78,7 +77,6 @@ const NodeInfo = ({ nodeJson }) => {
       displayOptionButtons,
     };
   };
-
 
   const viewTabs = createViewTabs(actionObj.templates);
 

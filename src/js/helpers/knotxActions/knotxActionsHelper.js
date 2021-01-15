@@ -34,8 +34,5 @@ export const detectActionType = (obj, actions = definedActions) => {
     console.error('Node action recognize error. Probably node match to two or more action conditions');
   }
 
-
-  return detectedActions.length
-    ? detectedActions[0]
-    : defaultAction();
+  return detectedActions.length ? detectedActions[0] : defaultAction();
 };

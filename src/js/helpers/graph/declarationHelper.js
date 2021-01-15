@@ -47,6 +47,7 @@ const createVisNode = (node) => {
     delete info.subtasks;
   }
 
+  const nodeAction = detectActionType(node.info);
   return {
     id: node.id,
     label: `<b>${node.label}</b> ${nodeAction.icon}`,

@@ -18,7 +18,6 @@ import React from 'react';
 import Raw from '../../components/Graphs/NodeInfo/displayOptions/raw/Raw';
 import { ICONS } from '../constants';
 
-
 export const inlinePayload = (logObj) => {
   const condition = (logObj.operation.factory === 'action' && logObj.operation.data.actionFactory === 'inline-payload');
   if (!condition) return false;
