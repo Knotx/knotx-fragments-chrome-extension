@@ -1,0 +1,59 @@
+
+<!--
+  Copyright (C) 2019 Knot.x Project
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="http://cognifide.com/favicon.ico?v=2"/>
+  <title>Knot.x</title>
+  <link href="https://bootswatch.com/4/simplex/bootstrap.min.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="jumbotron">
+        <h2>
+          Hello Knot.x - reactive micro-service assembler world!
+        </h2>
+        <p>
+          This template is served from the <strong>local</strong> repository.
+        </p>
+        <p>
+          <a class="btn btn-primary btn-large"
+             href="https://github.com/Knotx/knotx">Learn more</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <!-- data-knotx-id="b630ec6f-d7dc-4445-a05e-7f78615f90f4" --><script data-knotx-debug="log" data-knotx-id="b630ec6f-d7dc-4445-a05e-7f78615f90f4" type="application/json">{"finishTime":1611323899081,"fragment":{"id":"b630ec6f-d7dc-4445-a05e-7f78615f90f4","type":"snippet","configuration":{"data-knotx-task":"various-methods-for-http-action"},"body":"\n      <ul>\n        <li>GET: 200 : GET</li>\n        <li>POST: 200 : POST</li>\n        <li>PUT: 200 : PUT</li>\n        <li>PATCH: 200 : PATCH</li>\n        <li>DELETE: 200 : DELETE</li>\n        <li>HEAD: 200</li>\n      </ul>\n    ","payload":{"get":{"_request":{"type":"HTTP","source":"/service/mock/get.json","metadata":{"headers":{}}},"_response":{"success":true,"metadata":{"statusCode":"200","headers":{"Content-Type":["application/json"],"Transfer-Encoding":["chunked"],"Server":["Jetty(9.2.24.v20180105)"]}}},"_result":{"type":"GET"}},"put":{"_request":{"type":"HTTP","source":"/service/mock/put.json","metadata":{"headers":{"content-type":["application/json"]}}},"_response":{"success":true,"metadata":{"statusCode":"200","headers":{"Content-Type":["application/json"],"Transfer-Encoding":["chunked"],"Server":["Jetty(9.2.24.v20180105)"]}}},"_result":{"type":"PUT"}},"post":{"_request":{"type":"HTTP","source":"/service/mock/post.json","metadata":{"headers":{}}},"_response":{"success":true,"metadata":{"statusCode":"200","headers":{"Content-Type":["application/json"],"Transfer-Encoding":["chunked"],"Server":["Jetty(9.2.24.v20180105)"]}}},"_result":{"type":"POST"}},"patch":{"_request":{"type":"HTTP","source":"/service/mock/patch.json","metadata":{"headers":{}}},"_response":{"success":true,"metadata":{"statusCode":"200","headers":{"Content-Type":["application/json"],"Transfer-Encoding":["chunked"],"Server":["Jetty(9.2.24.v20180105)"]}}},"_result":{"type":"PATCH"}},"delete":{"_request":{"type":"HTTP","source":"/service/mock/delete.json","metadata":{"headers":{}}},"_response":{"success":true,"metadata":{"statusCode":"200","headers":{"Content-Type":["application/json"],"Transfer-Encoding":["chunked"],"Server":["Jetty(9.2.24.v20180105)"]}}},"_result":{"type":"DELETE"}},"head":{"_request":{"type":"HTTP","source":"/service/mock/head.json","metadata":{"headers":{}}},"_response":{"success":true,"metadata":{"statusCode":"200","headers":{"Server":["Jetty(9.2.24.v20180105)"]}}},"_result":""}}},"graph":{"finished":1611323899079,"id":"74073a85-5818-4aaf-bbe3-7b54cd350658","label":"composite","on":{"_success":{"finished":1611323899081,"id":"b0879a09-4efa-42b6-b299-513ee4fa8a52","label":"te-hbs","on":{},"operation":{"data":{"alias":"te-hbs","actionFactory":"knot","actionConfig":{"address":"knotx.knot.te.handlebars","deliveryOptions":{"sendTimeout":3000},"logLevel":"error"}},"factory":"action"},"response":{"errors":[],"log":{},"transition":"_success"},"started":1611323899080,"status":"SUCCESS","subtasks":[],"type":"SINGLE"}},"operation":{"data":{},"factory":"subtasks"},"response":{"errors":[],"log":{},"transition":"_success"},"started":1611323899058,"status":"SUCCESS","subtasks":[{"finished":1611323899072,"id":"8227e70f-bb69-4b9a-ae44-1612bb613eec","label":"get","on":{},"operation":{"data":{"alias":"get","actionFactory":"http","actionConfig":{"endpointOptions":{"allowedRequestHeaders":["Content-Type"],"domain":"localhost","path":"/service/mock/get.json","port":55592},"httpMethod":"get","responseOptions":{"forceJson":true},"logLevel":"error"}},"factory":"action"},"response":{"errors":[],"log":{"alias":"get","logs":{},"invocations":[]},"transition":"_success"},"started":1611323899059,"status":"SUCCESS","subtasks":[],"type":"SINGLE"},{"finished":1611323899075,"id":"0f9c9f44-6a60-4b6c-8312-7c5f9f0a51f9","label":"post","on":{},"operation":{"data":{"alias":"post","actionFactory":"http","actionConfig":{"endpointOptions":{"allowedRequestHeaders":["Content-Type"],"body":"{\"password\": \"pazzword\"}","domain":"localhost","path":"/service/mock/post.json","port":55592},"httpMethod":"post","logLevel":"error"}},"factory":"action"},"response":{"errors":[],"log":{"alias":"post","logs":{},"invocations":[]},"transition":"_success"},"started":1611323899059,"status":"SUCCESS","subtasks":[],"type":"SINGLE"},{"finished":1611323899075,"id":"da7b5feb-d9f9-4ec1-a589-68cf23431001","label":"put","on":{},"operation":{"data":{"alias":"put","actionFactory":"http","actionConfig":{"endpointOptions":{"allowedRequestHeaders":["Content-Type"],"bodyJson":{"password":"pazzword"},"domain":"localhost","interpolateBody":true,"path":"/service/mock/put.json","port":55592},"httpMethod":"put","logLevel":"error"}},"factory":"action"},"response":{"errors":[],"log":{"alias":"put","logs":{},"invocations":[]},"transition":"_success"},"started":1611323899060,"status":"SUCCESS","subtasks":[],"type":"SINGLE"},{"finished":1611323899078,"id":"e0e4b19d-e6e7-43b3-8f48-ca4c1c6b02ec","label":"patch","on":{},"operation":{"data":{"alias":"patch","actionFactory":"http","actionConfig":{"endpointOptions":{"allowedRequestHeaders":["Content-Type"],"body":"{\"password\": \"pazzword\"}","domain":"localhost","path":"/service/mock/patch.json","port":55592},"httpMethod":"patch","logLevel":"error"}},"factory":"action"},"response":{"errors":[],"log":{"alias":"patch","logs":{},"invocations":[]},"transition":"_success"},"started":1611323899061,"status":"SUCCESS","subtasks":[],"type":"SINGLE"},{"finished":1611323899079,"id":"872d4859-2d39-4cc6-aef8-6e310c9579d9","label":"delete","on":{},"operation":{"data":{"alias":"delete","actionFactory":"http","actionConfig":{"endpointOptions":{"allowedRequestHeaders":["Content-Type"],"domain":"localhost","path":"/service/mock/delete.json","port":55592},"httpMethod":"delete","logLevel":"error"}},"factory":"action"},"response":{"errors":[],"log":{"alias":"delete","logs":{},"invocations":[]},"transition":"_success"},"started":1611323899062,"status":"SUCCESS","subtasks":[],"type":"SINGLE"},{"finished":1611323899079,"id":"0570944d-8a28-4a5c-a84e-4e945297e0c9","label":"head","on":{},"operation":{"data":{"alias":"head","actionFactory":"http","actionConfig":{"endpointOptions":{"allowedRequestHeaders":["Content-Type"],"domain":"localhost","path":"/service/mock/head.json","port":55592},"httpMethod":"head","logLevel":"error"}},"factory":"action"},"response":{"errors":[],"log":{"alias":"head","logs":{},"invocations":[]},"transition":"_success"},"started":1611323899062,"status":"SUCCESS","subtasks":[],"type":"SINGLE"}],"type":"COMPOSITE"},"startTime":1611323899058,"status":"SUCCESS"}</script>
+    <ul>
+      <li>GET: 200 : GET</li>
+      <li>POST: 200 : POST</li>
+      <li>PUT: 200 : PUT</li>
+      <li>PATCH: 200 : PATCH</li>
+      <li>DELETE: 200 : DELETE</li>
+      <li>HEAD: 200</li>
+    </ul>
+    <!-- data-knotx-id="b630ec6f-d7dc-4445-a05e-7f78615f90f4" -->
+  </div>
+</div>
+</body>
+</html>
