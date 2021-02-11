@@ -66,6 +66,7 @@ const Graph = ({
     pageData[tabId].fragments.find((el) => el.debug.fragment.id === fragmentId).debug.graph
   ));
   const sidePanelExpanded = useSelector(({ pageData }) => pageData[tabId].sidebarExpanded);
+  const renderedGraphId = useSelector(({ pageData }) => pageData[tabId].renderedGraph);
 
   useEffect(() => {
     const graphDeclaration = constructGraph(graphData);
@@ -84,7 +85,7 @@ const Graph = ({
         setNodeInfo(info);
       }
     });
-  }, [fragmentId]);
+  }, [renderedGraphId]);
 
   const handleSwitchView = (option) => {
     setDisplayOption(option);

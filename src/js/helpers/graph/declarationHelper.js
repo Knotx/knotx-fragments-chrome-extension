@@ -19,6 +19,7 @@ import {
   isReference, hasTransitions, hasPreDefinedTransitions, hasTransition, isComposite, getReference,
 } from './nodeRecognitionHelper';
 import { postProcessNode } from './nodePostProcessor';
+import { detectActionType } from '../knotxActions/knotxActionsHelper';
 
 export const getNodeGroup = (node) => {
   if (node.type === 'virtual_start') {
@@ -46,9 +47,10 @@ const createVisNode = (node) => {
     delete info.subtasks;
   }
 
+  const nodeAction = detectActionType(node.info);
   return {
     id: node.id,
-    label: node.label,
+    label: `<b>${node.label}</b> ${nodeAction.icon}`,
     group: getNodeGroup(node),
     info,
   };

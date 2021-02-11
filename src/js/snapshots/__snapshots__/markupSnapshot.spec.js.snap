@@ -111,8 +111,25 @@ Array [
         className="graphstyle__GraphAdditionalPanelContent-q2z1zw-12 BLkjY"
       >
         <div
-          className="nodeInfostyle__NodeIndoContainer-sc-9f2nme-0 arjhb"
-        />
+          className="nodeInfostyled__NodeInfoContainer-jone1x-0 fxvQtD"
+          display="true"
+          id="raw-container"
+        >
+          <div
+            className="rawstyled__RawContainer-spwng0-0 hNftSa"
+          />
+        </div>
+        <div
+          className="nodeInfostyled__NodeInfoOptionsBar-jone1x-1 jrZRTW"
+        >
+          <button
+            className="nodeInfostyled__NodeInfoOption-jone1x-2 eNUtAt"
+            onClick={[Function]}
+            type="button"
+          >
+            RAW
+          </button>
+        </div>
       </div>
     </div>
     <div
@@ -662,8 +679,88 @@ Array [
 exports[`Storyshots Logic Components | MainPanel.Graph.NodeInfo NodeInfo 1`] = `
 Array [
   <div
-    className="nodeInfostyle__NodeIndoContainer-sc-9f2nme-0 arjhb"
-  />,
+    className="nodeInfostyled__NodeInfoContainer-jone1x-0 fxvQtD"
+    display="true"
+    id="execution"
+  >
+    <div
+      className="httpExecutionstyled__HttpExecutionWrapper-sc-1x3eob-0 bSLFeH"
+    >
+      <div
+        className="httpExecutionstyled__LoopBar-sc-1x3eob-4 easnrD"
+      >
+        <button
+          onClick={[Function]}
+          type="button"
+        >
+          1
+        </button>
+      </div>
+      <div
+        className="httpExecutionstyled__ExecutionContainer-sc-1x3eob-1 ldibJd"
+      >
+        <div
+          className="httpExecutionstyled__RequestContainer-sc-1x3eob-2 elvtdX"
+        >
+          <h2>
+            Request
+          </h2>
+          <div />
+        </div>
+        <div
+          className="httpExecutionstyled__ResponseContainer-sc-1x3eob-3 HyQtn"
+        >
+          <h2>
+            Response
+          </h2>
+          <div />
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="nodeInfostyled__NodeInfoContainer-jone1x-0 cMJqYU"
+    display="false"
+    id="options"
+  >
+    <div
+      className="rawstyled__RawContainer-spwng0-0 hNftSa"
+    />
+  </div>,
+  <div
+    className="nodeInfostyled__NodeInfoContainer-jone1x-0 cMJqYU"
+    display="false"
+    id="raw-container"
+  >
+    <div
+      className="rawstyled__RawContainer-spwng0-0 hNftSa"
+    />
+  </div>,
+  <div
+    className="nodeInfostyled__NodeInfoOptionsBar-jone1x-1 jrZRTW"
+  >
+    <button
+      className="nodeInfostyled__NodeInfoOption-jone1x-2 eNUtAt"
+      onClick={[Function]}
+      type="button"
+    >
+      EXECUTION
+    </button>
+    <button
+      className="nodeInfostyled__NodeInfoOption-jone1x-2 eTSlfz"
+      onClick={[Function]}
+      type="button"
+    >
+      OPTIONS
+    </button>
+    <button
+      className="nodeInfostyled__NodeInfoOption-jone1x-2 eTSlfz"
+      onClick={[Function]}
+      type="button"
+    >
+      RAW
+    </button>
+  </div>,
   <div />,
 ]
 `;

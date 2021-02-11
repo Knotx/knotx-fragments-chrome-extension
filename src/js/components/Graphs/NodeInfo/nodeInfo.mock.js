@@ -13,11 +13,3 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import styled from 'styled-components';
-
-export const NodeIndoContainer = styled.div`
-    padding: 5px;
-    height: 100%;
-    box-sizing: border-box;
-`;

@@ -14,24 +14,79 @@
  * limitations under the License.
  */
 
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import renderjson from 'renderjson';
-import { NodeIndoContainer } from './nodeInfo.style';
-
-renderjson.set_icons('+', '-');
-renderjson.set_show_to_level(1);
+import { NodeInfoContainer, NodeInfoOptionsBar, NodeInfoOption } from './nodeInfo.styled';
+import Raw from './displayOptions/raw/Raw';
+import { detectActionType } from '../../../helpers/knotxActions/knotxActionsHelper';
 
 const NodeInfo = ({ nodeJson }) => {
-  const nodeInfo = useRef(null);
+  const actionObj = detectActionType(nodeJson);
 
-  useLayoutEffect(() => {
-    nodeInfo.current.innerHTML = '';
-    nodeInfo.current.appendChild(renderjson(nodeJson));
+  const [activeOption, setActiveOption] = useState(actionObj.defaultTemplate);
+
+  useEffect(() => {
+    setActiveOption(actionObj.defaultTemplate);
   }, [nodeJson]);
 
+  const createViewTabs = (templatesList) => {
+    const rawTemplate = (
+      <NodeInfoContainer
+        id="raw-container"
+        display={activeOption === 'raw' ? 'true' : 'false'}
+      >
+        <Raw nodeJson={nodeJson} />
+      </NodeInfoContainer>
+    );
+
+    const rawDisplayOptionBtn = (
+      <NodeInfoOption
+        onClick={() => setActiveOption('raw')}
+        type="button"
+        active={activeOption === 'raw'}
+      >
+        RAW
+      </NodeInfoOption>
+    );
+
+    const viewContainers = templatesList.map((template) => (
+      <NodeInfoContainer
+        key={template.name}
+        id={template.name}
+        display={activeOption === template.name ? 'true' : 'false'}
+      >
+        {template.template(nodeJson)}
+      </NodeInfoContainer>
+    ))
+      .concat([rawTemplate]);
+
+    const displayOptionButtons = templatesList.map((template) => (
+      <NodeInfoOption
+        key={template.name}
+        type="button"
+        active={activeOption === template.name}
+        onClick={() => setActiveOption(template.name)}
+      >
+        {template.name.toUpperCase()}
+      </NodeInfoOption>
+    ))
+      .concat([rawDisplayOptionBtn]);
+
+    return {
+      viewContainers,
+      displayOptionButtons,
+    };
+  };
+
+  const viewTabs = createViewTabs(actionObj.templates);
+
   return (
-    <NodeIndoContainer ref={nodeInfo} />
+    <>
+      { viewTabs.viewContainers }
+      <NodeInfoOptionsBar>
+        { viewTabs.displayOptionButtons }
+      </NodeInfoOptionsBar>
+    </>
   );
 };
 

@@ -14,12 +14,18 @@
  * limitations under the License.
  */
 
-import React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withKnobs, object } from '@storybook/addon-knobs';
-import NodeInfo from './NodeInfo';
-import { httpObjMock } from '../../../helpers/knotxActions/http.mock';
-
-storiesOf('Logic Components | MainPanel.Graph.NodeInfo', module)
-  .addDecorator(withKnobs)
-  .add('NodeInfo', () => <NodeInfo nodeJson={object('nodeJson', httpObjMock)} />);
+export const inlinePayloadObjMock = {
+  response: {
+    invocations: [
+      {
+        logs: {
+          value: {
+            _result: {
+              fallback: 'json-syntax-error',
+            },
+          },
+        },
+      },
+    ],
+  },
+};

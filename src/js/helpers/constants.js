@@ -20,6 +20,16 @@ export const status = {
   success: 'success',
   error: 'error',
 };
+export const ICONS = {
+  HTTP: '\ue90d',
+  GET: '\ue90c',
+  POST: '\ue90f',
+  PUT: '\ue910',
+  DELETE: '\ue90b',
+  CACHE: '\ue901',
+  PAYLOAD: '\ue90e',
+};
+
 export const ENTER_KEY_CODE = 13;
 export const PAGE_BREAK = 1024;
 
@@ -52,6 +62,5 @@ export const graphNavigation = {
 export const NODE_INFO_PANEL_HEADER = 'Node info';
 export const LEGEND_PANEL_HEADER = 'Legend';
 export const NO_KNOTX_PAGE_MSG = 'Sorry, your page does not use Knot.x, use Knot.x version older then 2.2 or use Knot.x without debug mode (see <a href="https://github.com/Knotx/knotx-fragments/tree/master/handler/consumer/html#how-to-start" target="_blank"> doc </a>).';
-export const FRAGMENT_NOT_SELECTED_MSG = 'Please choose any fragment';
 export const FRAGMENTS_PERFORMANCE = 'Fragments performance';
 /* eslint-enable max-len */

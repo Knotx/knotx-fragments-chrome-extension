@@ -22,9 +22,12 @@ import {
 
 /* eslint-disable no-underscore-dangle */
 
-const createNode = (id, label, group, level) => ({
-  id, label, group, level,
-});
+const createNode = (id, label, group, level) => {
+  const decoratedLabel = `<b>${label}</b> `;
+  return {
+    id, label: decoratedLabel, group, level,
+  };
+};
 
 const createEdge = (from, to, unprocessed = false, label = '', fontColor = COLOR_OTHER) => ({
   from,
