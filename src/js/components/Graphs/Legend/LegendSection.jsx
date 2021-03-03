@@ -16,6 +16,8 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { setDocPageLink } from '../../../state/actions/pageData';
 import {
   LegendHeader,
   LegendItemIcon,
@@ -38,13 +40,19 @@ const getIcon = {
 };
 /* eslint-enable react/display-name */
 
-const LegendSection = ({ title, items }) => {
-  const sectionItems = items.map(({ desc, shape, color }) => (
+const LegendSection = ({ tabId, title, items }) => {
+  const dispatch = useDispatch();
+  const sectionItems = items.map(({
+    desc,
+    shape,
+    color,
+    docs,
+  }) => (
     <LegendItem key={desc}>
       <LegendItemIcon>
         {getIcon[shape] ? getIcon[shape](color) : ''}
       </LegendItemIcon>
-      <LegendItemDescription>
+      <LegendItemDescription onClick={() => dispatch(setDocPageLink({ id: tabId, docPageLink: docs }))}>
         {desc}
       </LegendItemDescription>
     </LegendItem>
@@ -61,6 +69,7 @@ const LegendSection = ({ title, items }) => {
 LegendSection.propTypes = {
   title: PropTypes.string.isRequired,
   items: PropTypes.instanceOf(Object).isRequired,
+  tabId: PropTypes.number.isRequired,
 };
 
 export default LegendSection;
